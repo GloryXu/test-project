@@ -15,6 +15,7 @@ public class BeanA {
 
     public void work () {
         Date date = new Date();
+
         log.info("-----------------------{}", date);
     }
 
