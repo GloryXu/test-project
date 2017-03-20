@@ -45,10 +45,15 @@
 	<bean id="myJobDetailA" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
 		<property name="targetObject" ref="beanA">
 		</property>
-		<property name="targetMethod" value="work"></property>
-
+		<property name="targetMethod" value="work"/>
+		<property name="arguments">
+			<list>
+				<value type="java.lang.String">test</value>
+				<value type="java.lang.String">test11</value>
+			</list>
+		</property>
 		<!-- 是否允许任务并发执行。当值为false时，表示必须等到前一个线程处理完毕后才再启一个新的线程 -->
 		<property name="concurrent" value="false" />
 	</bean>
-
+	
 </beans>

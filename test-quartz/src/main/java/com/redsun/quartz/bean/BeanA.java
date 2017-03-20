@@ -13,10 +13,12 @@ import java.util.Date;
 @Service
 public class BeanA {
 
-    public void work () {
+    public void work (String test, String test11) {
         Date date = new Date();
 
         log.info("-----------------------{}", date);
+
+        log.info("------------test = {}, test11 = {}", test,test11);
     }
 
 }
