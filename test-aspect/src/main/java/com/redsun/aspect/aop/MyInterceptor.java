@@ -16,9 +16,9 @@ public class MyInterceptor {
     @Pointcut("execution(* com.redsun.aspect.impl.PersonServiceImpl.*(..))")
     private void anyMethod() { }
 
-    @Before("anyMethod() && args(name)")
-    public void doAccessCheck(String name) {
-        log.info("args = {}", name);
+//    @Before("anyMethod() && args(name)")
+    @Before("anyMethod()")
+    public void before() {
         log.info("前置通知");
     }
 

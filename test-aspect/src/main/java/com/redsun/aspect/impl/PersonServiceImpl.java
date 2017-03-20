@@ -20,6 +20,7 @@ public class PersonServiceImpl implements PersonServer {
     }
 
     public String getPersonName(Integer id) {
+        log.info("this is getPersonName method!");
         return "getPersonName";
     }
 }
