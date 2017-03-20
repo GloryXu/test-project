@@ -39,6 +39,7 @@
     <modules>
         <module>test-web</module>
         <module>test-quartz</module>
+        <module>test-aspect</module>
     </modules>
 
     <dependencyManagement>
@@ -144,6 +145,11 @@
                 <artifactId>log4j-over-slf4j</artifactId>
                 <version>${log4j-over-slf4j.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${log4j-over-slf4j.version}</version>
+            </dependency>
 
             <dependency>
                 <groupId>com.alibaba</groupId>
@@ -199,6 +205,8 @@
                 <artifactId>javassist</artifactId>
                 <version>${javassist.version}</version>
             </dependency>
+
+            <!-- aop -->
             <dependency>
                 <groupId>org.aspectj</groupId>
                 <artifactId>aspectjrt</artifactId>
