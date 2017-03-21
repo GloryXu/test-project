@@ -42,6 +42,7 @@
         <module>test-quartz</module>
         <module>test-aspect</module>
         <module>test-test</module>
+        <module>test-dubbo</module>
     </modules>
 
     <dependencyManagement>
