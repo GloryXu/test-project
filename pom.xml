@@ -34,12 +34,14 @@
         <common.version>1.0.0</common.version>
         <quartz.version>2.2.1</quartz.version>
         <aspectj.version>1.7.0</aspectj.version>
+        <commons-version>3.5</commons-version>
     </properties>
 
     <modules>
         <module>test-web</module>
         <module>test-quartz</module>
         <module>test-aspect</module>
+        <module>test-test</module>
     </modules>
 
     <dependencyManagement>
@@ -216,6 +218,12 @@
                 <groupId>org.aspectj</groupId>
                 <artifactId>aspectjweaver</artifactId>
                 <version>${aspectj.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons-version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
