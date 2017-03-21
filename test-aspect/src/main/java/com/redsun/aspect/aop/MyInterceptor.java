@@ -3,6 +3,7 @@ package com.redsun.aspect.aop;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
+import org.springframework.stereotype.Component;
 
 /**
  * 切面
@@ -10,6 +11,7 @@ import org.aspectj.lang.annotation.*;
  */
 @Slf4j
 @Aspect
+@Component
 public class MyInterceptor {
 
     //定义一个切入点
