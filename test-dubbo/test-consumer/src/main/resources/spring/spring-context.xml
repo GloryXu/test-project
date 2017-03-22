@@ -7,13 +7,13 @@
            http://www.springframework.org/schema/context/spring-context-3.2.xsd"
 	   default-autowire="byName" default-lazy-init="false">
 
+	<context:property-placeholder location="classpath:config/dubbo.properties"/>
+
 	<!-- 采用注释的方式配置bean -->
 	<context:annotation-config />
 
 	<!-- 配置要扫描的包 -->
-	<context:component-scan base-package="com.redsun.dubbo.provider" />
-
-	<context:property-placeholder location="classpath:config/dubbo.properties"/>
+	<context:component-scan base-package="com.redsun.dubbo.consumer" />
 
 	<import resource="dubbo-provider.xml"/>
 

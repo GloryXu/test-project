@@ -18,7 +18,7 @@
         <dubbo.version>2.5.3</dubbo.version>
         <javassist.version>3.21.0-GA</javassist.version>
         <zkclient.version>0.1</zkclient.version>
-        <netty.version>3.9.9.Final</netty.version>
+        <netty.version>3.10.6.Final</netty.version>
         <logback.version>1.1.7</logback.version>
         <log4j-over-slf4j.version>1.7.21</log4j-over-slf4j.version>
         <junit.version>4.12</junit.version>
@@ -136,6 +136,11 @@
             <dependency>
                 <groupId>ch.qos.logback</groupId>
                 <artifactId>logback-classic</artifactId>
+                <version>${logback.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-access</artifactId>
                 <version>${logback.version}</version>
             </dependency>
             <dependency>
