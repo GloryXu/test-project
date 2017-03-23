@@ -11,5 +11,7 @@
 	<!-- 使用zookeeper集群注册中心暴露发现服务地址 -->
 	<dubbo:registry address="${dubbo.registry.address}" timeout="2500" />
 
-	<dubbo:reference id="providerI" interface="com.redsun.dubbo.provider.ProviderI" check="false"/>
+	<!--<dubbo:protocol host="192.168.30.56" />-->
+
+	<dubbo:reference id="providerI" interface="com.redsun.dubbo.provider.ProviderI"/>
 </beans>

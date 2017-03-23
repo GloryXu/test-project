@@ -10,10 +10,8 @@
     <version>0.0.1-SNAPSHOT</version>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
         <maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
-        <basedata-project.version>0.0.1-SNAPSHOT</basedata-project.version>
         <spring.version>4.3.4.RELEASE</spring.version>
         <dubbo.version>2.5.3</dubbo.version>
         <javassist.version>3.21.0-GA</javassist.version>
@@ -35,6 +33,7 @@
         <quartz.version>2.2.1</quartz.version>
         <aspectj.version>1.7.0</aspectj.version>
         <commons-version>3.5</commons-version>
+        <c3p0-version>0.9.1.1</c3p0-version>
     </properties>
 
     <modules>
@@ -230,6 +229,12 @@
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-lang3</artifactId>
                 <version>${commons-version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>c3p0</groupId>
+                <artifactId>c3p0</artifactId>
+                <version>${c3p0-version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
