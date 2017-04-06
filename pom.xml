@@ -34,6 +34,7 @@
         <aspectj.version>1.7.0</aspectj.version>
         <commons-version>3.5</commons-version>
         <c3p0-version>0.9.1.1</c3p0-version>
+        <jira-rest-java-client-version>2.0.0-m2</jira-rest-java-client-version>
     </properties>
 
     <modules>
@@ -236,6 +237,11 @@
                 <groupId>c3p0</groupId>
                 <artifactId>c3p0</artifactId>
                 <version>${c3p0-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.atlassian.jira</groupId>
+                <artifactId>jira-rest-java-client</artifactId>
+                <version>${jira-rest-java-client-version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

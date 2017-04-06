@@ -44,10 +44,10 @@ public class CvteJiraDemo {
         try {
             jiraServerUri = new URI(BaseURL);
             final JiraRestClient restClient = factory.createWithBasicHttpAuthentication(jiraServerUri, User, Password);
-            getAllProjects(restClient);
-            getProject(restClient, "TESTTRACK");
-            getIssue(restClient, "TESTTRACK-1");
-            getIssueFields(restClient, "TESTTRACK-1");
+//            getAllProjects(restClient);
+//            getProject(restClient, "TESTTRACK");
+//            getIssue(restClient, "TESTTRACK-1");
+//            getIssueFields(restClient, "TESTTRACK-1");
             addIssue(restClient, "TESTTRACK", "TESTTRACK-2");
 //            addIssueComplex(restClient, "FEEDBACK",DUE_DATE.toString());
 

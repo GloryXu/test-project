@@ -10,6 +10,7 @@ import com.atlassian.jira.rest.client.domain.input.IssueInput;
 import com.atlassian.jira.rest.client.domain.input.IssueInputBuilder;
 import com.atlassian.util.concurrent.Promise;
 import com.redsun.jira.service.JiraService;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -20,6 +21,7 @@ import java.util.concurrent.ExecutionException;
 /**
  * Created by xugr on 2017/4/6.
  */
+@Service
 public class JiraServiceImpl implements JiraService {
 
     private static final long TASK_TYPE_ID = 3L; // JIRA magic value
@@ -112,7 +114,7 @@ public class JiraServiceImpl implements JiraService {
      */
     @Override
     public Iterable findIssuesByLabel(JiraRestClient jiraRestClient, String label) {
-        String jql = "labels%3D"+label;
+        String jql = "labels%3D" + label;
         com.atlassian.jira.rest.client.domain.SearchResult results = ((SearchRestClient) jiraRestClient).searchJql(jql).claim();
         return results.getIssues();
     }
