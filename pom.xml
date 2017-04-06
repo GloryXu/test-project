@@ -42,6 +42,7 @@
         <module>test-aspect</module>
         <module>test-test</module>
         <module>test-dubbo</module>
+        <module>test-jira</module>
     </modules>
 
     <dependencyManagement>
