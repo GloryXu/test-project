@@ -10,7 +10,7 @@ import java.util.concurrent.ExecutionException;
 /**
  * Created by xugr on 2017/4/6.
  */
-public interface JiraService {
+public interface JiraProjectService {
 
     /**
      * 得到所有项目信息
@@ -28,35 +28,12 @@ public interface JiraService {
     Project getProject(final JiraRestClient restClient, String porjectKEY) throws ExecutionException, InterruptedException;
 
     /**
-     * 得到单一问题信息
-     * @param restClient
-     * @param issueKEY
-     * @return
-     */
-    Issue getIssue(final JiraRestClient restClient, String issueKEY) throws ExecutionException, InterruptedException;
-
-    /**
-     * 创建问题
-     * @param jiraRestClient
-     * @param newIssue
-     * @return
-     */
-    BasicIssue createIssue(final JiraRestClient jiraRestClient, IssueInput newIssue);
-
-    /**
      * 添加备注到问题
      * @param jiraRestClient
      * @param issue
      * @param comment
      */
     void addCommentToIssue(final JiraRestClient jiraRestClient,Issue issue, String comment);
-
-    /**
-     * 删除问题，目前找不到对应API
-     * @param jiraRestClient
-     * @param issue
-     */
-    void deleteIssue(final JiraRestClient jiraRestClient, Issue issue);
 
     /**
      * 通过标题获取问题
@@ -85,10 +62,10 @@ public interface JiraService {
     /**
      * 创建问题 ：包含自定义字段
      * @param restClient
-     * @param porjectKEY
+     * @param projectKEY
      * @param issueName
      */
-    void addIssueComplex(final JiraRestClient restClient, String porjectKEY, String issueName);
+    void addIssueComplex(final JiraRestClient restClient, String projectKEY, String issueName);
 
     /**
      * 获取问题的所有字段
@@ -97,4 +74,9 @@ public interface JiraService {
      * @return
      */
     Iterator<Field> getIssueFields(final JiraRestClient restClient, String issueKEY) throws ExecutionException, InterruptedException;
+
+    Boolean createProject();
+    Boolean updateProject();
+    Boolean deleteProject();
+    Object getProject();
 }

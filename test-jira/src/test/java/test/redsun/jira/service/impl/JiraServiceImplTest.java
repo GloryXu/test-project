@@ -1,15 +1,10 @@
 package test.redsun.jira.service.impl;
 
 import com.atlassian.jira.rest.client.JiraRestClient;
-import com.atlassian.jira.rest.client.JiraRestClientFactory;
 import com.atlassian.jira.rest.client.domain.BasicProject;
-import com.redsun.jira.service.JiraService;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import test.redsun.jira.BaseSpringTest;
 
 import java.net.URI;
@@ -22,21 +17,6 @@ import java.util.concurrent.ExecutionException;
  */
 @Slf4j
 public class JiraServiceImplTest extends BaseSpringTest{
-
-    @Autowired
-    JiraRestClientFactory jiraRestClientFactory;
-
-    @Autowired
-    JiraService jiraService;
-
-    @Value("${jira.baseURL}")
-    String baseURL;
-
-    @Value("${jira.user}")
-    String user;
-
-    @Value("${jira.password}")
-    String password;
 
     JiraRestClient restClient = null;
 
@@ -52,13 +32,12 @@ public class JiraServiceImplTest extends BaseSpringTest{
     }
 
     @Test
-    public void testCreateIssue() {
+    public void testGetAllProjects() {
         try {
             Iterator<BasicProject> basicProjects = jiraService.getAllProjects(restClient);
             if (basicProjects.hasNext()) {
                 log.info("--------------:{}",basicProjects.next());
             }
-
         } catch (ExecutionException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {

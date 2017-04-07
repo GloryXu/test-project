@@ -35,6 +35,7 @@
         <commons-version>3.5</commons-version>
         <c3p0-version>0.9.1.1</c3p0-version>
         <jira-rest-java-client-version>2.0.0-m2</jira-rest-java-client-version>
+        <jira-rest-java-client-core-version>4.0.0</jira-rest-java-client-core-version>
     </properties>
 
     <modules>
@@ -95,14 +96,15 @@
                 <version>${spring.version}</version>
             </dependency>
             <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-beans</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+
+            <dependency>
                 <groupId>org.quartz-scheduler</groupId>
                 <artifactId>quartz</artifactId>
                 <version>${quartz.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-context-support</artifactId>
-                <version>${spring.version}</version>
             </dependency>
 
             <!--test-->
@@ -242,6 +244,18 @@
                 <groupId>com.atlassian.jira</groupId>
                 <artifactId>jira-rest-java-client</artifactId>
                 <version>${jira-rest-java-client-version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.atlassian.jira</groupId>
+                <artifactId>jira-rest-java-client-core</artifactId>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring-beans</artifactId>
+                    </exclusion>
+                </exclusions>
+                <version>${jira-rest-java-client-core-version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

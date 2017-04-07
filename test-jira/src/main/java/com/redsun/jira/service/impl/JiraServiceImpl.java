@@ -9,7 +9,7 @@ import com.atlassian.jira.rest.client.domain.input.FieldInput;
 import com.atlassian.jira.rest.client.domain.input.IssueInput;
 import com.atlassian.jira.rest.client.domain.input.IssueInputBuilder;
 import com.atlassian.util.concurrent.Promise;
-import com.redsun.jira.service.JiraService;
+import com.redsun.jira.service.JiraProjectService;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -22,7 +22,7 @@ import java.util.concurrent.ExecutionException;
  * Created by xugr on 2017/4/6.
  */
 @Service
-public class JiraServiceImpl implements JiraService {
+public class JiraServiceImpl implements JiraProjectService {
 
     private static final long TASK_TYPE_ID = 3L; // JIRA magic value
 
@@ -60,7 +60,6 @@ public class JiraServiceImpl implements JiraService {
      * @param issueKEY
      * @return
      */
-    @Override
     public Issue getIssue(JiraRestClient restClient, String issueKEY) throws ExecutionException, InterruptedException {
         Promise<Issue> list = restClient.getIssueClient().getIssue(issueKEY);
         Issue issue = list.get();
@@ -74,7 +73,6 @@ public class JiraServiceImpl implements JiraService {
      * @param newIssue
      * @return
      */
-    @Override
     public BasicIssue createIssue(JiraRestClient jiraRestClient, IssueInput newIssue) {
         BasicIssue basicIssue = jiraRestClient.getIssueClient().createIssue(newIssue).claim();
         return basicIssue;
@@ -99,7 +97,6 @@ public class JiraServiceImpl implements JiraService {
      * @param jiraRestClient
      * @param issue
      */
-    @Override
     public void deleteIssue(JiraRestClient jiraRestClient, Issue issue) {
         IssueRestClient issueClient = jiraRestClient.getIssueClient();
 //        issueClient.deleteIssue(issue.getKey(), false).claim();
@@ -213,5 +210,25 @@ public class JiraServiceImpl implements JiraService {
         Iterable<Field> fields = issue.getFields();
         Iterator<Field> it = fields.iterator();
         return it;
+    }
+
+    @Override
+    public Boolean createProject() {
+        return null;
+    }
+
+    @Override
+    public Boolean updateProject() {
+        return null;
+    }
+
+    @Override
+    public Boolean deleteProject() {
+        return null;
+    }
+
+    @Override
+    public Object getProject() {
+        return null;
     }
 }
