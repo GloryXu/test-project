@@ -4,14 +4,14 @@ package com.redsun.jira.util;
  * Created by xugr on 2017/4/6.
  */
 
-import com.atlassian.jira.rest.client.IssueRestClient;
-import com.atlassian.jira.rest.client.JiraRestClient;
-import com.atlassian.jira.rest.client.SearchRestClient;
-import com.atlassian.jira.rest.client.domain.*;
-import com.atlassian.jira.rest.client.domain.input.ComplexIssueInputFieldValue;
-import com.atlassian.jira.rest.client.domain.input.FieldInput;
-import com.atlassian.jira.rest.client.domain.input.IssueInput;
-import com.atlassian.jira.rest.client.domain.input.IssueInputBuilder;
+import com.atlassian.jira.rest.client.api.IssueRestClient;
+import com.atlassian.jira.rest.client.api.JiraRestClient;
+import com.atlassian.jira.rest.client.api.SearchRestClient;
+import com.atlassian.jira.rest.client.api.domain.*;
+import com.atlassian.jira.rest.client.api.domain.input.ComplexIssueInputFieldValue;
+import com.atlassian.jira.rest.client.api.domain.input.FieldInput;
+import com.atlassian.jira.rest.client.api.domain.input.IssueInput;
+import com.atlassian.jira.rest.client.api.domain.input.IssueInputBuilder;
 import com.atlassian.jira.rest.client.internal.async.AsynchronousJiraRestClientFactory;
 import com.atlassian.util.concurrent.Promise;
 import com.google.common.collect.Lists;
@@ -153,7 +153,7 @@ public class CvteJiraDemo {
     public static Iterable findIssuesByLabel(final JiraRestClient jiraRestClient, String label) {
         SearchRestClient searchClient = jiraRestClient.getSearchClient();
         String jql = "labels%3D"+label;
-        com.atlassian.jira.rest.client.domain.SearchResult results = ((SearchRestClient) jiraRestClient).searchJql(jql).claim();
+        SearchResult results = ((SearchRestClient) jiraRestClient).searchJql(jql).claim();
         return results.getIssues();
     }
 
@@ -252,8 +252,8 @@ public class CvteJiraDemo {
             Promise<Issue> list = restClient.getIssueClient()
                     .getIssue(issueKEY);
             Issue issue = list.get();
-            Iterable<Field> fields = issue.getFields();
-            Iterator<Field> it = fields.iterator();
+            Iterable<IssueField> fields = issue.getFields();
+            Iterator<IssueField> it = fields.iterator();
             while (it.hasNext()) {
                 System.out.println(it.next());
             }

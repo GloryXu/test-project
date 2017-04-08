@@ -1,9 +1,10 @@
 package com.redsun.jira.service;
 
-import com.atlassian.jira.rest.client.JiraRestClient;
-import com.atlassian.jira.rest.client.domain.BasicIssue;
-import com.atlassian.jira.rest.client.domain.Issue;
-import com.atlassian.jira.rest.client.domain.input.IssueInput;
+
+import com.atlassian.jira.rest.client.api.JiraRestClient;
+import com.atlassian.jira.rest.client.api.domain.BasicIssue;
+import com.atlassian.jira.rest.client.api.domain.Issue;
+import com.atlassian.jira.rest.client.api.domain.input.IssueInput;
 
 import java.util.concurrent.ExecutionException;
 
@@ -14,6 +15,7 @@ import java.util.concurrent.ExecutionException;
 public interface JiraIssueService {
     /**
      * 批量创建问题
+     *
      * @param jiraRestClient
      * @param newIssue
      * @return

@@ -3,17 +3,12 @@ package com.redsun.jira.util;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-import com.atlassian.jira.rest.client.JiraRestClient;
-import com.atlassian.jira.rest.client.JiraRestClientFactory;
-import com.atlassian.jira.rest.client.domain.BasicIssue;
-import com.atlassian.jira.rest.client.domain.Issue;
-import com.atlassian.jira.rest.client.domain.IssueType;
-import com.atlassian.jira.rest.client.domain.SearchResult;
-import com.atlassian.jira.rest.client.domain.Transition;
-import com.atlassian.jira.rest.client.domain.User;
-import com.atlassian.jira.rest.client.domain.input.IssueInput;
-import com.atlassian.jira.rest.client.domain.input.IssueInputBuilder;
-import com.atlassian.jira.rest.client.domain.input.TransitionInput;
+import com.atlassian.jira.rest.client.api.JiraRestClient;
+import com.atlassian.jira.rest.client.api.JiraRestClientFactory;
+import com.atlassian.jira.rest.client.api.domain.*;
+import com.atlassian.jira.rest.client.api.domain.input.IssueInput;
+import com.atlassian.jira.rest.client.api.domain.input.IssueInputBuilder;
+import com.atlassian.jira.rest.client.api.domain.input.TransitionInput;
 import com.atlassian.jira.rest.client.internal.async.AsynchronousJiraRestClientFactory;
 
 /**
@@ -106,10 +101,10 @@ public class JiraUtil {
      * @return
      * @throws URISyntaxException
      */
-    public static Iterable<BasicIssue> searchIssues(String jql) throws URISyntaxException {
+    public static Iterable<Issue> searchIssues(String jql) throws URISyntaxException {
         JiraRestClient restClient = getJiraRestClient();
         SearchResult searchResutl = restClient.getSearchClient().searchJql(jql).claim();
-        Iterable<BasicIssue> iter = searchResutl.getIssues();
+        Iterable<Issue> iter = searchResutl.getIssues();
         for (BasicIssue baseIssue : iter) {
             System.out.println(baseIssue);
         }
@@ -125,10 +120,10 @@ public class JiraUtil {
      * @return
      * @throws URISyntaxException
      */
-    public static Iterable<BasicIssue> searchIssues(String jql, int startIndex, int maxResults) throws URISyntaxException {
+    public static Iterable<Issue> searchIssues(String jql, int startIndex, int maxResults) throws URISyntaxException {
         JiraRestClient restClient = getJiraRestClient();
-        SearchResult searchResutl = restClient.getSearchClient().searchJql(jql, maxResults, startIndex).claim();
-        Iterable<BasicIssue> iter = searchResutl.getIssues();
+        SearchResult searchResutl = restClient.getSearchClient().searchJql(jql, maxResults, startIndex, null).claim();
+        Iterable<Issue> iter = searchResutl.getIssues();
         for (BasicIssue baseIssue : iter) {
             System.out.println(baseIssue);
         }

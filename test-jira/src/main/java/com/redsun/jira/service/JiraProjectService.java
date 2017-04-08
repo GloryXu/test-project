@@ -1,8 +1,10 @@
 package com.redsun.jira.service;
 
-import com.atlassian.jira.rest.client.JiraRestClient;
-import com.atlassian.jira.rest.client.domain.*;
-import com.atlassian.jira.rest.client.domain.input.IssueInput;
+import com.atlassian.jira.rest.client.api.JiraRestClient;
+import com.atlassian.jira.rest.client.api.domain.BasicProject;
+import com.atlassian.jira.rest.client.api.domain.Issue;
+import com.atlassian.jira.rest.client.api.domain.IssueField;
+import com.atlassian.jira.rest.client.api.domain.Project;
 
 import java.util.Iterator;
 import java.util.concurrent.ExecutionException;
@@ -33,7 +35,7 @@ public interface JiraProjectService {
      * @param issue
      * @param comment
      */
-    void addCommentToIssue(final JiraRestClient jiraRestClient,Issue issue, String comment);
+    void addCommentToIssue(final JiraRestClient jiraRestClient, Issue issue, String comment);
 
     /**
      * 通过标题获取问题
@@ -73,7 +75,7 @@ public interface JiraProjectService {
      * @param issueKEY
      * @return
      */
-    Iterator<Field> getIssueFields(final JiraRestClient restClient, String issueKEY) throws ExecutionException, InterruptedException;
+    Iterator<IssueField> getIssueFields(final JiraRestClient restClient, String issueKEY) throws ExecutionException, InterruptedException;
 
     Boolean createProject();
     Boolean updateProject();

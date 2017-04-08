@@ -1,13 +1,13 @@
 package com.redsun.jira.service.impl;
 
-import com.atlassian.jira.rest.client.IssueRestClient;
-import com.atlassian.jira.rest.client.JiraRestClient;
-import com.atlassian.jira.rest.client.SearchRestClient;
-import com.atlassian.jira.rest.client.domain.*;
-import com.atlassian.jira.rest.client.domain.input.ComplexIssueInputFieldValue;
-import com.atlassian.jira.rest.client.domain.input.FieldInput;
-import com.atlassian.jira.rest.client.domain.input.IssueInput;
-import com.atlassian.jira.rest.client.domain.input.IssueInputBuilder;
+import com.atlassian.jira.rest.client.api.IssueRestClient;
+import com.atlassian.jira.rest.client.api.JiraRestClient;
+import com.atlassian.jira.rest.client.api.SearchRestClient;
+import com.atlassian.jira.rest.client.api.domain.*;
+import com.atlassian.jira.rest.client.api.domain.input.ComplexIssueInputFieldValue;
+import com.atlassian.jira.rest.client.api.domain.input.FieldInput;
+import com.atlassian.jira.rest.client.api.domain.input.IssueInput;
+import com.atlassian.jira.rest.client.api.domain.input.IssueInputBuilder;
 import com.atlassian.util.concurrent.Promise;
 import com.redsun.jira.service.JiraProjectService;
 import org.springframework.stereotype.Service;
@@ -22,7 +22,7 @@ import java.util.concurrent.ExecutionException;
  * Created by xugr on 2017/4/6.
  */
 @Service
-public class JiraServiceImpl implements JiraProjectService {
+public class JiraProjectServiceImpl implements JiraProjectService {
 
     private static final long TASK_TYPE_ID = 3L; // JIRA magic value
 
@@ -112,7 +112,7 @@ public class JiraServiceImpl implements JiraProjectService {
     @Override
     public Iterable findIssuesByLabel(JiraRestClient jiraRestClient, String label) {
         String jql = "labels%3D" + label;
-        com.atlassian.jira.rest.client.domain.SearchResult results = ((SearchRestClient) jiraRestClient).searchJql(jql).claim();
+        SearchResult results = ((SearchRestClient) jiraRestClient).searchJql(jql).claim();
         return results.getIssues();
     }
 
@@ -203,12 +203,12 @@ public class JiraServiceImpl implements JiraProjectService {
      * @return
      */
     @Override
-    public Iterator<Field> getIssueFields(JiraRestClient restClient, String issueKEY) throws ExecutionException, InterruptedException {
+    public Iterator<IssueField> getIssueFields(JiraRestClient restClient, String issueKEY) throws ExecutionException, InterruptedException {
         Promise<Issue> list = restClient.getIssueClient()
                 .getIssue(issueKEY);
         Issue issue = list.get();
-        Iterable<Field> fields = issue.getFields();
-        Iterator<Field> it = fields.iterator();
+        Iterable<IssueField> fields = issue.getFields();
+        Iterator<IssueField> it = fields.iterator();
         return it;
     }
 
