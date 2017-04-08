@@ -2,6 +2,7 @@ package test.redsun.jira;
 
 import com.atlassian.jira.rest.client.api.JiraRestClient;
 import com.atlassian.jira.rest.client.api.JiraRestClientFactory;
+import com.redsun.jira.service.JiraIssueService;
 import com.redsun.jira.service.JiraProjectService;
 import junit.framework.TestCase;
 import org.junit.Before;
@@ -23,9 +24,6 @@ public abstract class BaseSpringTest extends TestCase {
 
     @Autowired
     protected JiraRestClientFactory jiraRestClientFactory;
-
-    @Autowired
-    protected JiraProjectService jiraService;
 
     @Value("${jira.baseURL}")
     protected String baseURL;

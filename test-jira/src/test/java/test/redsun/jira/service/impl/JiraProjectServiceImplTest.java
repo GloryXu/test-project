@@ -1,8 +1,10 @@
 package test.redsun.jira.service.impl;
 
 import com.atlassian.jira.rest.client.api.domain.BasicProject;
+import com.redsun.jira.service.JiraProjectService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import test.redsun.jira.BaseSpringTest;
 
 import java.util.Iterator;
@@ -12,7 +14,10 @@ import java.util.concurrent.ExecutionException;
  * Created by xugr on 2017/4/6.
  */
 @Slf4j
-public class JiraServiceImplTest extends BaseSpringTest {
+public class JiraProjectServiceImplTest extends BaseSpringTest {
+
+    @Autowired
+    protected JiraProjectService jiraService;
 
     @Test
     public void testGetAllProjects() {
