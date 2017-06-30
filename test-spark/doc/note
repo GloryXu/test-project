@@ -1,0 +1,4 @@
+1.Spark Core
+    1)RDD 功能特性
+        弹性分布式数据集（Resilient Distributed Datasets）
+        具有自动容错、位置感知调度和可伸缩性
