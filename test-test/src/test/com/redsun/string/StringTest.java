@@ -1,7 +1,11 @@
 package com.redsun.string;
 
+import com.google.common.collect.Maps;
+import com.google.gson.Gson;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
+
+import java.util.Map;
 
 /**
  * Created by DELL on 2017/6/27.
@@ -45,5 +49,30 @@ public class StringTest {
             default:
                 log.info("default");
         }
+    }
+
+    @Test
+    public void testStr() {
+        String str1 = "xugr" + "xugr";
+        String str2 = "xugrxugr";
+
+        String str3 = str2 + "";
+
+        log.info("str1.equals(str2) result = {}", str1.equals(str2));
+        log.info("str1 == str2, result = {}", str1 == str2);
+        log.info("str3 == str1 result = {}", str3 == str1);
+    }
+
+    @Test
+    public void testEnum() {
+        Map<String,String> map = Maps.newHashMap();
+
+        map.put("str1", "str11");
+        map.put("str2", null);
+        map.put("str3", "");
+
+        Gson gson = new Gson();
+
+        log.info("result = {}", gson.toJson(map));
     }
 }
