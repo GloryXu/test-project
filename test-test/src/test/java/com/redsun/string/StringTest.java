@@ -3,6 +3,7 @@ package com.redsun.string;
 import com.google.common.collect.Maps;
 import com.google.gson.Gson;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.math.NumberUtils;
 import org.junit.Test;
 
 import java.util.Map;
@@ -74,5 +75,30 @@ public class StringTest {
         Gson gson = new Gson();
 
         log.info("result = {}", gson.toJson(map));
+    }
+
+    @Test
+    public void testNumStr() {
+        String str00 = "00";
+        String str99 = "99";
+        String str = "01";
+
+        log.info("{}",NumberUtils.isDigits(str));
+        log.info("{}",NumberUtils.isDigits(str00));
+        log.info("{}",NumberUtils.isDigits(str99));
+        log.info("result = {}", str.compareTo(str00));
+        log.info("result = {}", str.compareTo(str99));
+    }
+
+    @Test
+    public void testFor() {
+        String[] strs = {"111","222","333"};
+        for (String str : strs) {
+            if ("222".equals(str)) {
+                log.info("{}",str);
+                break;
+            }
+            log.info("{}",str);
+        }
     }
 }
