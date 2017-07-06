@@ -65,7 +65,7 @@ public class StringTest {
     }
 
     @Test
-    public void testEnum() {
+    public void testJson() {
         Map<String,String> map = Maps.newHashMap();
 
         map.put("str1", "str11");
@@ -86,8 +86,7 @@ public class StringTest {
         log.info("{}",NumberUtils.isDigits(str));
         log.info("{}",NumberUtils.isDigits(str00));
         log.info("{}",NumberUtils.isDigits(str99));
-        log.info("result = {}", str.compareTo(str00));
-        log.info("result = {}", str.compareTo(str99));
+        log.info("{}", NumberUtils.isDigits("aa"));
     }
 
     @Test
