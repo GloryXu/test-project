@@ -1,6 +1,4 @@
 package com.redsun.spark;
-import java.io.File;
-import java.util.Arrays;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.spark.SparkConf;
@@ -11,8 +9,10 @@ import org.apache.spark.api.java.function.FlatMapFunction;
 import org.apache.spark.api.java.function.Function;
 import org.apache.spark.api.java.function.Function2;
 import org.apache.spark.api.java.function.PairFunction;
-
 import scala.Tuple2;
+
+import java.io.File;
+import java.util.Arrays;
 
 /**
  * Created by DELL on 2017/7/9.
@@ -31,26 +31,11 @@ public class SparkDemo {
 
         JavaRDD<String> file = javaSparkContext.textFile(filePath);
 
-        JavaRDD<String> words = file.flatMap(new FlatMapFunction<String, String>() {
-            @Override
-            public Iterable<String> call(String s) {
-                return Arrays.asList(s.split(" "));
-            }
-        });
+        JavaRDD<String> words = file.flatMap((FlatMapFunction<String, String>) s -> Arrays.asList(s.split(" ")).iterator());
 
-        JavaPairRDD<String, Integer> pairs = words.mapToPair(new PairFunction<String, String, Integer>() {
-            @Override
-            public Tuple2<String, Integer> call(String s) {
-                return new Tuple2<String, Integer>(s, 1);
-            }
-        });
+        JavaPairRDD<String, Integer> pairs = words.mapToPair((PairFunction<String, String, Integer>) s -> new Tuple2<>(s, 1));
 
-        JavaPairRDD<String, Integer> counts = pairs.reduceByKey(new Function2<Integer, Integer, Integer>() {
-            @Override
-            public Integer call(Integer a, Integer b) {
-                return a + b;
-            }
-        });
+        JavaPairRDD<String, Integer> counts = pairs.reduceByKey((Function2<Integer, Integer, Integer>) (a, b) -> a + b);
 
         counts.saveAsTextFile(fileDir);
     }
@@ -59,28 +44,13 @@ public class SparkDemo {
     private static void errorCount(String filePath) {
         JavaRDD<String> file = javaSparkContext.textFile(filePath);
 
-        JavaRDD<String> errors = file.filter(new Function<String, Boolean>() {
-            @Override
-            public Boolean call(String s) {
-                return s.contains("ERROR");
-            }
-        });
+        JavaRDD<String> errors = file.filter((Function<String, Boolean>) s -> s.contains("ERROR"));
 
         errors.count();
 
-        errors.filter(new Function<String, Boolean>() {
-            @Override
-            public Boolean call(String s) {
-                return s.contains("ORACLE");
-            }
-        }).count();
+        errors.filter((Function<String, Boolean>) s -> s.contains("ORACLE")).count();
 
-        errors.filter(new Function<String, Boolean>() {
-            @Override
-            public Boolean call(String s) {
-                return s.contains("ORACLE");
-            }
-        }).collect();
+        errors.filter((Function<String, Boolean>) s -> s.contains("ORACLE")).collect();
     }
 
     public static void main(String[] args) {
@@ -89,7 +59,7 @@ public class SparkDemo {
             System.exit(0);
         }
 
-        SparkDemo.init("shuai.spark", "local");
+        SparkDemo.init("redsun.spark", "local");
 
         SparkDemo.wordCount(args[0], args[1]);
 
