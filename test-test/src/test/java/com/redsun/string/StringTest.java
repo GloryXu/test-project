@@ -7,6 +7,7 @@ import org.apache.commons.lang3.math.NumberUtils;
 import org.junit.Test;
 
 import java.util.Map;
+import java.util.regex.Pattern;
 
 /**
  * Created by DELL on 2017/6/27.
@@ -99,5 +100,30 @@ public class StringTest {
             }
             log.info("{}",str);
         }
+    }
+
+    @Test
+    public void testPattern() {
+        String regex = "(10|20|30)&(aa|bb)&$";
+        Pattern pattern = Pattern.compile(regex);
+
+        String str = "10a";
+        String str1 = "10&aa&";
+        String str2 = "20&bb&";
+        String str3 = "30&bb&";
+
+        log.info("result = {}",pattern.matcher(str).matches());
+        log.info("result = {}",pattern.matcher(str1).matches());
+        log.info("result = {}",pattern.matcher(str2).matches());
+        log.info("result = {}",pattern.matcher(str3).matches());
+    }
+
+    @Test
+    public void printStr() {
+        String str = "*|*|*|*|*";
+        String str1 = "s,df,s,d";
+
+        log.info("str = {}", str.replace("|", ","));
+        log.info("str1 = {}", str1.replace(",", "|"));
     }
 }
