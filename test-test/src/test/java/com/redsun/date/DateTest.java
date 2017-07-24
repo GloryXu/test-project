@@ -20,6 +20,7 @@ public class DateTest {
         log.info("------date = {}", date);
     }
 
+    @Test
     public void testConvertDateFormat () throws ParseException {
         String strDate = "2017.07.19 19:53:22";
         String format1 = "yyyy.MM.dd HH:mm:ss";
