@@ -33,4 +33,12 @@ public class MapTest {
 
         log.info("sets = {}", sets);
     }
+
+    @Test
+    public void testMapValueFinal() {
+        final Map<String,String> map = new HashMap<>();
+        map.put("xugr","");
+//        map = new HashMap<>();
+        log.info("{}", map);
+    }
 }
