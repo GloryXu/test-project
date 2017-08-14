@@ -50,6 +50,7 @@
         <module>test-jira</module>
         <module>test-spark</module>
         <module>test-countdownlatch</module>
+        <module>test-spring</module>
     </modules>
 
     <dependencyManagement>
