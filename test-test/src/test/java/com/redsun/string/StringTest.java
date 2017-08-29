@@ -3,6 +3,7 @@ package com.redsun.string;
 import com.google.common.collect.Maps;
 import com.google.gson.Gson;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.codec.binary.Hex;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.junit.Test;
 
@@ -125,5 +126,11 @@ public class StringTest {
 
         log.info("str = {}", str.replace("|", ","));
         log.info("str1 = {}", str1.replace(",", "|"));
+    }
+
+    @Test
+    public void strToHex() {
+        String str = "allinpay";
+        System.out.println(new String(Hex.encodeHex(str.getBytes())).toUpperCase());
     }
 }
