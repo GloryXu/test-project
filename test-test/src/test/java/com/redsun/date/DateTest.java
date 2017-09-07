@@ -27,7 +27,14 @@ public class DateTest {
 
         Date date = DateUtils.parseDate(strDate, format1);
         log.info("------------date = {}", date);
+    }
 
+    @Test
+    public void testConvertDateFormat_1() throws ParseException {
+        String[] pattern = new String[]{"yyyyHHddHHmmss"};
+
+        Date date = org.apache.commons.lang.time.DateUtils.parseDate("20170820202020", pattern);
+        log.info("-------------------------------date = {}", date);
     }
 
 }

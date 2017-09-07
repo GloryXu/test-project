@@ -25,13 +25,13 @@ public class StringTest {
     @Test
     public void testSwitch() {
         switch ("xugr") {
-            case "1xugr1" :
+            case "1xugr1":
                 log.info("xugr1 xugr1");
                 break;
-            case "xugr" :
+            case "xugr":
                 log.info("xugr xugr");
                 break;
-            case "1xugr2" :
+            case "1xugr2":
                 log.info("xugr2 xugr2");
                 break;
             default:
@@ -43,11 +43,11 @@ public class StringTest {
     @Test
     public void testSwitchNumBer() {
         switch (2) {
-            case 1 :
+            case 1:
                 log.info("xugr xugr");
-            case 2 :
+            case 2:
                 log.info("xugr1 xugr1");
-            case 4 :
+            case 4:
                 log.info("xugr2 xugr2");
             default:
                 log.info("default");
@@ -68,7 +68,7 @@ public class StringTest {
 
     @Test
     public void testJson() {
-        Map<String,String> map = Maps.newHashMap();
+        Map<String, String> map = Maps.newHashMap();
 
         map.put("str1", "str11");
         map.put("str2", null);
@@ -85,21 +85,21 @@ public class StringTest {
         String str99 = "99";
         String str = "01";
 
-        log.info("{}",NumberUtils.isDigits(str));
-        log.info("{}",NumberUtils.isDigits(str00));
-        log.info("{}",NumberUtils.isDigits(str99));
+        log.info("{}", NumberUtils.isDigits(str));
+        log.info("{}", NumberUtils.isDigits(str00));
+        log.info("{}", NumberUtils.isDigits(str99));
         log.info("{}", NumberUtils.isDigits("aa"));
     }
 
     @Test
     public void testFor() {
-        String[] strs = {"111","222","333"};
+        String[] strs = {"111", "222", "333"};
         for (String str : strs) {
             if ("222".equals(str)) {
-                log.info("{}",str);
+                log.info("{}", str);
                 break;
             }
-            log.info("{}",str);
+            log.info("{}", str);
         }
     }
 
@@ -113,24 +113,33 @@ public class StringTest {
         String str2 = "20&bb&";
         String str3 = "30&bb&";
 
-        log.info("result = {}",pattern.matcher(str).matches());
-        log.info("result = {}",pattern.matcher(str1).matches());
-        log.info("result = {}",pattern.matcher(str2).matches());
-        log.info("result = {}",pattern.matcher(str3).matches());
+        log.info("result = {}", pattern.matcher(str).matches());
+        log.info("result = {}", pattern.matcher(str1).matches());
+        log.info("result = {}", pattern.matcher(str2).matches());
+        log.info("result = {}", pattern.matcher(str3).matches());
     }
 
     @Test
     public void printStr() {
-        String str = "*|*|*|*|*";
+        String str = "*|*dd|*dd|dd*|*dd";
         String str1 = "s,df,s,d";
 
         log.info("str = {}", str.replace("|", ","));
         log.info("str1 = {}", str1.replace(",", "|"));
+
+        log.info("{}", str.split("\\|").length);
     }
 
     @Test
     public void strToHex() {
         String str = "allinpay";
         System.out.println(new String(Hex.encodeHex(str.getBytes())).toUpperCase());
+    }
+
+    @Test
+    public void strIndex() {
+        String respStr = "<?xml?><root>dfsfsdf</root>";
+        System.out.println(respStr.substring(respStr.indexOf("root") - 1, respStr.lastIndexOf("root") + 5));
+        System.out.println(respStr.lastIndexOf("root"));
     }
 }
