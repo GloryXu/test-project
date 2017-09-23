@@ -51,6 +51,7 @@
         <module>test-spark</module>
         <module>test-countdownlatch</module>
         <module>test-spring</module>
+        <module>test-encrypt-decrypt</module>
     </modules>
 
     <dependencyManagement>
