@@ -1,4 +1,4 @@
-package com.redsun.io.fakeBio;
+package com.redsun.io.fake.bio;
 
 import java.io.IOException;
 import java.net.ServerSocket;

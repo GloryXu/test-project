@@ -1,4 +1,4 @@
-package com.redsun.io.fakeBio;
+package com.redsun.io.fake.bio;
 
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ExecutorService;
