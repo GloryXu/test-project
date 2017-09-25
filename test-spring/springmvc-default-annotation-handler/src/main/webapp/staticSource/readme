@@ -1,0 +1,9 @@
+DefaultAnnotationHandlerMapping的order属性值是：0
+
+<mvc:resources/ >自动注册的 SimpleUrlHandlerMapping的order属性值是： 2147483646
+ 
+自动注册 的SimpleUrlHandlerMapping 的order属性值是： 2147483647
+ 
+spring会先执行order值比较小的。当访问一个a.jpg图片文件时，先通过 DefaultAnnotationHandlerMapping 来找处理器，
+一定是找不到的，我们没有叫a.jpg的Action。再 按order值升序找，由于最后一个 SimpleUrlHandlerMapping 是匹配 "/**"的，
+所以一定会匹配上，再响应图片。

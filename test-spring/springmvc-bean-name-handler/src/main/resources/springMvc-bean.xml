@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <!-- 注意：/不可少 -->
+    <bean name="/hello" class="com.redsun.training.controller.HelloWorldController"></bean>
+    <!-- 将接收到的请求转发到一个命名的servlet -->
+    <bean name="/forwardToServlet" class="org.springframework.web.servlet.mvc.ServletForwardingController">
+        <property name="servletName" value="forwarding"></property>
+    </bean>
+
+</beans>

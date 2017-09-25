@@ -10,6 +10,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>test-spring</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>springmvc-bean-name-handler</module>
+        <module>common-spring</module>
+        <module>springmvc-default-annotation-handler</module>
+        <module>springmvc-request</module>
+        <module>springmvc-simple-url-handler</module>
+    </modules>
 
     <dependencies>
         <dependency>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd  
+            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd  
+            http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd  
+            http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+	<!-- 5. -->
+	<bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<!-- 配置方法一 -->
+     <property name="urlMap">
+         <map>
+            <entry key="/login" value-ref="test1SimpleUrlMappingController"/>
+            <!-- <entry key="/login2Model" value="test1SimpleUrlMappingController2Model"/> -->
+         </map>
+     </property>
+  
+  <!-- 配置方法二 -->
+    <!--<property name="mappings">
+       <bean class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+           <property name="location">
+   此时urlMap.properties文件应放在WebRoot目录下! 
+              <value>urlMap.properties</value>
+           </property>
+       </bean>
+    </property>-->
+    
+   <!-- 配置方法三 
+     <property name="mappings">
+        <props>
+           <prop key="/login">test1SimpleUrlMappingController</prop>
+        </props>
+     </property>-->
+	</bean>
+	
+	<!-- ViewResolver -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.JstlView" />
+		<property name="prefix" value="/WEB-INF/jsp/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+</beans>
