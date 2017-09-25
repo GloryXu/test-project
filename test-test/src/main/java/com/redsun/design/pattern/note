@@ -1,0 +1,5 @@
+1.可以通过设置JVM启动参数-Djava.lang.Integer.IntegerCache.high=200来间接设置IntegerCache.high值，也可以
+通过设置-XX:AutoBoxCacheMax来达到目的
+
+String integerCacheHighPropValue = sun.misc.VM.getSavedProperty("java.lang.Integer.IntegerCache.high");
+The size of the cache may be controlled by the {@code -XX:AutoBoxCacheMax=<size>} option.
