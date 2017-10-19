@@ -7,6 +7,7 @@ import org.apache.commons.codec.binary.Hex;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.junit.Test;
 
+import java.util.Base64;
 import java.util.Map;
 import java.util.regex.Pattern;
 
@@ -141,5 +142,11 @@ public class StringTest {
         String respStr = "<?xml?><root>dfsfsdf</root>";
         System.out.println(respStr.substring(respStr.indexOf("root") - 1, respStr.lastIndexOf("root") + 5));
         System.out.println(respStr.lastIndexOf("root"));
+    }
+
+    @Test
+    public void baseToHex() {
+        String base64 = "AQAG/1Xtj+UaOGJj9wBW9N0tiE7rJoNHfjkuIWyTBMs413fSR0d7COP4+K4VuNN59lvVi+LH0y9gIcS0dxWiiDvAWtDtYEDa/KBf1CCrVf6BkNduZskQ99z7rC5S6NPygbXSqvPoO9DC53dK6QEZU+7dyQFaVW/resq51SqCzst7JRM313JRHIkW9TfWIHMvqwug5odUJtjNkeCfw6+oyj6HAtqKaug9IQjeEwBOiS3mAR/i8Axxoy3W9PtxKcnxLq97enUpaONoTJrI+enPRxc6d7TVGNnG9TO+TaNj55jVSDfRjchBZksj+D8nwUAvmD0pUMJlucgTN102yLAhYZ+uuQkvbWJDA8cOq9K0e7FHj1esgwo94Lw41wHJ5skxPgc=";
+        System.out.println(Hex.encodeHex(Base64.getDecoder().decode(base64), false));
     }
 }
