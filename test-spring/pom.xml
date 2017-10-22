@@ -17,6 +17,7 @@
         <module>springmvc-default-annotation-handler</module>
         <module>springmvc-request</module>
         <module>springmvc-simple-url-handler</module>
+        <module>spring-event-driver</module>
     </modules>
 
     <dependencies>

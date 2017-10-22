@@ -1,0 +1,11 @@
+Spring事件驱动模型包含三个基本概念：事件、事件监听和事件发布者
+1.事件
+    ApplicationEvent包含两个成员变量：timestamp，用于存储事件发生的时间戳
+                                 父类中source，表示原事件对象
+2.事件监听者
+    ApplicationListener，每一个ApplicationListener都是针对某个ApplicationEvent子类的监听和处理
+
+3.事件发布者
+    spring中定义ApplicationEventPublisher和ApplicationEventMulticaster两个接口用来发布事件
+    ApplicationEventPublishe定义了发布事件的函数publishEvent(ApplicationEvent event)和publishEvent(Object event)
+    ApplicationEventMulticaster定义了对ApplicationListener的维护操作（比如新增、移除等）以及将ApplicationEvent多播给可用ApplicationListener的操作
