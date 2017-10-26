@@ -10,6 +10,7 @@
     <version>0.0.1-SNAPSHOT</version>
 
     <properties>
+        <project.jdk.version>1.8</project.jdk.version>
         <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
         <maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
         <spring.version>4.3.4.RELEASE</spring.version>
@@ -355,8 +356,8 @@
                         <encoding>UTF-8</encoding>
                         <meminitial>256m</meminitial>
                         <maxmem>256m</maxmem>
-                        <source>1.8</source>
-                        <target>1.8</target>
+                        <source>${project.jdk.version}</source>
+                        <target>${project.jdk.version}</target>
                     </configuration>
                 </plugin>
                 <plugin>

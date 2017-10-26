@@ -1,0 +1,17 @@
+1.当栈调用深度大于JVM所允许的范围，会抛出StackOverflowError的错误，不过这个深度范围不是一个恒定的值
+2.当申请不到空间时，会抛出 OutOfMemoryError
+    （StackOverflowError 和 OutOfMemoryError 都不属于 Exception 的子类，异常catch应该为：Throwable）
+3.每个线程都有自己的程序计数器（PC寄存器）
+4.堆内存是 JVM 所有线程共享的部分，在虚拟机启动的时候就已经创建
+5.方法区也是所有线程共享。主要用于存储类的信息、常量池、方法数据、方法代码等。
+    方法区逻辑上属于堆的一部分，但是为了与堆进行区分，通常又叫“非堆”。
+
+（除JVM java虚拟机之外还有，JRockit（Oracle）、J9（IBM））
+
+6.元空间的本质和永久代类似，都是对JVM规范中方法区的实现。
+    不过元空间与永久代之间最大的区别在于：元空间并不在虚拟机中，而是使用本地内存,元空间的大小仅受本地内存限制
+    参数来指定元空间:-XX:MetaspaceSize，初始空间大小，达到该值就会触发垃圾收集进行类型卸载，
+                        同时GC会对该值进行调整：如果释放了大量的空间，就适当降低该值；如果释放了很少的空间，那么在不超过MaxMetaspaceSize时，适当提高该值。
+                    -XX:MaxMetaspaceSize，最大空间，默认是没有限制的。
+                    -XX:MinMetaspaceFreeRatio，在GC之后，最小的Metaspace剩余空间容量的百分比，减少为分配空间所导致的垃圾收集
+                    -XX:MaxMetaspaceFreeRatio，在GC之后，最大的Metaspace剩余空间容量的百分比，减少为释放空间所导致的垃圾收集
