@@ -46,7 +46,7 @@
         <module>web</module>
         <module>quartz</module>
         <module>aspect</module>
-        <module>test-test</module>
+        <module>test</module>
         <module>dubbo</module>
         <module>jira</module>
         <module>spark</module>
