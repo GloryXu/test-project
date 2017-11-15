@@ -1,4 +1,4 @@
-package com.redsun;
+package test.redsun;
 
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
@@ -15,4 +15,5 @@ public class BooleanTest {
         log.info("{}", boolean1.equals(boolean2));
         log.info("{}", boolean1 == boolean2);
     }
+
 }

@@ -1,4 +1,4 @@
-package com.redsun.string;
+package test.redsun.string;
 
 import com.google.gson.Gson;
 import com.redsun.domain.TestPDU;
