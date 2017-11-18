@@ -1,4 +1,4 @@
-package com.redsun.netty.serialize;
+package com.redsun.jdk.serialize;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
