@@ -37,4 +37,11 @@ public class DateTest {
         log.info("-------------------------------date = {}", date);
     }
 
+    @Test
+    public void testLongToDate() {
+        long time = 1511336240696L;
+        Date date = new Date(time);
+        log.info("-----------------date:{}",date);
+    }
+
 }
