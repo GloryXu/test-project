@@ -16,16 +16,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.redsun</groupId>
-            <artifactId>test-provider-impl</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-        <!--<dependency>
-            <groupId>com.redsun</groupId>
-            <artifactId>test-quartz</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>-->
-        <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
         </dependency>
@@ -40,10 +30,6 @@
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-web</artifactId>
         </dependency>
     </dependencies>
 

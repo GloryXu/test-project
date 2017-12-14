@@ -16,7 +16,7 @@
     <dependencies>
         <dependency>
             <groupId>com.redsun</groupId>
-            <artifactId>test-provider</artifactId>
+            <artifactId>provider</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
 

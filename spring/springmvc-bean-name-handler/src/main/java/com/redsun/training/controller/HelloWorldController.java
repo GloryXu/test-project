@@ -10,7 +10,7 @@ import com.redsun.training.pojo.User;
 
 public class HelloWorldController implements Controller {
 
-    public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) {
         //1、收集参数、验证参数
         //2、绑定参数到命令对象
         //3、将命令对象传入业务对象进行业务处理
@@ -26,6 +26,4 @@ public class HelloWorldController implements Controller {
         mv.setViewName("hello");
         return mv;
     }
-
-
 }

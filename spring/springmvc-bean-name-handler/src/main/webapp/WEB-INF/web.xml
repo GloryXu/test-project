@@ -16,8 +16,12 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>forwarding</servlet-name>
-    <servlet-class>com.allinpay.its.training.servlet.ForwardingServlet</servlet-class>
+    <servlet-class>com.redsun.training.servlet.ForwardingServlet</servlet-class>
   </servlet>
+    <!-- <servlet-mapping>
+        <servlet-name>forwarding</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping> -->
   <filter>
     <filter-name>CharacterEncodingFilter</filter-name>
     <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
