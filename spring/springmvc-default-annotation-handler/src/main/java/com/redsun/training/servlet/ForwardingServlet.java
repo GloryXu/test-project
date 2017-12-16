@@ -9,13 +9,10 @@ import javax.servlet.http.HttpServletResponse;
 
 public class ForwardingServlet extends HttpServlet {
 
-	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
-		
-		resp.getWriter().write("Controller forward to servlet");
-	}
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+            throws IOException {
+        resp.getWriter().write("Controller forward to servlet");
+    }
 
-	
-	
 }

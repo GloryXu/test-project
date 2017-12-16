@@ -8,31 +8,24 @@ import org.springframework.web.servlet.ModelAndView;
 
 public class TestDefaultAHMInterceptor implements HandlerInterceptor {
 
-	//Action֮ǰִ��
-	@Override
-	public boolean preHandle(HttpServletRequest request,
-			HttpServletResponse response, Object handler) throws Exception {
-		// TODO Auto-generated method stub
-		System.out.println(TestDefaultAHMInterceptor.class+"--------------preHandle");
-		return true;
-	}
+    @Override
+    public boolean preHandle(HttpServletRequest request,
+                             HttpServletResponse response, Object handler) {
+        System.out.println(TestDefaultAHMInterceptor.class + "--------------preHandle");
+        return true;
+    }
 
-	//������ͼ֮ǰִ��
-	@Override
-	public void postHandle(HttpServletRequest request,
-			HttpServletResponse response, Object handler,
-			ModelAndView modelAndView) throws Exception {
-		// TODO Auto-generated method stub
-		System.out.println(TestDefaultAHMInterceptor.class+"-----------------postHandle");
-	}
+    @Override
+    public void postHandle(HttpServletRequest request,
+                           HttpServletResponse response, Object handler,
+                           ModelAndView modelAndView) {
+        System.out.println(TestDefaultAHMInterceptor.class + "-----------------postHandle");
+    }
 
-	//��Ⱦ����ͼ��ִ�еķ���
-	@Override
-	public void afterCompletion(HttpServletRequest request,
-			HttpServletResponse response, Object handler, Exception ex)
-			throws Exception {
-		// TODO Auto-generated method stub
-		System.out.println(TestDefaultAHMInterceptor.class+"-----------------afterCompletion");
-	}
+    @Override
+    public void afterCompletion(HttpServletRequest request,
+                                HttpServletResponse response, Object handler, Exception ex) {
+        System.out.println(TestDefaultAHMInterceptor.class + "-----------------afterCompletion");
+    }
 
 }

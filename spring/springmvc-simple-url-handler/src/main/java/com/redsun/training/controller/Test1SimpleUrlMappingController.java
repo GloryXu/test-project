@@ -8,21 +8,21 @@ import org.springframework.web.servlet.mvc.Controller;
 
 public class Test1SimpleUrlMappingController implements Controller {
 
-	@Override
-	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String userName=request.getParameter("username");
+    @Override
+    public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        String userName=request.getParameter("username");
         String pwd=request.getParameter("pwd");
-        
+
         String msg="";
         ModelAndView mav=new ModelAndView("test1SimpleUrlMappingController");
         if(!userName.equals("test")){
-            msg="�û���������!";
+            msg="用户名不存在!";
         }else if(!pwd.equals("0000")){
-            msg="���벻��ȷ!";    
+            msg="密码不正确!";
         }else{
-            msg="��ϲ����¼�ɹ�!";
+            msg="恭喜您登录成功!";
         }
-        
+
         mav.addObject("msg",msg);
         return mav;
     }

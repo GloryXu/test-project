@@ -9,38 +9,38 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @RequestMapping(value="/userregex")
 public class Test5MTempletRegexController {
-	
-	//\\d{4}  \\d{6}  \\d+
-	@RequestMapping(value={"/login/{user:\\d{4}}/{pwd:\\d{6}}"},method = RequestMethod.GET)
-	public ModelAndView loginGet(@PathVariable(value="user")String username,@PathVariable(value="pwd")String pwd){
-		String msg = "";
-		ModelAndView mv = new ModelAndView();
-		System.out.println(username);
+
+    //\\d{4}  \\d{6}  \\d+
+    @RequestMapping(value={"/login/{user:\\d{4}}/{pwd:\\d{6}}"},method = RequestMethod.GET)
+    public ModelAndView loginGet(@PathVariable(value="user")String username,@PathVariable(value="pwd")String pwd){
+        String msg = "";
+        ModelAndView mv = new ModelAndView();
+        System.out.println(username);
         if(!username.equals("test")){
-            msg="�û���������!";
+            msg="用户名不存在!";
         }else if(!pwd.equals("0000")){
-            msg="���벻��ȷ!";
+            msg="密码不正确!";
         }else{
-            msg="��ϲ����¼�ɹ�!";
+            msg="恭喜您登录成功!";
         }
         mv.addObject("msg", "loginGet channelId="+username+";connectId="+pwd);
         mv.setViewName("result");
         return mv;
-	}
-	
-	//method = {RequestMethod.POST, RequestMethod.GET}
-	//@RequestMapping(params="!create", method=RequestMethod.GET)��
-	//@RequestMapping(params="create", method=RequestMethod.GET) ����ʾ�������С�create���Ĳ�����,�����󷽷�Ϊ��GET������ƥ��
-	//@RequestMapping(params="submitFlag=create", method=RequestMethod.GET)
-	//@RequestMapping(params="submitFlag!=create", method=RequestMethod.GET)
-	@RequestMapping(value={"/login/{user:\\d{4}}/{pwd:\\d{6}}"},method = RequestMethod.POST)
-	public ModelAndView loginPost(@PathVariable(value="user")String username,@PathVariable(value="pwd")String pwd){
-		String msg = "";
-		ModelAndView mv = new ModelAndView();
-		System.out.println(username);
+    }
+
+    //method = {RequestMethod.POST, RequestMethod.GET}
+    //@RequestMapping(params="!create", method=RequestMethod.GET)：
+    //@RequestMapping(params="create", method=RequestMethod.GET) ：表示请求中有“create”的参数名,且请求方法为“GET”即可匹配
+    //@RequestMapping(params="submitFlag=create", method=RequestMethod.GET)
+    //@RequestMapping(params="submitFlag!=create", method=RequestMethod.GET)
+    @RequestMapping(value={"/login/{user:\\d{4}}/{pwd:\\d{6}}"},method = RequestMethod.POST)
+    public ModelAndView loginPost(@PathVariable(value="user")String username,@PathVariable(value="pwd")String pwd){
+        String msg = "";
+        ModelAndView mv = new ModelAndView();
+        System.out.println(username);
         mv.addObject("msg", "loginPost channelId="+username+";connectId="+pwd);
         mv.setViewName("result");
         return mv;
-	}
-	
+    }
+
 }

@@ -8,21 +8,21 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping(value="/user1")
 public class Test3MoreURI2Controller {
 
-	@RequestMapping(value={"/login","/login2Model","/hehehe"})
-	public ModelAndView login(String username,String pwd){
-		String msg = "";
-		ModelAndView mv = new ModelAndView();
-		System.out.println(username);
+    @RequestMapping(value={"/login","/login2Model","/hehehe"})
+    public ModelAndView login(String username,String pwd){
+        String msg = "";
+        ModelAndView mv = new ModelAndView();
+        System.out.println(username);
         if(!username.equals("test")){
-            msg="�û���������!";
+            msg="用户名不存在!";
         }else if(!pwd.equals("0000")){
-            msg="���벻��ȷ!";
+            msg="密码不正确!";
         }else{
-            msg="��ϲ����¼�ɹ�!";
+            msg="恭喜您登录成功!";
         }
         mv.addObject("msg", "login-"+msg);
         mv.setViewName("result");
         return mv;
-	}
-	
+    }
+
 }

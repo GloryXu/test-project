@@ -37,12 +37,13 @@
 
     <!-- ViewResolver -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="viewClass"
-                  value="org.springframework.web.servlet.view.JstlView"/>
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
         <property name="prefix" value="/WEB-INF/jsp/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
 
+    <mvc:default-servlet-handler/>
+
     <!-- spring3.0.4以后版本提供了mvc:resources -->
-    <mvc:resources mapping="/static/**" location="/staticSource/"/>
+    <mvc:resources mapping="/static/**" location="staticSource/"/>
 </beans>
