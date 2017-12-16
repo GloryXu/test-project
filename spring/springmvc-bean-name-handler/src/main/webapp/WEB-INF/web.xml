@@ -5,22 +5,22 @@
     <display-name>SpringMVCBeanNameUrlHandlerMapping</display-name>
 
     <servlet>
-        <servlet-name>SpringMVC</servlet-name>
+        <servlet-name>springmvc</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <init-param>
             <param-name>contextConfigLocation</param-name>
-            <param-value>classpath:springMvc*.xml</param-value>
+            <param-value>classpath:springmvc*.xml</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
-        <servlet-name>SpringMVC</servlet-name>
-        <url-pattern>/*</url-pattern>
+        <servlet-name>springmvc</servlet-name>
+        <url-pattern>/</url-pattern>
     </servlet-mapping>
-    <!--<servlet>
+    <servlet>
       <servlet-name>forwarding</servlet-name>
       <servlet-class>com.redsun.training.servlet.ForwardingServlet</servlet-class>
-    </servlet>-->
+    </servlet>
     <!-- <servlet-mapping>
         <servlet-name>forwarding</servlet-name>
         <url-pattern>/</url-pattern>

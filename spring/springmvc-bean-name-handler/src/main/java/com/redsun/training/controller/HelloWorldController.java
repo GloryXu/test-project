@@ -22,6 +22,7 @@ public class HelloWorldController implements Controller {
         User user = new User(userName, age);
         mv.addObject("message", "Hello!" + userName);
         mv.addObject("user", user);
+
         //设置逻辑视图名，视图解析器会根据该名字解析到具体的视图页面
         mv.setViewName("hello");
         return mv;

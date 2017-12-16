@@ -6,7 +6,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="/SpringMVC/hello" method="post">
+	<form action="/springmvc/hello" method="post">
 		用户名：<input type="text" name="name"/><br>
 		年龄：<input type="text" name="age"/><br>
 		<input type="submit" value="regist"/>
