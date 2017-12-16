@@ -14,3 +14,4 @@ target/
 hs_err_pid*
 logger*/
 logs/
+/spring/springmvc-bean-name-handler/src/main/webapp/META-INF/
