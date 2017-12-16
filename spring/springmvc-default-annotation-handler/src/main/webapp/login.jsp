@@ -8,7 +8,7 @@
 <body>
 <form action="/springmvc/login" method="post">
     用户名：<input type="text" name="username"/><br>
-    密码<input type="password" name="pwd"/><br>
+    密码：<input type="password" name="pwd"/><br>
     <input type="submit" value="登陆"/>
 </form>
 </body>

@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+<%@ page contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -7,14 +6,14 @@
 	<title>Insert title here</title>
 </head>
 	<body>
-		<form action="/SpringMVC/user/login" method="post">
+		<form action="/springmvc/user/login" method="post">
 			用户名：<input type="text" name="username"/><br>
 			密码：<input type="password" name="pwd"/><br>
 			<input type="submit" value="login"/>
 		</form>
 		<br/>
 		login2Model<br/><br/>
-		<form action="/SpringMVC/user/login2Model" method="post" >
+		<form action="/springmvc/user/login2Model" method="post" >
 			用户名：<input type="text" name="name"/><br>
 			密码：<input type="password" name="pwd"/><br>
 			<input type="submit" value="login2Model"/>

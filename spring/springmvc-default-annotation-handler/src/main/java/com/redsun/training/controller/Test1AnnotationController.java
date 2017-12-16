@@ -6,8 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping(value = "/user")
-public class Test2AnnotationController {
+public class Test1AnnotationController {
 
     @RequestMapping(value = "/login")
     public ModelAndView login(String username, String pwd) {
@@ -21,6 +20,7 @@ public class Test2AnnotationController {
         } else {
             msg = "恭喜您登录成功!";
         }
+
         mv.addObject("msg", "login-" + msg);
         mv.setViewName("result");
         return mv;

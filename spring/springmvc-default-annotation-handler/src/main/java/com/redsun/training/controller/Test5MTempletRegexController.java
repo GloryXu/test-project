@@ -16,12 +16,12 @@ public class Test5MTempletRegexController {
         String msg = "";
         ModelAndView mv = new ModelAndView();
         System.out.println(username);
-        if(!username.equals("test")){
-            msg="用户名不存在!";
-        }else if(!pwd.equals("0000")){
-            msg="密码不正确!";
-        }else{
-            msg="恭喜您登录成功!";
+        if (!"test".equals(username)) {
+            msg = "用户名不存在!";
+        } else if (!"0000".equals(pwd)) {
+            msg = "密码不正确!";
+        } else {
+            msg = "恭喜您登录成功!";
         }
         mv.addObject("msg", "loginGet channelId="+username+";connectId="+pwd);
         mv.setViewName("result");
