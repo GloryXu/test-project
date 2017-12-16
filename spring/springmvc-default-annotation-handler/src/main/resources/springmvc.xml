@@ -46,4 +46,5 @@
 
     <!-- spring3.0.4以后版本提供了mvc:resources -->
     <mvc:resources mapping="/static/**" location="staticSource/"/>
+
 </beans>
