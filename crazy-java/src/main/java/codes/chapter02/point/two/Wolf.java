@@ -1,4 +1,4 @@
-package codes.chapter02.two.point.two;
+package codes.chapter02.point.two;
 
 /**
  * 父类构造器调用了被子类重写的方法，且通过子类构造器来创建子类对象，

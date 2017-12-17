@@ -1,4 +1,4 @@
-package codes.chapter02.two.point.three;
+package codes.chapter02.point.three;
 
 class StaticBase {
     // 定义一个count类变量
