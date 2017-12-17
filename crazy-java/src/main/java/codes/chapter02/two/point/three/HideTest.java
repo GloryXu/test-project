@@ -8,6 +8,7 @@ class Derived2 extends Parent {
     public String tag = "轻量级Java EE企业应用实战";
 }
 public class HideTest {
+
     public static void main(String[] args) {
         Derived2 d = new Derived2();
         // 程序不可访问d的私有变量:tag，所以下面语句将引起编译错误
@@ -16,4 +17,5 @@ public class HideTest {
         // 程序将输出：“疯狂Java讲义”
         System.out.println(((Parent)d).tag);
     }
+
 }
