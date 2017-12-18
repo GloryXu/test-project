@@ -1,4 +1,4 @@
-package codes.chapter02.point.three;
+package codes.chapter02.three;
 
 class Parent {
     public String tag = "疯狂Java讲义";

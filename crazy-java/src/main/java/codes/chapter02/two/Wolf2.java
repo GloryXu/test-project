@@ -1,4 +1,4 @@
-package codes.chapter02.point.two;
+package codes.chapter02.two;
 
 class Animal2 {
 

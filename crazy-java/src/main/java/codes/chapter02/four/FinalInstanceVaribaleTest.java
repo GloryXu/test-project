@@ -1,4 +1,4 @@
-package codes.chapter02.point.four;
+package codes.chapter02.four;
 
 public class FinalInstanceVaribaleTest {
     // 定义final实例变量时赋初始值

@@ -1,4 +1,4 @@
-package codes.chapter02.point.four;
+package codes.chapter02.four;
 
 public class FinalTest {
 

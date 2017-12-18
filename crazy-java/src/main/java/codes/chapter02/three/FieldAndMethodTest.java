@@ -1,4 +1,4 @@
-package codes.chapter02.point.three;
+package codes.chapter02.three;
 
 class Base {
     int count = 2;

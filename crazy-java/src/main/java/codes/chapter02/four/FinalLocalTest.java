@@ -1,4 +1,4 @@
-package codes.chapter02.point.four;
+package codes.chapter02.four;
 
 /**
  * final修饰符的一个重要用途就是定义“宏变量”，当定义final变量时就为该变量指定了初始值，

@@ -1,4 +1,4 @@
-package codes.chapter02.point.two;
+package codes.chapter02.two;
 
 public class StaticInitTest {
     // 定义count类变量，定义时指定初始值

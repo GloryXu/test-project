@@ -1,4 +1,4 @@
-package codes.chapter02.point.two;
+package codes.chapter02.two;
 
 /**
  * 1.编译成一个class文件
