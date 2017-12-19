@@ -1,4 +1,4 @@
-package codes.chapter03.one;
+package codes.chapter03.one.one;
 
 import java.util.HashSet;
 import java.util.Iterator;

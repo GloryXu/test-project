@@ -1,4 +1,4 @@
-package codes.chapter03.one;
+package codes.chapter03.one.one;
 
 public class Set2MapTest {
     public static void main(String[] args) {
