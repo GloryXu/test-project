@@ -37,4 +37,11 @@ public class ArrayTest {
         String decodedStr = "PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48UkVTUE9OU0U+PGlkY2FyZFR5cGU+MDE8L2lkY2FyZFR5cGU+PGFjY3RObz4xMjM0NTY0MzQzNDU2ODwvYWNjdE5vPjxhY2Nlc3NUcmFjZURhdGV0aW1lPjEyMTMxNTI2NDQ8L2FjY2Vzc1RyYWNlRGF0ZXRpbWU+PFJFVF9NU0c+5Lqk5piT5oiQ5YqfPC9SRVRfTVNHPjxhY2N0Q2F0PjEwPC9hY2N0Q2F0PjxpZGNhcmRObz4zNDU0MzIzNDU2NTQ8L2lkY2FyZE5vPjxwcm9kdWN0SWQ+OTk5OTwvcHJvZHVjdElkPjxpc3N1ZXJJZD4wMzA4MDAwMDwvaXNzdWVySWQ+PHBob25lTm8+MTU1MTc1MDkxMjM8L3Bob25lTm8+PGFjY3ROYW1lPuimgeWPkTwvYWNjdE5hbWU+PGFjY2Vzc1RyYWNlTm8+Nzg5MDA1PC9hY2Nlc3NUcmFjZU5vPjxyZXNlcnZlPua1i+ivleetvue6pueUs+ivtzwvcmVzZXJ2ZT48UkVUX0NPREU+MDA8L1JFVF9DT0RFPjwvUkVTUE9OU0U+";
         System.out.println(new String(Base64.decodeBase64(decodedStr.getBytes())));
     }
+
+    @Test
+    public void testInt() {
+        int a = 5;
+        System.out.println(a / 2);
+        System.out.println(a >> 2);
+    }
 }
