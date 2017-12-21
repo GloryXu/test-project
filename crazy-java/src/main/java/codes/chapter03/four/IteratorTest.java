@@ -30,6 +30,6 @@ public class IteratorTest {
         System.out.println("linkedList:" + linkedList.iterator());
 
         ArrayDeque<String> arrayDeque = new ArrayDeque<>();
-        System.out.println(":" + arrayDeque.iterator());
+        System.out.println("arrayDeque:" + arrayDeque.iterator());
     }
 }
