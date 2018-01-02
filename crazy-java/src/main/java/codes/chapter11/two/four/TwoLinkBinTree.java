@@ -79,7 +79,39 @@ public class TwoLinkBinTree<E> {
     // 返回指定节点（非叶子）的左子节点，当左子节点不存在时返回null
     public E leftChild(TreeNode parent) {
         if (parent == null) {
+            throw new RuntimeException(parent + "节点为null，无法添加子节点");
+        }
+        return parent.left == null ? null : (E) parent.left.data;
+    }
 
+    // 返回指定节点（非叶子）的右子节点，当右子节点不存在时返回null
+    public E rightChild(TreeNode parent) {
+        if(parent == null) {
+            throw new RuntimeException(parent + "节点为null，无法添加子节点");
+        }
+        return parent.right == null?null:(E) parent.right.data;
+    }
+
+    // 返回该二叉树的深度
+    public int deep() {
+        return deep(root);
+    }
+
+    // 这是一个递归方法：每颗子树的深度为其所有子树的最大深度+ 1
+    public int deep(TreeNode node) {
+        if(node ==null) {
+            return 0;
+        }
+        // 没有子树
+        if(node.left == null && node.right == null) {
+            return 1;
+        }else {
+            int leftDeep = deep(node.left);
+            int rightDeep = deep(node.right);
+            // 记录其所有左、右子树中较大的深度
+            int max = leftDeep > rightDeep ? leftDeep : rightDeep;
+            // 返回其左右子树中较大的深度 + 1
+            return max+ 1;
         }
     }
 }
