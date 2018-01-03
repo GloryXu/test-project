@@ -13,4 +13,6 @@ public class User {
 
     private String pwd;
 
+    private boolean sex;
+
 }

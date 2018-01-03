@@ -13,7 +13,7 @@ import java.util.List;
 public class PermGenOomMock {
     public static void main(String[] args) {
         URL url;
-        List<ClassLoader> classLoaderList = new ArrayList<ClassLoader>();
+        List<ClassLoader> classLoaderList = new ArrayList<>();
         try {
             url = new File("/tmp").toURI().toURL();
             URL[] urls = {url};

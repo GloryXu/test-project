@@ -1,6 +1,5 @@
 package codes.chapter04.one.four;
 
-import java.util.Objects;
 import java.util.WeakHashMap;
 
 class CrazyKey {
@@ -31,6 +30,7 @@ class CrazyKey {
                 '}';
     }
 }
+
 public class WeakHashMapTest {
     public static void main(String[] args) throws InterruptedException {
         WeakHashMap<CrazyKey, String> map = new WeakHashMap<>();
