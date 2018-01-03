@@ -15,3 +15,6 @@ hs_err_pid*
 logger*/
 logs/
 /spring/springmvc-bean-name-handler/src/main/webapp/META-INF/
+/b.bin
+/a.bin
+/daemon.txt
