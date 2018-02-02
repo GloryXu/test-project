@@ -149,4 +149,15 @@ public class StringTest {
         String base64 = "AQAG/1Xtj+UaOGJj9wBW9N0tiE7rJoNHfjkuIWyTBMs413fSR0d7COP4+K4VuNN59lvVi+LH0y9gIcS0dxWiiDvAWtDtYEDa/KBf1CCrVf6BkNduZskQ99z7rC5S6NPygbXSqvPoO9DC53dK6QEZU+7dyQFaVW/resq51SqCzst7JRM313JRHIkW9TfWIHMvqwug5odUJtjNkeCfw6+oyj6HAtqKaug9IQjeEwBOiS3mAR/i8Axxoy3W9PtxKcnxLq97enUpaONoTJrI+enPRxc6d7TVGNnG9TO+TaNj55jVSDfRjchBZksj+D8nwUAvmD0pUMJlucgTN102yLAhYZ+uuQkvbWJDA8cOq9K0e7FHj1esgwo94Lw41wHJ5skxPgc=";
         System.out.println(Hex.encodeHex(Base64.getDecoder().decode(base64), false));
     }
+
+    @Test
+    public void testStringAppend() {
+        Integer tem = null;
+        System.out.println("" + tem);
+        StringBuffer sb = new StringBuffer("");
+        sb.append(tem);
+        System.out.println("sb="+sb);
+        System.out.println(String.valueOf(tem));
+        System.out.println(Integer.toString(tem));
+    }
 }
