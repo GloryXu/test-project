@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static com.redsun.domain.Print.printArray;
+import static domain.Print.printArray;
 
 @Slf4j
 public class ListTest {

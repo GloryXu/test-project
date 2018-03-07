@@ -1,7 +1,7 @@
 package test.redsun.string;
 
 import com.google.gson.Gson;
-import com.redsun.domain.TestPDU;
+import domain.TestPDU;
 import lombok.extern.slf4j.Slf4j;
 import net.sf.oval.Validator;
 import org.junit.Test;

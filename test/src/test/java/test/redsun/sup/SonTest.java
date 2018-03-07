@@ -1,7 +1,7 @@
 package test.redsun.sup;
 
-import com.redsun.sup.Parent;
-import com.redsun.sup.Son;
+import sup.Parent;
+import sup.Son;
 import org.junit.Test;
 
 public class SonTest {
