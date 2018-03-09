@@ -1,4 +1,4 @@
-package jmx.advance1;
+package jmx.advance.terminal;
 
 public interface HelloMBean {
     String getName();

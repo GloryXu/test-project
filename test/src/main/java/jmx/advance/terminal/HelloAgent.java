@@ -1,4 +1,4 @@
-package jmx.advance1;
+package jmx.advance.terminal;
 
 import javax.management.JMException;
 import javax.management.MBeanServer;
