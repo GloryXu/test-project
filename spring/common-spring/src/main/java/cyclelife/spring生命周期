@@ -1,0 +1,16 @@
+创建BeanFactoryPostProcessor
+    调用postProcessBeanFactory方法
+
+创建BeanPostProcessor
+
+创建InstantiationAwareBeanPostProcessor
+    调用postProcessBeforeInstantiation
+
+创建Bean类
+    调用InstantiationAwareBeanPostProcessor接口的postProcessPropertyValues方法
+
+Bean set属性
+
+调用Bean配置的init-method方法
+
+调用bean配置的destroy-method方法
