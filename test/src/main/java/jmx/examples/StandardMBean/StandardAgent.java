@@ -16,25 +16,12 @@ package jmx.examples.StandardMBean;/*
 
 // java imports
 //
-import java.util.*;
-import java.io.*;
-import java.net.*;
+
+import javax.management.*;
+import java.io.IOException;
 
 // RI imports
 //
-import com.sun.jmx.trace.Trace;
-import javax.management.Attribute;
-import javax.management.ObjectName;
-import javax.management.MBeanServer;
-import javax.management.MBeanServerFactory;
-import javax.management.MBeanInfo;
-import javax.management.MBeanAttributeInfo;
-import javax.management.MBeanConstructorInfo;
-import javax.management.MBeanOperationInfo;
-import javax.management.MBeanNotificationInfo;
-import javax.management.MBeanParameterInfo;
-
-import javax.management.MalformedObjectNameException;
 
 
 public class StandardAgent {

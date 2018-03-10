@@ -16,20 +16,15 @@ package jmx.examples.BaseAgent;/*
 
 // java imports
 //
-import java.util.*;
-import java.io.*;
-import java.net.*;
-
-// RI imports
-//
-import javax.management.ObjectName;
-import javax.management.MBeanServer;
-import javax.management.MBeanServerFactory;
-import javax.management.MalformedObjectNameException;
 
 import com.sun.jdmk.comm.HtmlAdaptorServer;
 
-import com.sun.jmx.trace.Trace;
+import javax.management.MBeanServer;
+import javax.management.MBeanServerFactory;
+import javax.management.ObjectName;
+
+// RI imports
+//
 
 
 

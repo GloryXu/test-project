@@ -17,14 +17,13 @@ package jmx.examples.OpenMBean;/*
 
 // JDK imports
 //
-import java.io.*;
+
+import javax.management.*;
+import javax.management.openmbean.*;
+import java.io.IOException;
 
 // RI imports
 //
-import javax.management.*;
-import javax.management.openmbean.*;
-
-import com.sun.jmx.trace.Trace;
 
 
 public class OpenAgent {

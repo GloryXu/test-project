@@ -15,28 +15,18 @@ package jmx.examples.Relation;/*
 
 // java imports
 //
-import java.util.*;
-import java.io.*;
-import java.net.*;
+
+import javax.management.*;
+import javax.management.relation.*;
+import java.io.IOException;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 
 // RI imports
 //
-import com.sun.jmx.trace.Trace;
-import javax.management.Attribute;
-import javax.management.ObjectName;
-import javax.management.MBeanServer;
-import javax.management.MBeanServerFactory;
-import javax.management.MBeanInfo;
-import javax.management.MBeanAttributeInfo;
-import javax.management.MBeanConstructorInfo;
-import javax.management.MBeanOperationInfo;
-import javax.management.MBeanNotificationInfo;
-import javax.management.MBeanParameterInfo;
-
-import javax.management.MalformedObjectNameException;
-import javax.management.MBeanException;
-
-import javax.management.relation.*;
 
 
 public class RelationAgent {

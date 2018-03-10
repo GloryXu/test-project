@@ -25,30 +25,16 @@ package jmx.examples.ModelMBean;/*
 
 
 // java imports//
-import java.io.*;
-import java.net.*;
-import java.lang.reflect.Constructor;
 
+import javax.management.*;
+import javax.management.modelmbean.*;
+import java.io.IOException;
+import java.lang.reflect.Constructor;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 
 // RI imports
 //
-import com.sun.jmx.trace.Trace;
-import javax.management.Attribute;
-import javax.management.ObjectName;
-import javax.management.MBeanServer;
-import javax.management.MBeanServerFactory;
-import javax.management.MBeanInfo;
-import javax.management.MBeanAttributeInfo;
-import javax.management.MBeanConstructorInfo;
-import javax.management.MBeanOperationInfo;
-import javax.management.MBeanNotificationInfo;
-import javax.management.MBeanParameterInfo;
-import javax.management.Descriptor;
-
-import javax.management.NotificationListener;
-
-import javax.management.MalformedObjectNameException;
-import javax.management.modelmbean.*;
 
 
 

@@ -7,7 +7,11 @@ public class IntegerTest {
 		Integer b = 1;
 		Integer c = 200;
 		Integer d = 200;
+
+		Integer e = -128;
+		Integer f = -128;
 		System.out.println(a == b);
 		System.out.println(c == d);
+		System.out.println(e == f);
 	}
 }
