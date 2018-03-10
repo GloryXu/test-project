@@ -11,6 +11,9 @@
 
 Bean set属性
 
+// 设置完属性之后调用该方法
+InitializingBean接口，调用InitializingBean接口的afterPropertiesSet方法
+
 调用Bean配置的init-method方法
 
 调用bean配置的destroy-method方法
