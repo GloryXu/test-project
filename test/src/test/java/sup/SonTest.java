@@ -1,4 +1,4 @@
-package test.redsun.sup;
+package sup;
 
 import sup.Parent;
 import sup.Son;

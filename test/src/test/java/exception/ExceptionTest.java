@@ -1,4 +1,4 @@
-package test.redsun.exception;
+package exception;
 
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;

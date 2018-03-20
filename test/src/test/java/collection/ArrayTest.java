@@ -1,4 +1,4 @@
-package test.redsun.collection;
+package collection;
 
 import org.jasypt.contrib.org.apache.commons.codec_1_3.binary.Base64;
 import org.junit.Test;

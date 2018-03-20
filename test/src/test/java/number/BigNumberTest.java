@@ -1,4 +1,4 @@
-package test.redsun.number;
+package number;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;

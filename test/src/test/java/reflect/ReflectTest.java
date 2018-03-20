@@ -1,4 +1,4 @@
-package test.redsun.reflect;
+package reflect;
 
 import java.lang.reflect.Modifier;
 

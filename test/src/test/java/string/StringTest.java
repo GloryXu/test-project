@@ -1,4 +1,4 @@
-package test.redsun.string;
+package string;
 
 import com.google.common.collect.Maps;
 import com.google.gson.Gson;

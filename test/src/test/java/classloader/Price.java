@@ -1,4 +1,4 @@
-package test.redsun.classload;
+package classloader;
 
 public class Price {
     // 类成员是Price实例

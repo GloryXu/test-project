@@ -1,4 +1,4 @@
-package test.redsun.properties;
+package properties;
 
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;

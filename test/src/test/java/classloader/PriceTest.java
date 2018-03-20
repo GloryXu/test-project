@@ -1,4 +1,4 @@
-package test.redsun.classload;
+package classloader;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package test.redsun.classload;
+package classloader;
 
 public class JavapToolTest {
 	// 定义count实例变量，并为之指定初始值
