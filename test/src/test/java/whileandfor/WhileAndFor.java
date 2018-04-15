@@ -1,4 +1,4 @@
-package whileAndFor;
+package whileandfor;
 
 /**
  * while() 与 for(;;)比较

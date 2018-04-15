@@ -54,6 +54,7 @@
         <module>spring</module>
         <module>encrypt-decrypt</module>
         <module>redis</module>
+        <module>util</module>
     </modules>
 
     <dependencyManagement>
