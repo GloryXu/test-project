@@ -52,4 +52,16 @@ public class MapTest {
             System.out.println(key);
         }
     }
+
+    @Test
+    public void testMapEntrySet() {
+        Map<String,String> map = new HashMap<>();
+        map.put("key1", "value1");
+        map.put("key2", "value2");
+        map.put("key3", "value3");
+        Set<Map.Entry<String, String>> sets = map.entrySet();
+        for(Map.Entry<String, String> set : sets) {
+            log.info("key = " + set.getKey() + ", value = " + set.getValue());
+        }
+    }
 }

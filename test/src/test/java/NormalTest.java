@@ -101,7 +101,6 @@ public class NormalTest {
                 list.remove(item);
             }
         }
-
         System.out.println(PrintUtils.parintArrayList(list));
     }
 

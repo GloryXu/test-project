@@ -56,7 +56,7 @@ public class TryCatchFinallyTest {
         String str = null;
         try {
             str = "xugr";
-            return str;
+            return str+"222222";
         } catch (Exception e) {
             System.out.println("in catch");
         } finally {

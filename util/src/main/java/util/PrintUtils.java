@@ -24,6 +24,37 @@ public class PrintUtils {
         }
         return sb.toString();
     }
+    public static String parintIntArr(int[] arr) {
+        StringBuffer sb = new StringBuffer();
+        for (int i = 0; i < arr.length; i++) {
+            if (i == 0) {
+                sb.append("[").append(arr[i]);
+                continue;
+            }
+            if (i == arr.length - 1) {
+                sb.append(",").append(arr[i]).append("]");
+                continue;
+            }
+            sb.append(",").append(arr[i]);
+        }
+        return sb.toString();
+    }
+
+    public static String parintDoubleArr(double[] arr) {
+        StringBuffer sb = new StringBuffer();
+        for (int i = 0; i < arr.length; i++) {
+            if (i == 0) {
+                sb.append("[").append(Double.toString(arr[i]));
+                continue;
+            }
+            if (i == arr.length - 1) {
+                sb.append(",").append(Double.toString(arr[i])).append("]");
+                continue;
+            }
+            sb.append(",").append(Double.toString(arr[i]));
+        }
+        return sb.toString();
+    }
 
     /**
      * 打印数组

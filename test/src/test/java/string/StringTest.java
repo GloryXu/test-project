@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.codec.binary.Hex;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.junit.Test;
+import util.PrintUtils;
 
 import java.util.Base64;
 import java.util.Map;
@@ -159,5 +160,11 @@ public class StringTest {
         System.out.println("sb="+sb);
         System.out.println(String.valueOf(tem));
         System.out.println(Integer.toString(tem));
+    }
+
+    @Test
+    public void testStringA() {
+        String str = "333%#%222";
+        System.out.println(PrintUtils.parintArr(str.split("%#%")));
     }
 }
