@@ -64,4 +64,11 @@ public class MapTest {
             log.info("key = " + set.getKey() + ", value = " + set.getValue());
         }
     }
+
+    @Test
+    public void testStringAndInt() {
+        Map<String,String> map = new HashMap<>();
+        map.put("2003", "2003");
+        log.info(map.get(2003));
+    }
 }

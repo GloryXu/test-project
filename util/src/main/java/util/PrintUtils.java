@@ -13,14 +13,14 @@ public class PrintUtils {
         StringBuffer sb = new StringBuffer();
         for (int i = 0; i < arr.length; i++) {
             if (i == 0) {
-                sb.append("[").append(arr[i].toString());
+                sb.append("[").append(arr[i] == null? "null" : arr[i].toString());
                 continue;
             }
             if (i == arr.length - 1) {
-                sb.append(",").append(arr[i].toString()).append("]");
+                sb.append(",").append(arr[i] == null?"null" : arr[i].toString()).append("]");
                 continue;
             }
-            sb.append(",").append(arr[i].toString());
+            sb.append(",").append(arr[i] == null ? "null" : arr[i].toString());
         }
         return sb.toString();
     }

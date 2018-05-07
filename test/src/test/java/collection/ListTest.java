@@ -2,6 +2,7 @@ package collection;
 
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
+import util.PrintUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -38,6 +39,15 @@ public class ListTest {
 //        list.toArray()
 
         log.info("-------array[0] = {}, array[1] = {}", array[0], array[1]);
+
+        String[] array_small_size = new String[list.size()-1];
+        String[] arrayTem = array;
+        array = list.toArray(array_small_size);
+        log.info("arrayTem == array 的值为 {}",arrayTem == array);
+
+        String[] array_big_size = new String[list.size() + 1];
+        array = list.toArray(array_big_size);
+        log.info("array_big_size = {}" + PrintUtils.parintArr(array));
     }
 
     @Test
@@ -74,4 +84,5 @@ public class ListTest {
         }*/
         printArray(a);
     }
+
 }
