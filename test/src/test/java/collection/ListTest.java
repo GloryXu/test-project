@@ -47,7 +47,7 @@ public class ListTest {
 
         String[] array_big_size = new String[list.size() + 1];
         array = list.toArray(array_big_size);
-        log.info("array_big_size = {}" + PrintUtils.parintArr(array));
+        log.info("array_big_size = {}",PrintUtils.parintArr(array));
     }
 
     @Test
