@@ -167,4 +167,15 @@ public class StringTest {
         String str = "333%#%222";
         System.out.println(PrintUtils.parintArr(str.split("%#%")));
     }
+
+    @Test
+    public void testIntern() {
+        String a = new String("a");
+        String aa = new String("a");
+        System.out.println(a ==aa);
+
+        String a1 = a.intern();
+        String aa1 = aa.intern();
+        System.out.println(a1 == aa1);
+    }
 }
