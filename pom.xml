@@ -61,7 +61,7 @@
         <dependencies>
             <dependency>
                 <groupId>com.redsun</groupId>
-                <artifactId>test-web</artifactId>
+                <artifactId>util</artifactId>
                 <version>0.0.1-SNAPSHOT</version>
             </dependency>
             <dependency>
