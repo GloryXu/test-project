@@ -55,6 +55,7 @@
         <module>encrypt-decrypt</module>
         <module>redis</module>
         <module>util</module>
+        <module>lock</module>
     </modules>
 
     <dependencyManagement>
