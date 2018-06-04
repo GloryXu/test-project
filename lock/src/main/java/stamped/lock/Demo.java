@@ -1,4 +1,4 @@
-package com.redsun.stamped.lock;
+package stamped.lock;
 
 import java.util.concurrent.locks.StampedLock;
 
