@@ -3,10 +3,7 @@ package collection;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 @Slf4j
 public class MapTest {
@@ -70,5 +67,19 @@ public class MapTest {
         Map<String,String> map = new HashMap<>();
         map.put("2003", "2003");
         log.info(map.get(2003));
+    }
+
+    @Test
+    public void testMapPutReturnValue() {
+        Map<String, String> hashTable = new Hashtable<>();
+        Map<String, String> hashMap = new HashMap<>();
+
+        hashMap.put("xugr", "old");
+        log.info(hashMap.put("xugr", "new"));
+        log.info(hashMap.put("newkey", "newkey"));
+
+        hashTable.put("xugr1", "old");
+        log.info(hashTable.put("xugr1", "new"));
+        log.info(hashTable.put("newkey", "newkey"));
     }
 }
