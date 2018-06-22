@@ -178,4 +178,14 @@ public class StringTest {
         String aa1 = aa.intern();
         System.out.println(a1 == aa1);
     }
+
+    @Test
+    public void testHashCode() {
+        String str1 = "1";
+        String str2 = "2";
+        char chr = '1';
+        System.out.println(chr);
+        System.out.println(str1.hashCode());
+        System.out.println(str2.hashCode());
+    }
 }
