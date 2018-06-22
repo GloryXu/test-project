@@ -17,8 +17,8 @@
     <bean id="beanFactoryPostProcessor" class="cyclelife.MyBeanFactoryPostProcessor">
     </bean>
 
-    <bean id="studentBean" class="cyclelife.StudentBean" init-method="myInit"
-          destroy-method="myDestroy" scope="singleton">
+    <bean id="studentBean" class="cyclelife.StudentBean" init-method="myInit" destroy-method="myDestroy"
+          scope="singleton">
         <property name="name" value="yanxiao"></property>
         <property name="age" value="21"></property>
     </bean>
