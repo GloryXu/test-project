@@ -1,5 +1,7 @@
 package com.redsun.aes;
 
+import org.apache.commons.codec.binary.Hex;
+
 import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
@@ -10,6 +12,19 @@ import java.security.Key;
 import java.security.SecureRandom;
 
 public class AesEncryptAndDecrypt {
+
+    public static void main(String[] args) throws Exception {
+        String data = "xugr";
+        String key = "11111";
+
+        System.out.println("明文是：" + data + "，加密key为：" + key);
+
+        String cipherText = new String(Hex.encodeHex(aesEncrypt(data.getBytes(), key.getBytes())));
+        System.out.println("加密密文是：" + cipherText);
+
+        String plaintext = new String(aesDecrypt(Hex.decodeHex(cipherText.toCharArray()), key.getBytes()));
+        System.out.println("解密明文是：" + plaintext);
+    }
 
     /**
      *
