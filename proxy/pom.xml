@@ -18,11 +18,11 @@
 
     <dependencyManagement>
         <dependencies>
-            <!-- https://mvnrepository.com/artifact/com.google.inject/guice -->
+            <!-- https://mvnrepository.com/artifact/cglib/cglib -->
             <dependency>
-                <groupId>com.google.inject</groupId>
-                <artifactId>guice</artifactId>
-                <version>4.2.0</version>
+                <groupId>cglib</groupId>
+                <artifactId>cglib</artifactId>
+                <version>3.2.7</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
