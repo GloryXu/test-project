@@ -44,4 +44,22 @@ public class ArrayTest {
         System.out.println(a / 2);
         System.out.println(a >> 2);
     }
+
+    @Test
+    public void testStringParse() {
+        String range = "A1:AA1";
+
+
+        String startString = range.split(":")[0];
+        String endString = range.split(":")[1];
+
+        String start = startString.substring(0, startString.length() - 1);
+        String end = endString.substring(0, endString.length() - 1);
+
+        for (int startTemp = start.charAt(0);;startTemp++) {
+            if () {
+
+            }
+        }
+    }
 }
