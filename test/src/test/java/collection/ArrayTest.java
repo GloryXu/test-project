@@ -57,9 +57,9 @@ public class ArrayTest {
         String end = endString.substring(0, endString.length() - 1);
 
         for (int startTemp = start.charAt(0);;startTemp++) {
-            if () {
+            /*if () {
 
-            }
+            }*/
         }
     }
 }

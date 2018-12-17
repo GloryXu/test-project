@@ -8,6 +8,13 @@ import java.util.*;
 import static util.PrintUtils.parintArr;
 
 public class NormalTest {
+
+    @Test
+    public void testInstanceof() {
+        String params = "ddd";
+        System.out.println(params instanceof String);
+    }
+
     @Test
     public void test1() {
         String a = null;
