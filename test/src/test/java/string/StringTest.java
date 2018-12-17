@@ -191,4 +191,10 @@ public class StringTest {
         System.out.println(str1.hashCode());
         System.out.println(str2.hashCode());
     }
+
+    @Test
+    public void testInstansOf () {
+        Object obj = null;
+        System.out.println(obj instanceof Map);
+    }
 }
