@@ -7,7 +7,9 @@ import java.util.*;
 
 @Slf4j
 public class MapTest {
-
+    /**
+     * 打印map的keySet和entrySet
+     */
     @Test
     public void testMap () {
         Map<String, String> map = new HashMap<>();
@@ -21,35 +23,23 @@ public class MapTest {
         log.info("--------entries = {}", entries);
     }
 
+    /**
+     * hashSet的key是否可以为null
+     */
     @Test
     public void testMapKeyValueIsNull () {
         // Hashtable(线程安全) ConcurrentHashMap(分段锁技术) TreeMap HashMap(key can be null)
-        Set<String> sets = new HashSet<>();
+        Set<String> sets = new HashSet<>();// 底层为hashMap存储
         sets.add("xugr");
         sets.add("xugr");
+        sets.add(null);
 
         log.info("sets = {}", sets);
     }
 
-    @Test
-    public void testMapValueFinal() {
-        final Map<String,String> map = new HashMap<>();
-        map.put("xugr","");
-//        map = new HashMap<>();
-        log.info("{}", map);
-    }
-
-    @Test
-    public void testMapKeySet() {
-        Map<String,String> map = new HashMap<>();
-        map.put("key1", "value1");
-        map.put("key2", "value2");
-        map.put("key3", "value3");
-        for (String key : map.keySet()) {
-            System.out.println(key);
-        }
-    }
-
+    /**
+     * entrySet打印key和value
+     */
     @Test
     public void testMapEntrySet() {
         Map<String,String> map = new HashMap<>();
@@ -62,13 +52,9 @@ public class MapTest {
         }
     }
 
-    @Test
-    public void testStringAndInt() {
-        Map<String,String> map = new HashMap<>();
-        map.put("2003", "2003");
-        log.info(map.get(2003));
-    }
-
+    /**
+     * map put操作返回的值，如果之前已经存在该key，则返回原来的值，否则返回null
+     */
     @Test
     public void testMapPutReturnValue() {
         Map<String, String> hashTable = new Hashtable<>();
@@ -81,5 +67,15 @@ public class MapTest {
         hashTable.put("xugr1", "old");
         log.info(hashTable.put("xugr1", "new"));
         log.info(hashTable.put("newkey", "newkey"));
+    }
+
+    /**
+     * 测试强制转换，当为null时是否可以强制转换
+     */
+    @Test
+    public void testForceTransform() {
+        Map<String, Object> testMap = new HashMap<>();
+        Map<String, String> subMap = (Map<String, String>) testMap.get("xugr");
+        log.info("{}", subMap);
     }
 }
