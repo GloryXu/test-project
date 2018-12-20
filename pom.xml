@@ -57,6 +57,7 @@
         <module>util</module>
         <module>lock</module>
         <module>proxy</module>
+        <module>zookeeper</module>
     </modules>
 
     <dependencyManagement>
@@ -314,7 +315,7 @@
             <dependency>
                 <groupId>org.apache.zookeeper</groupId>
                 <artifactId>zookeeper</artifactId>
-                <version>3.5.2-alpha</version>
+                <version>3.4.13</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.activemq</groupId>
