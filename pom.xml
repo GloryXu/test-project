@@ -58,6 +58,7 @@
         <module>lock</module>
         <module>proxy</module>
         <module>zookeeper</module>
+        <module>pool</module>
     </modules>
 
     <dependencyManagement>
