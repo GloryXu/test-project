@@ -4,8 +4,10 @@ import dynamic.jdk.BookFacade;
 import dynamic.jdk.impl.BookFacadeImpl;
 import dynamic.jdk.proxy.BookFacadeProxy;
 
+import java.io.IOException;
+
 public class Main {
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) throws InterruptedException, IOException {
         BookFacade bookFacadeImpl = new BookFacadeImpl();
 
         BookFacadeProxy proxy = new BookFacadeProxy();
@@ -13,6 +15,6 @@ public class Main {
         bookfacade.addBook();
 
         System.out.println(bookFacadeImpl == bookfacade);
-        Thread.sleep(1000000);
+        System.in.read();
     }
 }
