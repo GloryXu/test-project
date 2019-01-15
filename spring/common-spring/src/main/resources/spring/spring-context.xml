@@ -1,16 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
        http://www.springframework.org/schema/context
-       http://www.springframework.org/schema/context/spring-context.xsd"
+       http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd"
        default-autowire="byName">
+
     <!-- 采用注释的方式配置bean -->
     <context:annotation-config/>
 
     <!-- 配置要扫描的包 -->
     <context:component-scan base-package="com.redsun"/>
 
+    <!-- 数据源相同的内容 -->
+    <bean id="parentDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver" />
+        <property name="username" value="glory" />
+        <property name="password" value="glory" />
+    </bean>
+
+    <!-- start以下配置各个数据源的特性 -->
+    <bean parent="parentDataSource" id="testDataSource">
+        <property name="url" value="jdbc:mysql://localhost:3306/test" />
+    </bean>
+    <bean parent="parentDataSource" id="test1DataSource">
+        <property name="url" value="jdbc:mysql://localhost:3306/test1" />
+    </bean>
+
+    <bean class="multi.db.DynamicDataSource" id="dataSource">
+        <property name="targetDataSources">
+            <map key-type="java.lang.String">
+                <entry value-ref="testDataSource" key="test"></entry>
+                <entry value-ref="test1DataSource" key="test1"></entry>
+            </map>
+        </property>
+        <property name="defaultTargetDataSource" ref="testDataSource" ></property>
+    </bean>
+
+
+    <!-- MyBatis -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="configLocation" value="classpath:resources/mybatis/myBatisConfig.xml"/>
+        <property name="mapperLocations" value="classpath:resources/mybatis/mapper/*.xml"/>
+    </bean>
+    <bean class="org.mybatis.spring.SqlSessionTemplate">
+        <constructor-arg ref="sqlSessionFactory"/>
+    </bean>
+    <!-- MyBatis -->
+
+    <!-- 配置事务管理对象-->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <!-- 将所有具有@Transactional注解的Bean自动配置为声明式事务支持 -->
+    <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
+
+    <!-- 自定义的拦截器 -->
+    <bean id="methodAdvisor" class="com.easyway.app.interceptor.InjectorManager"/>
+
+    <aop:config proxy-target-class="true">
+        <aop:pointcut id="baseMethods" expression="execution(* com.easyway.app.service..*.*(..))"/>
+        <aop:advisor advice-ref="methodAdvisor" pointcut-ref="baseMethods"/>
+    </aop:config>
 </beans>
