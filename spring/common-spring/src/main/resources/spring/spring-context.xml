@@ -13,39 +13,53 @@
     <context:annotation-config/>
 
     <!-- 配置要扫描的包 -->
-    <context:component-scan base-package="com.redsun"/>
+    <!--<context:component-scan base-package="com.redsun"/>-->
+    <context:component-scan base-package="multi.db"/>
 
-    <!-- 数据源相同的内容 -->
-    <bean id="parentDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
-        <property name="driverClassName" value="com.mysql.jdbc.Driver" />
-        <property name="username" value="glory" />
-        <property name="password" value="glory" />
+    <!-- 配置数据源Master -->
+    <bean name="dataSourceMaster" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+        <property name="url" value="ddd?useSSL=true&amp;autoReconnect=true" />
+        <property name="username" value="ddd" />
+        <property name="password" value="ddd" />
+        <!-- 初始化连接大小 -->
+        <property name="initialSize" value="0" />
+        <!-- 连接池最大使用连接数量 -->
+        <property name="maxActive" value="20" />
+        <!-- 连接池最小空闲 -->
+        <property name="minIdle" value="0" />
+        <!-- 获取连接最大等待时间 -->
+        <property name="maxWait" value="60000" />
     </bean>
-
-    <!-- start以下配置各个数据源的特性 -->
-    <bean parent="parentDataSource" id="testDataSource">
-        <property name="url" value="jdbc:mysql://localhost:3306/test" />
-    </bean>
-    <bean parent="parentDataSource" id="test1DataSource">
-        <property name="url" value="jdbc:mysql://localhost:3306/test1" />
+    <!-- 配置数据源Slave -->
+    <bean name="dataSourceSlave" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+        <property name="url" value="ddd?useSSL=true&amp;autoReconnect=true"/>
+        <property name="username" value="ddd" />
+        <property name="password" value="ddd" />
+        <!-- 初始化连接大小 -->
+        <property name="initialSize" value="0" />
+        <!-- 连接池最大使用连接数量 -->
+        <property name="maxActive" value="20" />
+        <!-- 连接池最小空闲 -->
+        <property name="minIdle" value="0" />
+        <!-- 获取连接最大等待时间 -->
+        <property name="maxWait" value="60000" />
     </bean>
 
     <bean class="multi.db.DynamicDataSource" id="dataSource">
         <property name="targetDataSources">
             <map key-type="java.lang.String">
-                <entry value-ref="testDataSource" key="test"></entry>
-                <entry value-ref="test1DataSource" key="test1"></entry>
+                <entry value-ref="dataSourceMaster" key="MASTER"></entry>
+                <entry value-ref="dataSourceSlave" key="SLAVE"></entry>
             </map>
         </property>
-        <property name="defaultTargetDataSource" ref="testDataSource" ></property>
+        <property name="defaultTargetDataSource" ref="dataSourceMaster" ></property>
     </bean>
 
-
-    <!-- MyBatis -->
+    <!--3 会话工厂bean sqlSessionFactoryBean -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
-        <property name="configLocation" value="classpath:resources/mybatis/myBatisConfig.xml"/>
-        <property name="mapperLocations" value="classpath:resources/mybatis/mapper/*.xml"/>
+        <property name="configLocation" value="classpath:mybatis/myBatisConfig.xml"/>
+        <property name="mapperLocations" value="classpath:mybatis/mapper/*.xml"/>
     </bean>
     <bean class="org.mybatis.spring.SqlSessionTemplate">
         <constructor-arg ref="sqlSessionFactory"/>

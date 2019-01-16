@@ -7,8 +7,8 @@ package multi.db;
  */
 public class DataSourceConst {
 
-    public static final String TEST="test";
+    public static final String MASTER="MASTER";
 
-    public static final String TEST1="test1";
+    public static final String SLAVE="SLAVE";
 
 }
