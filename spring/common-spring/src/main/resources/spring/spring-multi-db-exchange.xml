@@ -13,14 +13,13 @@
     <context:annotation-config/>
 
     <!-- 配置要扫描的包 -->
-    <!--<context:component-scan base-package="com.redsun"/>-->
     <context:component-scan base-package="multi.db"/>
 
     <!-- 配置数据源Master -->
     <bean name="dataSourceMaster" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
-        <property name="url" value="ddd?useSSL=true&amp;autoReconnect=true" />
-        <property name="username" value="ddd" />
-        <property name="password" value="ddd" />
+        <property name="url" value="jdbc:mysql://127.0.0.1:3306/test?useSSL=true&amp;autoReconnect=true" />
+        <property name="username" value="glory" />
+        <property name="password" value="glory" />
         <!-- 初始化连接大小 -->
         <property name="initialSize" value="0" />
         <!-- 连接池最大使用连接数量 -->
@@ -32,9 +31,9 @@
     </bean>
     <!-- 配置数据源Slave -->
     <bean name="dataSourceSlave" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
-        <property name="url" value="ddd?useSSL=true&amp;autoReconnect=true"/>
-        <property name="username" value="ddd" />
-        <property name="password" value="ddd" />
+        <property name="url" value="jdbc:mysql://127.0.0.1:3306/test1?useSSL=true&amp;autoReconnect=true"/>
+        <property name="username" value="glory" />
+        <property name="password" value="glory" />
         <!-- 初始化连接大小 -->
         <property name="initialSize" value="0" />
         <!-- 连接池最大使用连接数量 -->
@@ -45,9 +44,9 @@
         <property name="maxWait" value="60000" />
     </bean>
 
-    <bean class="multi.db.DynamicDataSource" id="dataSource">
+    <bean class="multi.db.common.DynamicDataSource" id="dataSource">
         <property name="targetDataSources">
-            <map key-type="java.lang.String">
+            <map key-type="multi.db.common.DataSourceConst">
                 <entry value-ref="dataSourceMaster" key="MASTER"></entry>
                 <entry value-ref="dataSourceSlave" key="SLAVE"></entry>
             </map>
@@ -60,12 +59,23 @@
         <property name="dataSource" ref="dataSource"/>
         <property name="configLocation" value="classpath:mybatis/myBatisConfig.xml"/>
         <property name="mapperLocations" value="classpath:mybatis/mapper/*.xml"/>
+        <!-- 实体类别名 -->
+        <property name="typeAliasesPackage" value="multi.db.entity"></property>
     </bean>
     <bean class="org.mybatis.spring.SqlSessionTemplate">
         <constructor-arg ref="sqlSessionFactory"/>
     </bean>
     <!-- MyBatis -->
 
+    <!--4 自动扫描对象关系映射 -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!--指定会话工厂，如果当前上下文中只定义了一个则该属性可省去 -->
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
+        <!-- 指定要自动扫描接口的基础包，实现接口 -->
+        <property name="basePackage" value="multi.db"></property>
+    </bean>
+
+    <!--5 声明式事务管理 -->
     <!-- 配置事务管理对象-->
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource"/>
@@ -73,11 +83,7 @@
     <!-- 将所有具有@Transactional注解的Bean自动配置为声明式事务支持 -->
     <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
 
-    <!-- 自定义的拦截器 -->
-    <bean id="methodAdvisor" class="com.easyway.app.interceptor.InjectorManager"/>
 
-    <aop:config proxy-target-class="true">
-        <aop:pointcut id="baseMethods" expression="execution(* com.easyway.app.service..*.*(..))"/>
-        <aop:advisor advice-ref="methodAdvisor" pointcut-ref="baseMethods"/>
-    </aop:config>
+    <!--7 aspectj支持自动代理实现AOP功能 -->
+    <aop:aspectj-autoproxy proxy-target-class="true"></aop:aspectj-autoproxy>
 </beans>

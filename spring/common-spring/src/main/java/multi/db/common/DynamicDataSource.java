@@ -1,4 +1,4 @@
-package multi.db;
+package multi.db.common;
 
 import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
 
