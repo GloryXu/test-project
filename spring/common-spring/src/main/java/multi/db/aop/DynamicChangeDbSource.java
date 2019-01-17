@@ -29,10 +29,10 @@ public class DynamicChangeDbSource {
 
     @Before("testMethod()")
     public void beforeinv(JoinPoint jp) {
-        Object[] args = jp.getArgs();
+        /*Object[] args = jp.getArgs();
         if(args == null){
             DataSourceContextHolder.setDataSourceType(DataSourceConst.MASTER);
-        }
+        }*/
         DataSourceContextHolder.setDataSourceType(DataSourceConst.MASTER);
     }
 
