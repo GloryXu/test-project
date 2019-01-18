@@ -18,6 +18,7 @@
         <module>springmvc-request</module>
         <module>springmvc-simple-url-handler</module>
         <module>spring-event-driver</module>
+        <module>aspect</module>
     </modules>
 
     <dependencies>
