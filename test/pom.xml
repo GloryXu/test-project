@@ -95,5 +95,17 @@
             <groupId>com.redsun</groupId>
             <artifactId>util</artifactId>
         </dependency>
+        <dependency>
+            <groupId>jmxri</groupId>
+            <artifactId>jmxri</artifactId>
+            <version>1.2.1</version>
+            <systemPath>${project.basedir}/doc/jmx-1_2_1-bin/lib/jmxri.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>jmxtools</groupId>
+            <artifactId>jmxtools</artifactId>
+            <version>1.2.1</version>
+            <systemPath>${project.basedir}/doc/jmx-1_2_1-bin/lib/jmxtools.jar</systemPath>
+        </dependency>
     </dependencies>
 </project>

@@ -7,6 +7,10 @@ import javax.management.MBeanServer;
 import javax.management.ObjectName;
 import java.lang.management.ManagementFactory;
 
+/**
+ * 启动后访问
+ * http://localhost:8082
+ */
 public class HelloAgent {
     public static void main(String[] args) throws JMException, Exception
     {
