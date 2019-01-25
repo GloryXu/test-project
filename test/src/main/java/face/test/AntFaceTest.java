@@ -13,6 +13,5 @@ public class AntFaceTest {
         a &= Integer.MAX_VALUE;
         System.out.println(a);
 
-        Thread
     }
 }

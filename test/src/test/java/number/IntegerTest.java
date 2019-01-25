@@ -9,9 +9,9 @@ public class IntegerTest {
     @Test
     public void testPackage() {
         Integer a = 12;
-        if(a == 12) {
-            System.out.println("aaaa");
-        }
+        Integer b = new Integer(12);
+        System.out.println("a == 12 result is " + (a == 12));
+        System.out.println("a == 12 result is " + (b == 12));
     }
 
     @Test
