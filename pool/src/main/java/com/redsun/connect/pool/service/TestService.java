@@ -23,4 +23,8 @@ public class TestService {
     public int save(TestEntity test) {
         return testMapper.insert(test);
     }
+
+    public void delete(int id) {
+        testMapper.deleteByPrimaryKey(id);
+    }
 }

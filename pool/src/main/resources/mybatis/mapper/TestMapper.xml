@@ -22,9 +22,10 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
 
-  <insert id="insert" parameterType="com.redsun.connect.pool.entity.TestEntity" keyProperty="id" useGeneratedKeys="true">
-    insert into test (id, name)
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR})
+  <insert id="insert" parameterType="com.redsun.connect.pool.entity.TestEntity"
+          keyProperty="id" useGeneratedKeys="true">
+    insert into test (name)
+    values (#{name,jdbcType=VARCHAR})
   </insert>
 
   <update id="updateByPrimaryKey" parameterType="com.redsun.connect.pool.entity.TestEntity" >

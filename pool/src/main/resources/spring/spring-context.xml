@@ -17,7 +17,7 @@
     <context:property-placeholder location="classpath:config/connect.properties"/>
 
     <!-- 配置数据源druid -->
-    <!--<bean name="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+    <bean name="dataSourceDruid" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close" lazy-init="false">
         <property name="driverClassName" value="${driverClassName}"/>
         <property name="url" value="${url}" />
         <property name="username" value="${jdbc.username}" />
@@ -25,7 +25,7 @@
         <property name="initialSize" value="${connectNum}"/>
         <property name="maxActive" value="${connectNum}" />
         <property name="minIdle" value="${connectNum}" />
-    </bean>-->
+    </bean>
 
     <!-- 配置数据源hikaricp -->
     <bean name="hikariConfigSelf" class="com.zaxxer.hikari.HikariConfig">
@@ -36,13 +36,14 @@
         <property name="minimumIdle" value="${connectNum}" />
         <property name="maximumPoolSize" value="${connectNum}" />
     </bean>
-    <bean name="dataSourceHikari" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
+    <bean name="dataSourceHikari" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close" lazy-init="false">
         <constructor-arg name="configuration" ref="hikariConfigSelf"/>
     </bean>
 
     <!--3 会话工厂bean sqlSessionFactoryBean -->
     <bean id="sqlSessionFactoryBeanName" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSourceHikari"/>
+        <!--<property name="dataSource" ref="dataSourceDruid"/>-->
         <property name="configLocation" value="classpath:mybatis/myBatisConfig.xml"/>
         <property name="mapperLocations" value="classpath:mybatis/mapper/*.xml"/>
         <!-- 实体类别名 -->
@@ -64,6 +65,7 @@
     <!-- 配置事务管理对象-->
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSourceHikari"/>
+        <!--<property name="dataSource" ref="dataSourceDruid"/>-->
     </bean>
     <!-- 将所有具有@Transactional注解的Bean自动配置为声明式事务支持 -->
     <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
