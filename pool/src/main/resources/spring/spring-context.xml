@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd"
+       default-autowire="byName">
+
+    <!-- 采用注释的方式配置bean -->
+    <context:annotation-config/>
+
+    <!-- 配置要扫描的包 -->
+    <context:component-scan base-package="com.redsun"/>
+
+    <context:property-placeholder location="classpath:config/connect.properties"/>
+
+    <!-- 配置数据源druid -->
+    <!--<bean name="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+        <property name="driverClassName" value="${driverClassName}"/>
+        <property name="url" value="${url}" />
+        <property name="username" value="${jdbc.username}" />
+        <property name="password" value="${jdbc.username}" />
+        <property name="initialSize" value="${connectNum}"/>
+        <property name="maxActive" value="${connectNum}" />
+        <property name="minIdle" value="${connectNum}" />
+    </bean>-->
+
+    <!-- 配置数据源hikaricp -->
+    <bean name="hikariConfigSelf" class="com.zaxxer.hikari.HikariConfig">
+        <property name="driverClassName" value="${driverClassName}" />
+        <property name="jdbcUrl" value="${url}" />
+        <property name="username" value="${jdbc.username}" />
+        <property name="password" value="${jdbc.username}" />
+        <property name="minimumIdle" value="${connectNum}" />
+        <property name="maximumPoolSize" value="${connectNum}" />
+    </bean>
+    <bean name="dataSourceHikari" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
+        <constructor-arg name="configuration" ref="hikariConfigSelf"/>
+    </bean>
+
+    <!--3 会话工厂bean sqlSessionFactoryBean -->
+    <bean id="sqlSessionFactoryBeanName" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSourceHikari"/>
+        <property name="configLocation" value="classpath:mybatis/myBatisConfig.xml"/>
+        <property name="mapperLocations" value="classpath:mybatis/mapper/*.xml"/>
+        <!-- 实体类别名 -->
+        <property name="typeAliasesPackage" value="com.redsun.connect.pool.entity"></property>
+    </bean>
+    <bean class="org.mybatis.spring.SqlSessionTemplate">
+        <constructor-arg ref="sqlSessionFactoryBeanName"/>
+    </bean>
+
+    <!--4 自动扫描对象关系映射 -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!--指定会话工厂，如果当前上下文中只定义了一个则该属性可省去 -->
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactoryBeanName"></property>
+        <!-- 指定要自动扫描接口的基础包，实现接口 -->
+        <property name="basePackage" value="com.redsun.connect.pool.dao"></property>
+    </bean>
+
+    <!--5 声明式事务管理 -->
+    <!-- 配置事务管理对象-->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSourceHikari"/>
+    </bean>
+    <!-- 将所有具有@Transactional注解的Bean自动配置为声明式事务支持 -->
+    <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
+
+</beans>
