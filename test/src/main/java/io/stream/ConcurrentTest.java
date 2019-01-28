@@ -46,7 +46,9 @@ public class ConcurrentTest {
                 InputStream inputStream = ConcurrentTest.getStream(key);
                 // do something
                 try {
-                    TimeUnit.NANOSECONDS.sleep(10);
+//                    TimeUnit.NANOSECONDS.sleep(1);
+                    TimeUnit.MILLISECONDS.sleep(1);
+//                    TimeUnit.MICROSECONDS.sleep(1);
 //                    Thread.sleep(1);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -59,10 +61,14 @@ public class ConcurrentTest {
                     byte[] data = new byte[8];
                     int count = -1;
                     while ((count = inputStream.read(data, 0, 4)) != -1){
+//                        TimeUnit.NANOSECONDS.sleep(1);
+//                        TimeUnit.MICROSECONDS.sleep(1);
                         outStream.write(data, 0, count);
                     }
                     data = null;
-                    System.out.println(Thread.currentThread().getName() + ", currentTime = " + new Date(System.currentTimeMillis()).toString() + ", key = " + key + ", value = " + new String(outStream.toByteArray()));
+                    System.out.println(Thread.currentThread().getName() + ", currentTime = "
+                            + new Date(System.currentTimeMillis()).toString() + ", key = " + key + ", value = "
+                            + new String(outStream.toByteArray()));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
