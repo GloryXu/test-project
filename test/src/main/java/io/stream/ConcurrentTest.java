@@ -4,10 +4,12 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Date;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author xuguangrong
@@ -44,7 +46,8 @@ public class ConcurrentTest {
                 InputStream inputStream = ConcurrentTest.getStream(key);
                 // do something
                 try {
-                    Thread.sleep(1);
+                    TimeUnit.NANOSECONDS.sleep(10);
+//                    Thread.sleep(1);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -53,13 +56,13 @@ public class ConcurrentTest {
                 // 读取InputStream中的数据
                 try {
                     ByteArrayOutputStream outStream = new ByteArrayOutputStream();
-                    byte[] data = new byte[256];
+                    byte[] data = new byte[8];
                     int count = -1;
-                    while ((count = inputStream.read(data, 0, 128)) != -1){
+                    while ((count = inputStream.read(data, 0, 4)) != -1){
                         outStream.write(data, 0, count);
                     }
                     data = null;
-                    System.out.println(Thread.currentThread().getName() + ", key = " + key + ", value = " + new String(outStream.toByteArray()));
+                    System.out.println(Thread.currentThread().getName() + ", currentTime = " + new Date(System.currentTimeMillis()).toString() + ", key = " + key + ", value = " + new String(outStream.toByteArray()));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
