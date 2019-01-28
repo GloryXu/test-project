@@ -9,8 +9,6 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <packaging>war</packaging>
-
     <artifactId>test</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
@@ -100,12 +98,14 @@
             <artifactId>jmxri</artifactId>
             <version>1.2.1</version>
             <systemPath>${project.basedir}/doc/jmx-1_2_1-bin/lib/jmxri.jar</systemPath>
+            <scope>system</scope>
         </dependency>
         <dependency>
             <groupId>jmxtools</groupId>
             <artifactId>jmxtools</artifactId>
             <version>1.2.1</version>
             <systemPath>${project.basedir}/doc/jmx-1_2_1-bin/lib/jmxtools.jar</systemPath>
+            <scope>system</scope>
         </dependency>
         <dependency>
             <groupId>dom4j</groupId>

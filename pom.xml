@@ -9,6 +9,8 @@
     <packaging>pom</packaging>
     <version>0.0.1-SNAPSHOT</version>
 
+    <name>A test project</name>
+
     <properties>
         <project.jdk.version>1.8</project.jdk.version>
         <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
@@ -260,7 +262,6 @@
                 <artifactId>jira-rest-java-client</artifactId>
                 <version>${jira-rest-java-client-version}</version>
             </dependency>
-
             <dependency>
                 <groupId>com.atlassian.jira</groupId>
                 <artifactId>jira-rest-java-client-core</artifactId>
@@ -270,6 +271,11 @@
                         <artifactId>spring-beans</artifactId>
                     </exclusion>
                 </exclusions>
+                <version>${jira-rest-java-client-core-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.atlassian.jira</groupId>
+                <artifactId>jira-rest-java-client-api</artifactId>
                 <version>${jira-rest-java-client-core-version}</version>
             </dependency>
 
