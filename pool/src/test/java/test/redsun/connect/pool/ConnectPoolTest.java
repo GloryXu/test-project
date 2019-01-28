@@ -56,4 +56,13 @@ public class ConnectPoolTest extends Base {
             System.out.println();
         }
     }
+
+    @Test
+    @Rollback
+    @Transactional
+    public void testSingle() {
+        TestEntity testEntity = new TestEntity();
+        testEntity.setName(UUID.randomUUID().toString());
+        testService.save(testEntity);
+    }
 }
