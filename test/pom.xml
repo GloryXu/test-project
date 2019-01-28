@@ -107,5 +107,9 @@
             <version>1.2.1</version>
             <systemPath>${project.basedir}/doc/jmx-1_2_1-bin/lib/jmxtools.jar</systemPath>
         </dependency>
+        <dependency>
+            <groupId>dom4j</groupId>
+            <artifactId>dom4j</artifactId>
+        </dependency>
     </dependencies>
 </project>
