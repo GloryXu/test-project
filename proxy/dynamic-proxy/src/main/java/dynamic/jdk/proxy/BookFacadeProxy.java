@@ -6,7 +6,7 @@ import java.lang.reflect.Proxy;
 
 public class BookFacadeProxy implements InvocationHandler {
 
-    // 这其实业务实现类对象，用来调用具体的业务方法
+    // 真实业务实现类对象，用来调用具体的业务方法
     private Object target;
 
     /**
