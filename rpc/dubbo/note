@@ -1,0 +1,28 @@
+InvokerInvocationHandler.invoke(Object proxy, Method method, Object[] args);// 执行代理类invoke方法
+
+MockClusterInvoker.invoke(Invocation invocation);  // 每一次调用都转换成一个Invocation对象
+                                                   // 是否使用mock模式，false，则调用真实服务提供者，true，则进行mock
+
+AbstractClusterInvoker.invoke(final Invocation invocation);  // 查看线程变量ThreadLocal中是否有附带属性，有,则invocation加入该属性，
+                                                             // 从directory中获取可以调用的invoker list(查看directory对象，该list可通过notify方法与注册中心交互更新)
+															 // 获取负载均衡策略，未配置则默认随机策略RandomLoadBalance
+															 // 执行子类doInvoke方法
+															FailoverClusterInvoker.doInvoke(Invocation invocation, final List<Invoker<T>> invokers, LoadBalance loadbalance)
+
+// 选择一个invoker   RegistryDirectory$InvokerDelegate
+AbstractClusterInvoker.select(LoadBalance loadbalance, Invocation invocation, List<Invoker<T>> invokers, List<Invoker<T>> selected)
+
+Result result = invoker.invoke(invocation);  // 开启调用
+
+ConsumerContextFilter.invoke(Invoker<?> invoker, Invocation invocation);// 过滤器执行 RpcContext存储调用的上下文信息
+
+FutureFilter.invoke(final Invoker<?> invoker, final Invocation invocation);// 调用结束，根据同异步配置，进行结果处理
+
+ListenerInvokerWrapper.invoke(Invocation invocation);
+DubboInvoker.doInvoke(final Invocation invocation);
+
+HeaderExchangeChannel.request(Object request, int timeout); // 创建request对象，设置调用参数和方法名
+
+NettyChannel.send(Object message, boolean sent);// 发送
+
+NioClientSocketChannel.write(message); // 调用原生netty的方法

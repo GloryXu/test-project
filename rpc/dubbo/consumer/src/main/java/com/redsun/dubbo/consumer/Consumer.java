@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 public class Consumer {
 
     @Autowired
-    ProviderI providerI;
+    private ProviderI providerI;
 
     public void testProvider() {
         log.info("testProvier consumer start call!");
