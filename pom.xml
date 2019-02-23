@@ -45,6 +45,8 @@
         <commons-codec.version>1.10</commons-codec.version>
         <HikariCP.version>3.2.0</HikariCP.version>
         <dom4j.version>1.6.1</dom4j.version>
+        <sofa.version>5.5.0</sofa.version>
+        <curator-framework.version>4.0.1</curator-framework.version>
     </properties>
 
     <modules>
@@ -378,6 +380,19 @@
                 <groupId>dom4j</groupId>
                 <artifactId>dom4j</artifactId>
                 <version>${dom4j.version}</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/com.alipay.sofa/sofa-rpc-all -->
+            <dependency>
+                <groupId>com.alipay.sofa</groupId>
+                <artifactId>sofa-rpc-all</artifactId>
+                <version>${sofa.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.curator</groupId>
+                <artifactId>curator-framework</artifactId>
+                <version>${curator-framework.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
