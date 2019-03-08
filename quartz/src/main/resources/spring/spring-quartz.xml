@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.2.xsd"
+	   default-autowire="byName" default-lazy-init="false">
+
+	<!-- 配置线程池-->
+	<bean name="executor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+		<property name="corePoolSize" value="15"/>
+		<property name="maxPoolSize" value="25"/>
+		<property name="queueCapacity" value="400"/>
+	</bean>
+
+	<bean id="schedulerFactoryBean" class="org.springframework.scheduling.quartz.SchedulerFactoryBean" autowire="no">
+		<!--可选，QuartzScheduler 启动时更新己存在的Job，这样就不用每次修改targetObject后删除qrtz_job_details表对应记录了 -->
+		<property name="overwriteExistingJobs" value="true" />
+		<!--必须的，QuartzScheduler 延时启动，应用启动完后 QuartzScheduler 再启动 -->
+		<property name="startupDelay" value="10" />
+		<property name="autoStartup" value="true" />
+		<property name="waitForJobsToCompleteOnShutdown" value="true"/>
+		<property name="configLocation" value="classpath:/quartz/quartz-db.properties" />
+		<property name="taskExecutor" ref="executor"/>
+	</bean>
+	
+</beans>
