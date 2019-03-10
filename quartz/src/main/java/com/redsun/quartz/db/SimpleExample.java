@@ -1,5 +1,7 @@
-package quartz.db;
+package com.redsun.quartz.db;
 
+import com.redsun.quartz.HelloJob;
+import lombok.extern.slf4j.Slf4j;
 import org.quartz.DateBuilder;
 import org.quartz.JobBuilder;
 import org.quartz.JobDetail;
@@ -10,7 +12,6 @@ import org.quartz.impl.StdSchedulerFactory;
 import org.quartz.impl.triggers.SimpleTriggerImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import quartz.HelloJob;
 
 import java.util.Date;
 
@@ -19,13 +20,18 @@ import java.util.Date;
  * @description SimpleExample
  * @date Created at 21:54 2019/3/8
  */
+@Slf4j
 public class SimpleExample {
-    public void run() throws Exception {
-        Logger log = LoggerFactory.getLogger(SimpleExample.class);
 
+    public static void main(String[] args) throws Exception {
+        SimpleExample example = new SimpleExample();
+        example.run();
+    }
+
+    public void run() throws Exception {
         log.info("------- Initializing ----------------------");
         // 通过调度器工厂获取调度器，初始化工程时须指定其使用我们自己的配置文件
-        SchedulerFactory sf = new StdSchedulerFactory("quartz/quartz-db.properties");
+        SchedulerFactory sf = new StdSchedulerFactory("com/redsun/quartz/quartz-db.properties");
         Scheduler sched = sf.getScheduler();
 
         // 这儿clear一下，因为使用数据库储存方式时，shutdown的时候没有清除，第二次运行会报Job is already exist
@@ -63,11 +69,6 @@ public class SimpleExample {
         // 调度关闭
         sched.shutdown(true);
         log.info("------- Shutdown Complete -----------------");
-    }
-
-    public static void main(String[] args) throws Exception {
-        SimpleExample example = new SimpleExample();
-        example.run();
     }
 
 }

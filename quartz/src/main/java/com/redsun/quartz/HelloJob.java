@@ -1,4 +1,4 @@
-package quartz;
+package com.redsun.quartz;
 
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;

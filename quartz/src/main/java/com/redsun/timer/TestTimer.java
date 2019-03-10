@@ -1,4 +1,4 @@
-package timer;
+package com.redsun.timer;
 
 import java.util.Timer;
 

@@ -18,7 +18,7 @@
 		<property name="startupDelay" value="10" />
 		<property name="autoStartup" value="true" />
 		<property name="waitForJobsToCompleteOnShutdown" value="true"/>
-		<property name="configLocation" value="classpath:/quartz/quartz-db.properties" />
+		<property name="configLocation" value="classpath:/com/redsun/quartz/quartz-db.properties" />
 		<property name="taskExecutor" ref="executor"/>
 	</bean>
 	
