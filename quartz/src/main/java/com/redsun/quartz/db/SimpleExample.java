@@ -31,12 +31,11 @@ public class SimpleExample {
     public void run() throws Exception {
         log.info("------- Initializing ----------------------");
         // 通过调度器工厂获取调度器，初始化工程时须指定其使用我们自己的配置文件
-        SchedulerFactory sf = new StdSchedulerFactory("com/redsun/quartz/quartz-db.properties");
-        Scheduler sched = sf.getScheduler();
+        SchedulerFactory stdSchedulerFactory = new StdSchedulerFactory("quartz/quartz-db.properties");
+        Scheduler scheduler = stdSchedulerFactory.getScheduler();
 
         // 这儿clear一下，因为使用数据库储存方式时，shutdown的时候没有清除，第二次运行会报Job is already exist
-        sched.clear();
-
+        scheduler.clear();
         log.info("------- Initialization Complete -----------");
 
         Date runTime = DateBuilder.evenMinuteDate(new Date());
@@ -52,11 +51,11 @@ public class SimpleExample {
         log.info("------- Start time =  " + trigger.getStartTime() + " -----------------");
 
         // 调度器、触发器、任务，三者关联
-        sched.scheduleJob(job, trigger);
+        scheduler.scheduleJob(job, trigger);
 
         log.info(job.getKey() + " will run at: " + runTime);
         // 调度启动
-        sched.start();
+        scheduler.start();
         log.info("------- Started Scheduler -----------------");
 
         log.info("------- Waiting 1 minute... -------------");
@@ -67,7 +66,7 @@ public class SimpleExample {
 
         log.info("------- Shutting Down ---------------------");
         // 调度关闭
-        sched.shutdown(true);
+        scheduler.shutdown(true);
         log.info("------- Shutdown Complete -----------------");
     }
 
