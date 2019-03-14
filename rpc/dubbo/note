@@ -19,6 +19,7 @@ ConsumerContextFilter.invoke(Invoker<?> invoker, Invocation invocation);// 过�
 FutureFilter.invoke(final Invoker<?> invoker, final Invocation invocation);// 调用结束，根据同异步配置，进行结果处理
 
 ListenerInvokerWrapper.invoke(Invocation invocation);
+AbstractInvoker.invoke(Invocation inv);
 DubboInvoker.doInvoke(final Invocation invocation);
 
 HeaderExchangeChannel.request(Object request, int timeout); // 创建request对象，设置调用参数和方法名

@@ -17,7 +17,7 @@ import java.util.Date;
 
 /**
  * @author xuguangrong
- * @description SimpleExample
+ * @description 定时器简单的例子，使用SimpleTriggerImpl
  * @date Created at 21:54 2019/3/8
  */
 @Slf4j
@@ -46,8 +46,8 @@ public class SimpleExample {
         JobDetail job = JobBuilder.newJob(HelloJob.class).withIdentity("job1", "group1").build();
         // 创建触发器
         SimpleTriggerImpl trigger = (SimpleTriggerImpl) TriggerBuilder.newTrigger().withIdentity("trigger1", "group1").startAt(new Date()).build();
-        trigger.setRepeatCount(5);
-        trigger.setRepeatInterval(3000);
+        trigger.setRepeatCount(5);// 五次
+        trigger.setRepeatInterval(3000);// 三秒
         log.info("------- Start time =  " + trigger.getStartTime() + " -----------------");
 
         // 调度器、触发器、任务，三者关联
