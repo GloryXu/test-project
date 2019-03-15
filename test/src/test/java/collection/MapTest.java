@@ -78,4 +78,23 @@ public class MapTest {
         Map<String, String> subMap = (Map<String, String>) testMap.get("xugr");
         log.info("{}", subMap);
     }
+
+    @Test
+    public void testMapRemoveKeyValue() {
+        Map<String, String> map = new HashMap<>();
+        map.put("key1", "value1");
+        map.put("key2", "value2");
+        map.put("key3", "value3");
+        System.out.println(map);
+
+        Iterator<Map.Entry<String, String>> iterable = map.entrySet().iterator();
+        while(iterable.hasNext()) {
+            Map.Entry<String, String> item = iterable.next();
+            if (item.getKey().equals("key1")) {
+                iterable.remove();
+            }
+        }
+
+        System.out.println(map);
+    }
 }
