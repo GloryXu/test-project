@@ -2,10 +2,9 @@ import invoke.User;
 import org.junit.Test;
 import util.PrintUtils;
 
-import java.time.Instant;
 import java.util.*;
 
-import static util.PrintUtils.parintArr;
+import static util.PrintUtils.printArr;
 
 public class NormalTest {
 
@@ -26,7 +25,7 @@ public class NormalTest {
         String str = "a,b,c,,";
         String[] arr = str.split(",",9);
         System.out.println(arr.length);
-        System.out.println(parintArr(arr));
+        System.out.println(printArr(arr));
     }
 
     @Test
@@ -60,8 +59,8 @@ public class NormalTest {
 //        System.out.println(subList.get(0));
 //        System.out.println(subList.get(1));
 //        subList.set(0, "ddd");
-//        System.out.println(PrintUtils.parintArrayList(subList));
-//        System.out.println(PrintUtils.parintArrayList(arratList));
+//        System.out.println(PrintUtils.printArrayList(subList));
+//        System.out.println(PrintUtils.printArrayList(arratList));
 
         new Thread(() -> {
             arratList.remove(3);
@@ -75,8 +74,8 @@ public class NormalTest {
             System.out.println(iterable.next());
         }
 
-        System.out.println(PrintUtils.parintArrayList(arratList));
-        System.out.println(PrintUtils.parintArrayList(subList));
+        System.out.println(PrintUtils.printArrayList(arratList));
+        System.out.println(PrintUtils.printArrayList(subList));
     }
 
     @Test
@@ -87,7 +86,7 @@ public class NormalTest {
 
         String[] array = new String[list.size()];
         list.toArray(array);
-        System.out.println(PrintUtils.parintArr(array));
+        System.out.println(PrintUtils.printArr(array));
 
         /**
          * 会报异常
@@ -95,7 +94,7 @@ public class NormalTest {
          */
 //        String[] array1 = new String[list.size()];
 //        array1 = (String[]) list.toArray();
-//        System.out.println(PrintUtils.parintArr(array1));
+//        System.out.println(PrintUtils.printArr(array1));
     }
 
     @Test
@@ -109,7 +108,7 @@ public class NormalTest {
                 list.remove(item);
             }
         }
-        System.out.println(PrintUtils.parintArrayList(list));
+        System.out.println(PrintUtils.printArrayList(list));
 
     }
 

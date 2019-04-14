@@ -1,4 +1,4 @@
-package sampler.watcher.client;
+package sample.watcher.client;
 
 /**
  * @author glory

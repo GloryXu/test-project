@@ -9,7 +9,7 @@ public class PrintUtils {
      * @param arr
      * @return
      */
-    public static String parintArr(Object[] arr) {
+    public static String printArr(Object[] arr) {
         StringBuffer sb = new StringBuffer();
         for (int i = 0; i < arr.length; i++) {
             if (i == 0) {
@@ -24,7 +24,7 @@ public class PrintUtils {
         }
         return sb.toString();
     }
-    public static String parintIntArr(int[] arr) {
+    public static String printIntArr(int[] arr) {
         StringBuffer sb = new StringBuffer();
         for (int i = 0; i < arr.length; i++) {
             if (i == 0) {
@@ -40,7 +40,7 @@ public class PrintUtils {
         return sb.toString();
     }
 
-    public static String parintDoubleArr(double[] arr) {
+    public static String printDoubleArr(double[] arr) {
         StringBuffer sb = new StringBuffer();
         for (int i = 0; i < arr.length; i++) {
             if (i == 0) {
@@ -62,7 +62,7 @@ public class PrintUtils {
      * @param arr
      * @return
      */
-    public static String parintArrayList(List arr) {
+    public static String printArrayList(List arr) {
         StringBuffer sb = new StringBuffer();
         for (int i = 0; i < arr.size(); i++) {
             if(arr.size() == 1) {

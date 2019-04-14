@@ -191,10 +191,10 @@ public class StringTest {
     @Test
     public void testStringA() {
         String str = "333%#%222";
-        System.out.println(PrintUtils.parintArr(str.split("%#%")));
+        System.out.println(PrintUtils.printArr(str.split("%#%")));
 
         String str1 = "1121212#@__@#333333";
-        System.out.println(PrintUtils.parintArr(str1.split("#@__@#")));
+        System.out.println(PrintUtils.printArr(str1.split("#@__@#")));
     }
 
     @Test
