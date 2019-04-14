@@ -32,6 +32,7 @@ public class MultiDbExchangeTest extends BaseTest {
 
     @Test
     public void testInsert() {
+        log.info("dsfsdf{}", "ddddddd");
         Test1 test1 = new Test1();
         test1.setName(UUID.randomUUID().toString());
 
