@@ -15,8 +15,7 @@ import java.io.OutputStream;
  * @description zookeeper执行类
  * @date Created at 下午10:54 18-12-9
  */
-public class Executor
-        implements Watcher, Runnable, DataMonitor.DataMonitorListener {
+public class Executor implements Watcher, Runnable, DataMonitorListener {
     String znode;
 
     DataMonitor dm;
@@ -41,15 +40,11 @@ public class Executor
      * @param args
      */
     public static void main(String[] args) {
-        /*if (args.length < 4) {
-            System.err.println("USAGE: Executor hostPort znode filename program [args ...]");
-            System.exit(2);
-        }*/
         String hostPort = "127.0.0.1:2181";
         String znode = "/zookeeper";
         String filename = "glory";
-        String exec[] = new String[]{"/home/glory/Downloads/jdk1.8.0_191/bin/javac"};
-//        System.arraycopy(args, 3, exec, 0, exec.length);
+//        String exec[] = new String[]{"/home/glory/Downloads/jdk1.8.0_191/bin/javac"};
+        String exec[] = new String[]{"C:\\Program Files\\Java\\jdk1.8.0_151\\bin\\javac"};
         try {
             new Executor(hostPort, znode, filename, exec).run();
         } catch (Exception e) {
