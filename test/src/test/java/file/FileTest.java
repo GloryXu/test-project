@@ -27,8 +27,8 @@ public class FileTest {
      */
     @Test
     public void testFindLessIp() throws IOException {
-        BufferedReader br1 = new BufferedReader(new FileReader("D:\\jd-doc\\jrm-doc\\10.其他\\找缺少的IP\\源IP信息.txt"));
-        BufferedReader br2 = new BufferedReader(new FileReader("D:\\jd-doc\\jrm-doc\\10.其他\\找缺少的IP\\aks新添的ip信息.txt"));
+        BufferedReader br1 = new BufferedReader(new FileReader("D:\\jd-doc\\jrm-doc\\02.性能相关\\runtime扩容后需要申请aks访问权限，如果IP少于申请的IP数，可用如下代码找出IP并让aks支持人员手动添加\\源IP信息.txt"));
+        BufferedReader br2 = new BufferedReader(new FileReader("D:\\jd-doc\\jrm-doc\\02.性能相关\\runtime扩容后需要申请aks访问权限，如果IP少于申请的IP数，可用如下代码找出IP并让aks支持人员手动添加\\aks新添的ip信息.txt"));
 
         Set<String> oriIPs = new HashSet<>();
         while (true) {

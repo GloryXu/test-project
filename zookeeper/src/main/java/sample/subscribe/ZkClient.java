@@ -42,7 +42,7 @@ public class ZkClient {
                 childPath = "/child0";
                 zkClient.createPersistent(ZkSubscribe.path + childPath, true);
             } else {
-                childPath = "/child" + new Random().nextInt(100);
+                childPath = "/child/ahahhah" + new Random().nextInt(100);
                 zkClient.createPersistent(ZkSubscribe.path + childPath, true);
             }
             System.out.println(DateUtils.now() + " Child path = " + childPath);
