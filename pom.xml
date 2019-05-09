@@ -48,6 +48,7 @@
         <sofa.version>5.5.0</sofa.version>
         <curator-framework.version>4.0.1</curator-framework.version>
         <logback-classic.version>1.2.3</logback-classic.version>
+        <poi.version>3.17</poi.version>
     </properties>
 
     <modules>
@@ -384,6 +385,23 @@
                 <groupId>org.apache.curator</groupId>
                 <artifactId>curator-framework</artifactId>
                 <version>${curator-framework.version}</version>
+            </dependency>
+
+            <!-- POI -->
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi</artifactId>
+                <version>${poi.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi-ooxml</artifactId>
+                <version>${poi.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>ooxml-schemas</artifactId>
+                <version>1.3</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
