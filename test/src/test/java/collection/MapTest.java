@@ -97,4 +97,19 @@ public class MapTest {
 
         System.out.println(map);
     }
+
+    @Test
+    public void compareMap() {
+        Map<Integer, String> cutFlowMap = new TreeMap<>(Integer::compareTo);
+        cutFlowMap.put(10, "xugr10");
+        cutFlowMap.put(1, "xugr1");
+        cutFlowMap.put(20, "xugr20");
+        cutFlowMap.put(100, "xugr100");
+        cutFlowMap.put(-3, "xugr-3");
+
+        System.out.println(cutFlowMap);
+
+        System.out.println(cutFlowMap.keySet());
+    }
+
 }

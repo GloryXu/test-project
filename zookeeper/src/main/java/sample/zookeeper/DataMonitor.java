@@ -4,15 +4,16 @@ package sample.zookeeper;
  * A simple class that monitors the data and existence of a ZooKeeper
  * node. It uses asynchronous ZooKeeper APIs.
  */
-import java.util.Arrays;
 
+import org.apache.zookeeper.AsyncCallback.StatCallback;
 import org.apache.zookeeper.KeeperException;
+import org.apache.zookeeper.KeeperException.Code;
 import org.apache.zookeeper.WatchedEvent;
 import org.apache.zookeeper.Watcher;
 import org.apache.zookeeper.ZooKeeper;
-import org.apache.zookeeper.AsyncCallback.StatCallback;
-import org.apache.zookeeper.KeeperException.Code;
 import org.apache.zookeeper.data.Stat;
+
+import java.util.Arrays;
 
 public class DataMonitor implements Watcher, StatCallback {
 
@@ -37,24 +38,6 @@ public class DataMonitor implements Watcher, StatCallback {
         // Get things started by checking if the node exists. We are going
         // to be completely event driven
         zk.exists(znode, true, this, null);
-    }
-
-    /**
-     * Other classes use the DataMonitor by implementing this method
-     */
-    public interface DataMonitorListener {
-        /**
-         * The existence status of the node has changed.
-         */
-        void exists(byte data[]);
-
-        /**
-         * The ZooKeeper session is no longer valid.
-         *
-         * @param rc
-         *                the ZooKeeper reason code
-         */
-        void closing(int rc);
     }
 
     public void process(WatchedEvent event) {

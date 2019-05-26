@@ -153,22 +153,48 @@ public class StringTest {
 
     @Test
     public void testStringAppend() {
-        Integer tem = null;
+        /*Integer tem = null;
         System.out.println("" + tem);
         StringBuffer sb = new StringBuffer("");
         sb.append(tem);
         System.out.println("sb="+sb);
         System.out.println(String.valueOf(tem));
-        System.out.println(Integer.toString(tem));
+        System.out.println(Integer.toString(tem));*/
+
+        String aa = "aa";
+        String result = "";
+        long start = System.currentTimeMillis();
+        for (int i = 0;i < 10000;i++) {
+            result += aa + i;
+        }
+        System.out.println("字符串追加耗时：" + (System.currentTimeMillis() - start));
+        System.out.println(result);
+
+
+        start = System.currentTimeMillis();
+        StringBuilder sbResult = new StringBuilder();
+        for (int i = 0;i < 10000;i++) {
+            sbResult.append(aa).append(i);
+        }
+        System.out.println("StringBuilder追加耗时：" + (System.currentTimeMillis() - start));
+        System.out.println(sbResult.toString());
+
+        start = System.currentTimeMillis();
+        String resultFormat = "";
+        for (int i = 0;i < 10000;i++) {
+            resultFormat += String.format("%s%d", aa, i);
+        }
+        System.out.println("StringFormat追加耗时：" + (System.currentTimeMillis() - start));
+        System.out.println(resultFormat);
     }
 
     @Test
     public void testStringA() {
         String str = "333%#%222";
-        System.out.println(PrintUtils.parintArr(str.split("%#%")));
+        System.out.println(PrintUtils.printArr(str.split("%#%")));
 
         String str1 = "1121212#@__@#333333";
-        System.out.println(PrintUtils.parintArr(str1.split("#@__@#")));
+        System.out.println(PrintUtils.printArr(str1.split("#@__@#")));
     }
 
     @Test
@@ -197,4 +223,5 @@ public class StringTest {
         Object obj = null;
         System.out.println(obj instanceof Map);
     }
+
 }

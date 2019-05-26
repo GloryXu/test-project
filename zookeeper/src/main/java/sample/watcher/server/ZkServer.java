@@ -1,6 +1,6 @@
-package sampler.watcher.server;
+package sample.watcher.server;
 
-import sampler.watcher.Conf;
+import sample.watcher.Conf;
 
 import java.io.IOException;
 

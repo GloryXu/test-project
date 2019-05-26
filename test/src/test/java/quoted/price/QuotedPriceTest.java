@@ -21,7 +21,7 @@ public class QuotedPriceTest {
     @Test
     public void test1000() {
         double[] prices = genPrice();
-        System.out.println(PrintUtils.parintDoubleArr(prices));
+        System.out.println(PrintUtils.printDoubleArr(prices));
         Random random = new Random();
         int[] counts = new int[prices.length];
         for(int j = 0;j<1000;j++) {
@@ -43,7 +43,7 @@ public class QuotedPriceTest {
     @Test
     public void test10000() {
         double[] prices = genPrice();
-        System.out.println(PrintUtils.parintDoubleArr(prices));
+        System.out.println(PrintUtils.printDoubleArr(prices));
         Random random = new Random();
         int[] counts = new int[prices.length];
         for(int j = 0;j<10000;j++) {

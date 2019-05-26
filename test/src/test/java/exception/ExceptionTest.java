@@ -26,4 +26,16 @@ public class ExceptionTest {
         }
     }
 
+    @Test
+    public void testExceptionToString() {
+        try {
+            String str = null;
+
+            str.substring(0);
+        }catch (Exception e) {
+            System.out.println(e.toString());
+            System.out.println(e);
+        }
+    }
+
 }

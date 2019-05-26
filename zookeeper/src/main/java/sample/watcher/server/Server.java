@@ -1,9 +1,9 @@
-package sampler.watcher.server;
+package sample.watcher.server;
 
 import org.apache.zookeeper.server.NIOServerCnxnFactory;
 import org.apache.zookeeper.server.ZooKeeperServer;
 import org.apache.zookeeper.server.persistence.FileTxnSnapLog;
-import sampler.watcher.Conf;
+import sample.watcher.Conf;
 
 import java.io.File;
 import java.io.IOException;
