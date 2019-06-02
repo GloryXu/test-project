@@ -20,10 +20,11 @@ public class NormalTest {
         String b = "xugr";
         System.out.println(Objects.equals(a, b));
     }
+
     @Test
     public void test2() {
         String str = "a,b,c,,";
-        String[] arr = str.split(",",9);
+        String[] arr = str.split(",", 9);
         System.out.println(arr.length);
         System.out.println(printArr(arr));
     }
@@ -55,7 +56,7 @@ public class NormalTest {
         arratList.add("3");
         arratList.add("4");
         arratList.add("5");
-        List subList = arratList.subList(2,4);
+        List subList = arratList.subList(2, 4);
 //        System.out.println(subList.get(0));
 //        System.out.println(subList.get(1));
 //        subList.set(0, "ddd");
@@ -69,7 +70,7 @@ public class NormalTest {
          * 可能抛出异常
          * ConcurrentModificationException
          */
-        for(Iterator iterable = subList.iterator(); iterable.hasNext();) {
+        for (Iterator iterable = subList.iterator(); iterable.hasNext(); ) {
             System.out.println();
             System.out.println(iterable.next());
         }
@@ -112,4 +113,73 @@ public class NormalTest {
 
     }
 
+    /**
+     * 从 13  13.2  13.4  13.6 ... 21   中随机四个数字取平均，多次得出大概率数字
+     */
+    @Test
+    public void testRandom() {
+        List<Double> range = genRange();
+
+        Map<String, Integer> finalResult = null;
+        Map<String, Integer> finalResultHashMap = null;
+
+        int[] times = new int[]{100, 1000, 10000, 100000, 1000000};
+        for (int i = 0; i < times.length; i++) {
+            finalResultHashMap = new HashMap<>();
+            finalResult = new TreeMap(new ValueComparator(finalResultHashMap));
+            for (int j = 0; j < times[i]; j++) {
+                // 取出四个数字
+                double count = 0;
+                for (int index = 0; index < 4; index++) {
+                    count += range.get(new Random().nextInt(range.size()));
+                }
+
+                // 将结果留存下来
+                operateResult(finalResultHashMap, count / 4);
+            }
+            finalResult.putAll(finalResultHashMap);
+            System.out.println(times[i] + "次结果如下：" + finalResult);
+        }
+    }
+
+    private void operateResult(Map<String, Integer> finalResult, double v) {
+        double start = 13.0;
+
+        while (!(start <= v && v < start + 0.2)) {
+            start += 0.2;
+        }
+        String key = start + "~" + (start + 0.2);
+        finalResult.put(key, (finalResult.get(key) == null ? 0 : finalResult.get(key)) + 1);
+    }
+
+    private List<Double> genRange() {
+        List<Double> result = new ArrayList<>();
+        Double start = new Double(13);
+        while (start <= 21) {
+            result.add(start);
+            start = start + 0.2;
+        }
+//        System.out.println(PrintUtils.printArrayList(result));
+        return result;
+    }
+
+
+    class ValueComparator implements Comparator<String> {
+
+        Map<String, Integer> base;
+
+        public ValueComparator(Map<String, Integer> base) {
+            this.base = base;
+        }
+
+        // Note: this comparator imposes orderings that are inconsistent with equals.
+        public int compare(String a, String b) {
+            if (base.get(a) >= base.get(b)) {
+                return -1;
+            } else {
+                return 1;
+            } // returning 0 would merge keys
+        }
+
+    }
 }
