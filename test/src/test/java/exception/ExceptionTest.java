@@ -1,7 +1,10 @@
 package exception;
 
+import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
+
+import java.io.UnsupportedEncodingException;
 
 @Slf4j
 public class ExceptionTest {
@@ -36,6 +39,37 @@ public class ExceptionTest {
             System.out.println(e.toString());
             System.out.println(e);
         }
+    }
+
+    @Test
+    public void testCheckException () {
+        byte[] bytes = "haha".getBytes();
+
+        try {
+            System.out.println(new String(bytes, "UTF-8"));
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void testCacheEception() {
+        String str = null;
+
+        /*try {
+            System.out.println(str.toString());
+        } finally {
+            System.out.println("1");
+        }*/
+
+        try {
+            System.out.println(str.toString());
+        } catch (Exception e) {
+            System.out.println("3");
+        } finally {
+            System.out.println("1");
+        }
+        System.out.println("2");
     }
 
 }
