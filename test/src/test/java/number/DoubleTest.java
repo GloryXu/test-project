@@ -35,4 +35,14 @@ public class DoubleTest {
         System.out.println(BigDecimal.valueOf((Double) map.get("double")).toString());
         System.out.println(JSON.toJSONString(map));
     }
+
+    @Test
+    public void testConvertToDouble() {
+        Double dd = 0.000000434644654645D;
+        String str11 = dd.toString();
+        System.out.println(str11);
+
+        BigDecimal bigDecimal = new BigDecimal(str11);
+        System.out.println(bigDecimal.toPlainString());
+    }
 }
