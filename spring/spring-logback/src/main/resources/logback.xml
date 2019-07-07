@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>%-20(%d{HH:mm:ss.SSS} [%thread]) %-5level %logger{80} - %msg%n</pattern>
+        </layout>
+    </appender>
+
+    <appender name="myLog" class="com.redsun.logback.HandleAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>INFO</level>
+        </filter>
+        <myPolicy class="com.redsun.logback.MyPolicy">
+            <appName>monitor</appName>
+        </myPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>%m</pattern>
+        </layout>
+    </appender>
+
+    <logger name="myLogger" level="info" additivity="true">
+        <appender-ref ref="myLog"/>
+    </logger>
+
+    <root level="INFO">
+        <appender-ref ref="stdout" />
+        <appender-ref ref="myLog" />
+    </root>
+</configuration>
