@@ -7,18 +7,24 @@
     </appender>
 
     <appender name="myLog" class="com.redsun.logback.HandleAppender">
+        <!--A.根据设置过滤日志，此处设置的是info-->
         <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
             <level>INFO</level>
         </filter>
+        <!--B.自定义设置处理策略-->
         <myPolicy class="com.redsun.logback.MyPolicy">
             <appName>monitor</appName>
         </myPolicy>
+        <!--日志打印格式，m：message-->
         <layout class="ch.qos.logback.classic.PatternLayout">
             <pattern>%m</pattern>
         </layout>
     </appender>
 
+    <!--C.设置日志级别为info-->
+    <!--additivity=true，表示将日志输出出来，false则不会输出日志，但是appender仍可接收到输出的日志message-->
     <logger name="myLogger" level="info" additivity="true">
+        <!--指定自定义的appender来处理-->
         <appender-ref ref="myLog"/>
     </logger>
 

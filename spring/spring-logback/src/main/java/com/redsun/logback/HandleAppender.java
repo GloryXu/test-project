@@ -11,8 +11,9 @@ import ch.qos.logback.core.status.ErrorStatus;
  */
 public class HandleAppender<E> extends AppenderBase<E> {
 
+    // 注意：这边的属性名一定要与logback.xml中的标签名一致
     private MyPolicy myPolicy;
-
+    // 注意：这边的属性名一定要与logback.xml中的标签名一致
     private Layout<E> layout;
 
     public void start() {
@@ -20,10 +21,6 @@ public class HandleAppender<E> extends AppenderBase<E> {
         if (this.layout == null) {
             this.addStatus(new ErrorStatus("No layout set for the appender named \"" + this.name + "\".", this));
         }
-    }
-
-    public void stop() {
-        super.stop();
     }
 
     @Override

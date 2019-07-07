@@ -27,6 +27,8 @@ public class LogPrint {
     public void printInfo () {
         pool.scheduleAtFixedRate(() -> {
             mylogger.info("print count " + count.incrementAndGet());
+
+            mylogger.debug("print debug level log!");
         }, 1000, 5000, TimeUnit.MILLISECONDS);
     }
 }

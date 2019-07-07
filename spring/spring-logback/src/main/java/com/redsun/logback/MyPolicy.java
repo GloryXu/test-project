@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
  * @date Created at 16:18 2019/6/8
  */
 @Slf4j
-public class MyPolicy extends ContextAwareBase implements LifeCycle {
+public class MyPolicy implements LifeCycle {
 
     private String appName;
 
@@ -35,6 +35,10 @@ public class MyPolicy extends ContextAwareBase implements LifeCycle {
         return start;
     }
 
+    /**
+     * 自定义处理日志逻辑
+     * @param message 打印信息
+     */
     public void handler(String message) {
         log.info("log print message:" + message);
     }
