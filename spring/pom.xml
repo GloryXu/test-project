@@ -19,6 +19,7 @@
         <module>springmvc-simple-url-handler</module>
         <module>spring-event-driver</module>
         <module>aspect</module>
+        <module>spring-logback</module>
     </modules>
 
     <dependencies>
