@@ -13,7 +13,6 @@
     <packaging>pom</packaging>
     <modules>
         <module>sofa-consumer</module>
-        <module>sofa-provider</module>
         <module>sofa-provider-impl</module>
     </modules>
 
