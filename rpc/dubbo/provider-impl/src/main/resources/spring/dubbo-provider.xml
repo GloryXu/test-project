@@ -9,7 +9,7 @@
 
 	<dubbo:application name="test-dubbo" />
 
-	<dubbo:registry protocol="zookeeper" address="${dubbo.registry.address}"/>
+	<dubbo:registry protocol="zookeeper" address="${dubbo.registry.address}" timeout="30000"/>
 
 	<dubbo:protocol name="dubbo" port="${dubbo.registry.port}"/>
 

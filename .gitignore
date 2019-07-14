@@ -18,3 +18,4 @@ logs/
 /b.bin
 /a.bin
 /daemon.txt
+/logging.path_IS_UNDEFINED/

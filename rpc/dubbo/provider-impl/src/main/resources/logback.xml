@@ -6,9 +6,6 @@
         </layout>
     </appender>
 
-    <logger name="java.sql.PreparedStatement" level="DEBUG" />
-    <logger name="org.springframework.ui.freemarker" level="DEBUG" />
-
     <root level="INFO">
         <appender-ref ref="stdout" />
     </root>
