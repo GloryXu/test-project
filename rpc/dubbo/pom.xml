@@ -12,9 +12,9 @@
     <artifactId>dubbo</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>consumer</module>
-        <module>provider</module>
-        <module>provider-impl</module>
+        <module>dubbo-consumer</module>
+        <module>dubbo-provider</module>
+        <module>dubbo-provider-impl</module>
     </modules>
 
 
