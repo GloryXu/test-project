@@ -15,6 +15,7 @@
         <module>dubbo-consumer</module>
         <module>dubbo-provider</module>
         <module>dubbo-provider-impl</module>
+        <module>dubbo-generic</module>
     </modules>
 
 
