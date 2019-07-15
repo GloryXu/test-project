@@ -22,8 +22,8 @@ public class DesDemo {
         String data = "sdfsdfss是的";
         // System.err.println(encrypt(data, key));
         // System.err.println(decrypt(encrypt(data, key), key));
-        System.out.println(encrypt(data));
-        System.out.println(decrypt(encrypt(data)));
+        System.out.println("密文：" + encrypt(data));
+        System.out.println("明文：" + decrypt(encrypt(data)));
 
     }
 

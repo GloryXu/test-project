@@ -14,7 +14,8 @@ import java.security.SecureRandom;
 public class AesEncryptAndDecrypt {
 
     public static void main(String[] args) throws Exception {
-        String data = "xugr";
+//        String data = "xugr";
+        String data = "ed1023cd9bf10";
         String key = "11111";
 
         System.out.println("明文是：" + data + "，加密key为：" + key);

@@ -21,9 +21,9 @@ public class DesEcbDemo {
 
     public static void main(String[] args) throws Exception {
 //        String data = "sdfsdfss";// -->5544ed742978d5bc
-        String data = "sdfsdfss11111111";// -->5544ed742978d5bc 9d38b654481e11bf
-        System.out.println(encrypt(data));
-        System.out.println(decrypt(encrypt(data)));
+        String data = "sdfsdfss11111111111111111111111111111111";// -->5544ed742978d5bc 9d38b654481e11bf
+        System.out.println("密文：" + encrypt(data));
+        System.out.println("明文：" + decrypt(encrypt(data)));
 
     }
 
