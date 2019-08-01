@@ -66,6 +66,43 @@ public class FileTest {
     }
 
     /**
+     * 找出file1中的ip信息
+     */
+    @Test
+    public void testFindIpFromFile() throws IOException {
+        BufferedReader br1 = new BufferedReader(new FileReader("C:\\Users\\xuguangrong\\Desktop\\已上线.txt"));
+        BufferedReader br2 = new BufferedReader(new FileReader("C:\\Users\\xuguangrong\\Desktop\\应急资源ip.txt"));
+
+        Set<String> oriIPs = new HashSet<>();
+        while (true) {
+            String line = br1.readLine();
+            if (line == null) {
+                break;
+            }
+            if (!StringUtils.isEmpty(line.trim()) && !line.contains("22000")) {
+                oriIPs.add(line);
+            }
+        }
+        System.out.println("源文件大小：" + oriIPs.size());
+
+        Set<String> desIPs = new HashSet<>();
+        while (true) {
+            String line = br2.readLine();
+            if (StringUtils.isEmpty(line)) {
+                break;
+            }
+            desIPs.add(line);
+        }
+        System.out.println("目标文件大小：" + desIPs.size());
+
+        for (String ip : desIPs) {
+            if (!oriIPs.contains(ip)) {
+                System.out.println(ip);
+            }
+        }
+    }
+
+    /**
      * 删除分库分表信息
      * @throws IOException
      */
