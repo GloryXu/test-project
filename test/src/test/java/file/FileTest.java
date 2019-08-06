@@ -73,17 +73,17 @@ public class FileTest {
         BufferedReader br1 = new BufferedReader(new FileReader("C:\\Users\\xuguangrong\\Desktop\\已上线.txt"));
         BufferedReader br2 = new BufferedReader(new FileReader("C:\\Users\\xuguangrong\\Desktop\\应急资源ip.txt"));
 
-        Set<String> oriIPs = new HashSet<>();
+        Set<String> shangxian = new HashSet<>();
         while (true) {
             String line = br1.readLine();
             if (line == null) {
                 break;
             }
             if (!StringUtils.isEmpty(line.trim()) && !line.contains("22000")) {
-                oriIPs.add(line);
+                shangxian.add(line);
             }
         }
-        System.out.println("源文件大小：" + oriIPs.size());
+        System.out.println("源文件大小：" + shangxian.size());
 
         Set<String> desIPs = new HashSet<>();
         while (true) {
@@ -96,7 +96,7 @@ public class FileTest {
         System.out.println("目标文件大小：" + desIPs.size());
 
         for (String ip : desIPs) {
-            if (!oriIPs.contains(ip)) {
+            if (!shangxian.contains(ip)) {
                 System.out.println(ip);
             }
         }
