@@ -52,6 +52,7 @@
         <fastjson.version>1.2.58</fastjson.version>
         <zookeeper.version>3.4.13</zookeeper.version>
         <curator.version>4.0.1</curator.version>
+        <hystrix.version>1.5.12</hystrix.version>
     </properties>
 
     <modules>
@@ -70,6 +71,7 @@
         <module>zookeeper</module>
         <module>pool</module>
         <module>rpc</module>
+        <module>hystrix</module>
     </modules>
 
     <dependencyManagement>
@@ -435,6 +437,11 @@
                 <groupId>org.apache.curator</groupId>
                 <artifactId>curator-framework</artifactId>
                 <version>${curator.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.netflix.hystrix</groupId>
+                <artifactId>hystrix-core</artifactId>
+                <version>${hystrix.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
