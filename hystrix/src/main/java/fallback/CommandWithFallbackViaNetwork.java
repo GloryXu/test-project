@@ -15,7 +15,7 @@ public class CommandWithFallbackViaNetwork extends HystrixCommand<String> {
 
     private final int id;
 
-    protected CommandWithFallbackViaNetwork(int id) {
+    public CommandWithFallbackViaNetwork(int id) {
         super(Setter.withGroupKey(HystrixCommandGroupKey.Factory.asKey("RemoteServiceX"))
                 .andCommandKey(HystrixCommandKey.Factory.asKey("GetValueCommand")));
         this.id = id;
@@ -23,7 +23,6 @@ public class CommandWithFallbackViaNetwork extends HystrixCommand<String> {
 
     @Override
     protected String run() {
-        //        RemoteServiceXClient.getValue(id);
         log.info("run execute!");
         throw new RuntimeException("force failure for example");
     }
