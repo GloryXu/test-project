@@ -1,27 +1,6 @@
 package classloader;
 
-class Super {
-    public static int m = 11;
-
-    static {
-        System.out.println("执行了super类静态语句块");
-    }
-}
-
-class Father extends Super {
-    //    public static int m = 33;
-    public static int m = 33;
-
-    static {
-        System.out.println("执行了父类静态语句块");
-    }
-}
-
-class Child extends Father {
-    static {
-        System.out.println("执行了子类静态语句块");
-    }
-}
+import classloader.entity.Child;
 
 /**
  * static变量发生在静态解析阶段，也即是初始化之前，此时已经将字段的符号引用转化为了内存引用，也便将它与对应的类关联在了一起，

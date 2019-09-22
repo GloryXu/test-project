@@ -71,7 +71,7 @@ public class FileTest {
     @Test
     public void testFindIpFromFile() throws IOException {
         BufferedReader br1 = new BufferedReader(new FileReader("C:\\Users\\xuguangrong\\Desktop\\已上线.txt"));
-        BufferedReader br2 = new BufferedReader(new FileReader("C:\\Users\\xuguangrong\\Desktop\\应急资源ip.txt"));
+        BufferedReader br2 = new BufferedReader(new FileReader("C:\\Users\\xuguangrong\\Desktop\\应该有的机器ip.txt"));
 
         Set<String> shangxian = new HashSet<>();
         while (true) {

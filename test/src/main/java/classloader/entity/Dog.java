@@ -1,8 +1,11 @@
-package classloader;
+package classloader.entity;
 
-import org.junit.Test;
-
-class Dog {
+/**
+ * @author xuguangrong
+ * @description
+ * @date Created at 12:58 2019/9/22
+ */
+public class Dog {
     // ②
     {
         System.out.println("this is a non-static block!");
@@ -16,13 +19,5 @@ class Dog {
     // ③
     public Dog() {
         System.out.println("this is a no-parameter construct!");
-    }
-}
-
-public class StaticInitTest2 {
-
-    @Test
-    public void main() {
-        Dog dog = new Dog();
     }
 }

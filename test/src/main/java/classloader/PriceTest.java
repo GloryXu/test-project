@@ -1,5 +1,6 @@
 package classloader;
 
+import classloader.entity.Price;
 import org.junit.Test;
 
 // 1.系统为配、Price的两个类变量分配内存空间
