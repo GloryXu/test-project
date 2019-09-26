@@ -20,6 +20,7 @@
         <module>spring-event-driver</module>
         <module>aspect</module>
         <module>spring-logback</module>
+        <module>spring-expression</module>
     </modules>
 
     <dependencies>
