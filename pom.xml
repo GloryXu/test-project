@@ -50,7 +50,7 @@
         <redisson.version>3.10.4</redisson.version>
         <poi.version>3.17</poi.version>
         <fastjson.version>1.2.58</fastjson.version>
-        <zookeeper.version>3.4.13</zookeeper.version>
+        <zookeeper.version>[3.4.14,)</zookeeper.version>
         <curator.version>4.0.1</curator.version>
         <hystrix.version>1.5.12</hystrix.version>
     </properties>
