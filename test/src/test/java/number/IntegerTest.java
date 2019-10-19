@@ -2,6 +2,9 @@ package number;
 
 import org.junit.Test;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class IntegerTest {
     /**
      * 测试Integer自动装箱，拆箱
@@ -12,6 +15,13 @@ public class IntegerTest {
         Integer b = new Integer(12);
         System.out.println("a == 12 result is " + (a == 12));
         System.out.println("a == 12 result is " + (b == 12));
+    }
+
+    @Test
+    public void testQZ() {
+        Map<String, Object> map = new HashMap();
+
+        System.out.println((Integer) map.get("test") == 1);
     }
 
     @Test
