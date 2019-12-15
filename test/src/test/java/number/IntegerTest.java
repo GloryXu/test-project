@@ -55,4 +55,19 @@ public class IntegerTest {
         System.out.println(Math.ceil(0.499999f));
     }
 
+    @Test
+    public void testMapPrint() {
+        Map<String, Object> map = new HashMap<>();
+        Double number = 10000000D;
+        map.put("number", number);
+
+        System.out.println(map.toString());
+
+        DataPool inputDataArea = new DataPool("layout");
+        inputDataArea.setIdatas(map);
+        System.out.println(inputDataArea.toString());
+
+
+    }
+
 }

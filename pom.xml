@@ -72,6 +72,8 @@
         <module>pool</module>
         <module>rpc</module>
         <module>hystrix</module>
+        <module>db</module>
+        <module>antlr4</module>
     </modules>
 
     <dependencyManagement>
@@ -447,6 +449,18 @@
                 <groupId>com.netflix.hystrix</groupId>
                 <artifactId>hystrix-core</artifactId>
                 <version>${hystrix.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.antlr</groupId>
+                <artifactId>antlr4</artifactId>
+                <version>4.7.2</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.antlr</groupId>
+                <artifactId>ST4</artifactId>
+                <version>4.1</version>
+                <scope>compile</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
