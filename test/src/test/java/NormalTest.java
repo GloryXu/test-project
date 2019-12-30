@@ -182,4 +182,15 @@ public class NormalTest {
         }
 
     }
+
+    @Test
+    public void printEnum() {
+        System.out.println(Type.desc.name());
+    }
+
+    enum Type {
+        desc,
+        asc
+    }
+
 }
