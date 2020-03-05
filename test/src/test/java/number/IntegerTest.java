@@ -15,6 +15,7 @@ public class IntegerTest {
         Integer b = new Integer(12);
         System.out.println("a == 12 result is " + (a == 12));
         System.out.println("a == 12 result is " + (b == 12));
+        System.out.println("1".equals(new Integer(1)));
     }
 
     @Test
@@ -66,8 +67,12 @@ public class IntegerTest {
         DataPool inputDataArea = new DataPool("layout");
         inputDataArea.setIdatas(map);
         System.out.println(inputDataArea.toString());
+    }
 
-
+    @Test
+    public void testAA () {
+        String value = null;
+        System.out.println(value = new String("0"));
     }
 
 }

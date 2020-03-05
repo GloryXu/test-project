@@ -1,20 +1,112 @@
 package date;
 
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang3.time.DateUtils;
 import org.junit.Test;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
+import java.util.*;
 
 /**
  * Created by xugr on 2017/3/21.
  */
 @Slf4j
 public class DateTest {
+
+    public static void main(String[] args) throws ParseException {
+//        @-$$$&$%^^^ 年 &^^ 月 ^& 日 %^^ 时 &*%^^^ 分 *%^ 秒
+
+        Date date = new SimpleDateFormat("yyyy年MM月hh日 HH时mm分ss秒").parse("4398年12月9日 07时48分56秒");
+        System.out.println(date.getYear() + 1900);
+        System.out.println(wathinsDateConverter(date));
+    }
+
+    /**
+     * ^	1
+     * %	5
+     * &	10
+     * *	50
+     * $	100
+     * #	500
+     * @	1000
+     * -	5000
+     * @param earthDate
+     * @return
+     */
+    public static String wathinsDateConverter(Date earthDate) {
+
+        long sec = 56;
+        long min = 48;
+        long hour = 07;
+        long day = 9;
+        long month = 12;
+        long year = 4398;
+
+        return getTime(year) + "年" + getTime(month) + "月" + getTime(day) + "日 " + getTime(hour) + "时" + getTime(min) + "分" + getTime(sec) + "秒";
+    }
+
+    private static String getTime(long num) {
+        Map<String, Long> numMap = new HashMap<>();
+        numMap.put("^", 1L);
+        numMap.put("%", 5L);
+        numMap.put("&", 10L);
+        numMap.put("*", 50L);
+        numMap.put("$", 100L);
+        numMap.put("#", 500L);
+        numMap.put("@", 1000L);
+        numMap.put("-", 5000L);
+
+        String[] chars = new String[8];
+        chars[7] = "^";
+        chars[6] = "%";
+        chars[5] = "&";
+        chars[4] = "*";
+        chars[3] = "$";
+        chars[2] = "#";
+        chars[1] = "@";
+        chars[0] = "-";
+
+        String result = "";
+
+        long temp = num;
+        int i = 0;
+        long aa = 0;// 余数
+        long bb = 0;// 倍数
+        while (true) {
+            String char1 = chars[i];
+            aa = temp % numMap.get(char1);
+            bb = temp / numMap.get(char1);
+            if ( aa != temp) {
+                if (bb > 3) {
+                    if (StringUtils.isEmpty(result)) {
+                        result += chars[i] + chars[i-1];
+                    } else {
+                        String lastChar = result.substring(result.length() - 1, result.length());
+                        if (lastChar.equals(chars[i-1]) && ("%".equals(chars[i-1]) || "*".equals(chars[i-1]) || "#".equals(chars[i-1]))) {
+                            result = result.substring(0, result.length() - 1) + chars[i] + chars[i-2];
+                        } else {
+                            result += chars[i] + chars[i-1];
+                        }
+                    }
+                    temp = temp - bb*numMap.get(char1);
+                } else {
+                    temp = aa;
+                    for (int j = 0;j<bb;j++) {
+                        result += char1;
+                    }
+                }
+            }
+            i++;
+            if (i>7) {
+                break;
+            }
+        }
+
+
+        return result;
+    }
 
     @Test
     public void testAddDay() {

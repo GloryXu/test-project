@@ -11,9 +11,7 @@ import org.springframework.util.StringUtils;
 import util.DBUtils;
 
 import java.io.*;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
+import java.util.*;
 import java.util.regex.Pattern;
 
 @Slf4j
@@ -62,6 +60,66 @@ public class FileTest {
             if (!desIPs.contains(ip)) {
                 System.out.println(ip);
             }
+        }
+    }
+
+    /**
+     * 找出file1中有的file2中没有的ip信息
+     */
+    @Test
+    public void testCreateTable() throws IOException {
+//        BufferedReader br1 = new BufferedReader(new FileReader("C:\\Users\\xuguangrong\\Desktop\\表名和描述.txt"));
+        BufferedReader br1 = new BufferedReader(new FileReader("C:\\Users\\xuguangrong\\Desktop\\逆向表名和描述.txt"));
+
+        while (true) {
+            String line = br1.readLine();
+            if (StringUtils.isEmpty(line)) {
+                break;
+            }
+            String[] tableInfos = line.split("\t");
+            String tableName = tableInfos[0];
+            String desc = tableInfos[1];
+
+            // 正向表结构
+            /*String createTableTemplate = "CREATE TABLE `%s` (\n" +
+                    "  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '自增主键',\n" +
+                    "  `id_value` varchar(100) NOT NULL COMMENT '正向ID',\n" +
+                    "  `data_src` varchar(30) NOT NULL COMMENT '正向ID渠道',\n" +
+                    "  `unif_key` varchar(50) NOT NULL COMMENT 'key',\n" +
+                    "  `data_src_score` varchar(5) NOT NULL COMMENT '渠道优先级',\n" +
+                    "  `unif_key_conf` decimal(10,2) NOT NULL COMMENT 'KEY可信度',\n" +
+                    "  `create_time` varchar(10) NOT NULL COMMENT '创建时间',\n" +
+                    "  `update_time` varchar(10) NOT NULL COMMENT '更新时间',\n" +
+                    "  `dt` varchar(16) NOT NULL COMMENT '日期分区',\n" +
+                    "  `del_status` varchar(5) DEFAULT NULL COMMENT '删除标识',\n" +
+                    "  `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',\n" +
+                    "  `modified_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',\n" +
+                    "  PRIMARY KEY (`id`),\n" +
+                    "  UNIQUE KEY `uniq_idx_key` (`id_value`,`data_src`,`unif_key`)\n" +
+                    ") ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_bin ROW_FORMAT=COMPACT COMMENT='%s';";*/
+
+            // 逆向表结构
+            String createTableTemplate = "CREATE TABLE `%s` (\n" +
+                    "  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '自增主键',\n" +
+                    "  `unif_key` varchar(50) NOT NULL COMMENT 'key',\n" +
+                    "  `id_value` varchar(100) NOT NULL COMMENT '逆向ID',\n" +
+                    "  `data_src` varchar(30) NOT NULL COMMENT '逆向ID渠道',\n" +
+                    "  `data_src_score` varchar(5) NOT NULL COMMENT '渠道优先级',\n" +
+                    "  `unif_key_rel_conf` decimal(10,2) NOT NULL COMMENT '普通ID与统一ID关系可信度',\n" +
+                    "  `id_actv_rate` decimal(10,2) NOT NULL COMMENT 'ID活跃度',\n" +
+                    "  `create_time` varchar(10) NOT NULL COMMENT '创建时间',\n" +
+                    "  `update_time` varchar(10) NOT NULL COMMENT '更新时间',\n" +
+                    "  `dt` varchar(16) NOT NULL COMMENT '日期分区',\n" +
+                    "  `del_status` varchar(5) DEFAULT NULL COMMENT '删除标识',\n" +
+                    "  `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',\n" +
+                    "  `modified_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',\n" +
+                    "  PRIMARY KEY (`id`),\n" +
+                    "  UNIQUE KEY `uniq_idx_key` (`unif_key`,`id_value`,`data_src`)\n" +
+                    ") ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_bin ROW_FORMAT=COMPACT COMMENT='%s';";
+
+            System.out.println(String.format(createTableTemplate, tableName, desc));
+            System.out.println();
+            System.out.println();
         }
     }
 
@@ -220,4 +278,176 @@ public class FileTest {
         String str2 = "xxx_222";
         System.out.println(str2.substring(0, str2.length() - 4));
     }
+
+    /**
+     * 读取文件获取线程增加的10s，发起查询和返回的数量
+     */
+    @Test
+    public void testQueryLineAndReturnLine() throws IOException {
+//        发起查询次数327, 查询返回次数252
+        BufferedReader br1 = new BufferedReader(new FileReader("D:\\Downloads\\export\\Instances\\jrm-runtime\\server1\\logs\\线程增加的10s.txt"));
+
+        // 正常情况
+//        发起查询次数2070, 查询返回次数2070
+//        BufferedReader br1 = new BufferedReader(new FileReader("D:\\Downloads\\export\\Instances\\jrm-runtime\\server1\\logs\\正常.txt"));
+        // 发起查询次数746, 查询返回次数745
+//        BufferedReader br1 = new BufferedReader(new FileReader("D:\\Downloads\\export\\Instances\\jrm-runtime\\server1\\logs\\正常1.txt"));
+
+        int queryCount = 0;
+        int retCount = 0;
+        while (true) {
+            String line = br1.readLine();
+            if (StringUtils.isEmpty(line)) {
+                break;
+            }
+            if (line.contains("Exception") || line.contains("\tat ")) {
+                continue;
+            }
+            if (line.contains("】查询") && line.contains("入参")) {
+                queryCount++;
+            }
+            if (line.contains("】查询") && line.contains("返回结果")) {
+                retCount++;
+            }
+        }
+
+        System.out.println("发起查询次数" + queryCount + ", 查询返回次数" + retCount);
+    }
+
+    @Test
+    public void testThreadCount() throws IOException {
+//        BufferedReader br1 = new BufferedReader(new FileReader("D:\\Downloads\\export\\Instances\\jrm-runtime\\server1\\logs\\线程增加的10s.txt"));
+        BufferedReader br1 = new BufferedReader(new FileReader("D:\\Downloads\\export\\Instances\\jrm-runtime\\server1\\logs\\ok.txt"));
+        Map<String, Integer> interCount = new HashMap<>();
+        while (true) {
+            String line = br1.readLine();
+            if (StringUtils.isEmpty(line)) {
+                break;
+            }
+            if (line.contains("Exception") || line.contains("\tat ")) {
+                continue;
+            }
+
+            String threadName = getThreadName(line);
+            if (threadName == null) {
+                continue;
+            }
+
+            Integer count = interCount.get(threadName);
+            if (count == null) {
+                interCount.put(threadName, 1);
+            }else {
+                interCount.put(threadName, ++count);
+            }
+        }
+
+        ValueComparator bvc =  new ValueComparator(interCount);
+        TreeMap<String,Integer> sorted_map = new TreeMap<>(bvc);
+        sorted_map.putAll(interCount);
+
+        System.out.println(sorted_map);
+    }
+
+    /**
+     * 获取线程名称
+     *
+     * @param line
+     * @return
+     */
+    private String getThreadName(String line) {
+        try {
+            int start = line.indexOf("[");
+
+            int end = line.indexOf("]");
+            String threadName1 = line.substring(start + 1, end);
+//            return threadName1.substring(0, threadName1.lastIndexOf("-"));
+            return threadName1;
+        } catch (StringIndexOutOfBoundsException e) {
+            System.out.println(line);
+            return null;
+        }
+    }
+
+    @Test
+    public void testExternalInterfaceCount() throws IOException {
+        BufferedReader br1 = new BufferedReader(new FileReader("D:\\Downloads\\export\\Instances\\jrm-runtime\\server1\\logs\\线程增加的10s.txt"));
+
+        Map<String, Integer> interCount = new HashMap<>();
+
+
+        while (true) {
+            String line = br1.readLine();
+            if (StringUtils.isEmpty(line)) {
+                break;
+            }
+            if (line.contains("Exception") || line.contains("\tat ")) {
+                continue;
+            }
+            if (line.contains("】查询") && line.contains("入参")) {
+                String externalInterface = getInterface(line);
+                Integer count = interCount.get(externalInterface);
+                if (count == null) {
+                    interCount.put(externalInterface, 1);
+                }else {
+                    interCount.put(externalInterface, ++count);
+                }
+            }
+            if (line.contains("】查询") && line.contains("返回结果")) {
+                String externalInterface = getInterface(line);
+                Integer count = interCount.get(externalInterface);
+                if (count == null) {
+                    interCount.put(externalInterface, -1);
+                } else {
+                    interCount.put(externalInterface, --count);
+                }
+            }
+        }
+
+        ValueComparator bvc =  new ValueComparator(interCount);
+        TreeMap<String,Integer> sorted_map = new TreeMap<>(bvc);
+        sorted_map.putAll(interCount);
+
+        System.out.println(sorted_map);
+        System.out.println(sorted_map.size());
+
+        for (Map.Entry<String, Integer> entry : sorted_map.entrySet()) {
+            System.out.print("'" + entry.getKey()+"',");
+        }
+    }
+
+    /**
+     * 获取接口名
+     *
+     * @param line
+     * @return
+     */
+    private String getInterface(String line) {
+        int start1 = line.indexOf("【");
+        int start = line.indexOf("【", start1 + 1);
+
+        int end1 = line.indexOf("】");
+        int end = line.indexOf("】", end1 + 1);
+        return line.substring(start + 1, end);
+    }
+
+
+    class ValueComparator implements Comparator<String> {
+
+        Map<String, Integer> base;
+        //这里需要将要比较的map集合传进来
+        public ValueComparator(Map<String, Integer> base) {
+            this.base = base;
+        }
+
+        // Note: this comparator imposes orderings that are inconsistent with equals.
+        //比较的时候，传入的两个参数应该是map的两个key，根据上面传入的要比较的集合base，可以获取到key对应的value，然后按照value进行比较
+        public int compare(String a, String b) {
+            if (base.get(a) >= base.get(b)) {
+                return -1;
+            } else {
+                return 1;
+            } // returning 0 would merge keys
+        }
+    }
+
 }
