@@ -74,6 +74,7 @@
         <module>hystrix</module>
         <module>db</module>
         <module>antlr4</module>
+        <module>spring-dozer</module>
     </modules>
 
     <dependencyManagement>
@@ -461,6 +462,12 @@
                 <artifactId>ST4</artifactId>
                 <version>4.1</version>
                 <scope>compile</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>net.sf.dozer</groupId>
+                <artifactId>dozer</artifactId>
+                <version>5.4.0</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
