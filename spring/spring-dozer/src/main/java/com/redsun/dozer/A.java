@@ -6,7 +6,7 @@ import java.util.List;
  * @author qiquan
  * @date 2020/06/19 14:06
  */
-public class A {
+public class A extends AA {
 
     private B b;
 
@@ -14,12 +14,23 @@ public class A {
 
     private List<String> aList;
 
+    private String inter;
+
+    public String getInter() {
+        return inter;
+    }
+
+    public void setInter(String inter) {
+        this.inter = inter;
+    }
+
     @Override
     public String toString() {
         return "A{" +
                 "b=" + b +
                 ", a='" + a + '\'' +
                 ", aList=" + aList +
+                ", inter='" + inter + '\'' +
                 '}';
     }
 

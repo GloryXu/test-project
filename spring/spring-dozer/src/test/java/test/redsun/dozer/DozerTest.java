@@ -20,6 +20,9 @@ public class DozerTest extends BaseTest {
     public void testA() {
         A a = new A();
         a.setA("aaaa");
+        a.setAa("dfgdghdg");
+
+        a.setInter("34");
 
         B b = new B();
         b.setB("bbb");
