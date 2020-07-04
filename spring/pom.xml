@@ -21,6 +21,7 @@
         <module>aspect</module>
         <module>spring-logback</module>
         <module>spring-expression</module>
+        <module>spring-dozer</module>
     </modules>
 
     <dependencies>
