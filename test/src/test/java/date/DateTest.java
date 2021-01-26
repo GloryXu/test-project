@@ -109,6 +109,60 @@ public class DateTest {
     }
 
     @Test
+    public void testLastWeek() throws ParseException {
+        Date date =  new Date();
+        Calendar calendar = Calendar.getInstance();
+        calendar.setFirstDayOfWeek(Calendar.MONDAY);
+        calendar.setTime(date);
+        System.out.println(calendar.get(Calendar.WEEK_OF_YEAR));
+
+
+        String date1Str = "2020-08-31";
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        Date date1 = format.parse(date1Str);
+        Calendar calendar1 = Calendar.getInstance();
+        calendar1.setFirstDayOfWeek(Calendar.MONDAY);
+        calendar1.setTime(date1);
+        System.out.println(calendar1.get(Calendar.WEEK_OF_YEAR));
+    }
+
+    /**
+     * 通过周几获取本周时间
+     *
+     * @param week
+     * @param num   0：当前周，1：下一周，-1：上一周，以此类推
+     * @return
+     */
+    private Date getTimeByWeek(String week, int num) {
+
+        return new Date();
+    }
+
+    private String getWeek() {
+        String week = "";
+        Date today = new Date();
+        Calendar c = Calendar.getInstance();
+        c.setTime(today);
+        int weekday = c.get(Calendar.DAY_OF_WEEK);
+        if (weekday == 1) {
+            week = "周日";
+        } else if (weekday == 2) {
+            week = "周一";
+        } else if (weekday == 3) {
+            week = "周二";
+        } else if (weekday == 4) {
+            week = "周三";
+        } else if (weekday == 5) {
+            week = "周四";
+        } else if (weekday == 6) {
+            week = "周五";
+        } else if (weekday == 7) {
+            week = "周六";
+        }
+        return week;
+    }
+
+    @Test
     public void testAddDay() {
         Date date = DateUtils.addDays(new Date(), 1);
         log.info("------date = {}", date);

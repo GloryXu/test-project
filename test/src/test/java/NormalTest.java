@@ -9,6 +9,21 @@ import static util.PrintUtils.printArr;
 public class NormalTest {
 
     @Test
+    public void testForEach() {
+        List<String> test = new ArrayList<>();
+        test.add("1");
+        test.add("2");
+        test.add("3");
+
+        test.forEach(t ->{
+            if ("2".equals(t)) {
+                return;
+            }
+            System.out.println(t);
+        });
+    }
+
+    @Test
     public void testInstanceof() {
         String params = "ddd";
         System.out.println(params instanceof String);
@@ -185,12 +200,12 @@ public class NormalTest {
 
     @Test
     public void printEnum() {
-        System.out.println(Type.desc.name());
+        System.out.println(Type.DESC.name());
     }
 
     enum Type {
-        desc,
-        asc
+        DESC,
+        ASC
     }
 
 }
