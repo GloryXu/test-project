@@ -7,11 +7,24 @@ import util.PrintUtils;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static domain.Print.printArray;
 
 @Slf4j
 public class ListTest {
+
+    @Test
+    public void testLamda() {
+        List<String> list = new ArrayList<>();
+        list.add("1");
+        list.add("2");
+        list.add("3");
+        list.add("4");
+
+        List<String> newList = list.stream().filter(t -> !t.equals("1")).collect(Collectors.toList());
+        System.out.println(newList);
+    }
 
     @Test
     public void testSubList() {
