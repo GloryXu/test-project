@@ -4,12 +4,15 @@ import com.google.common.collect.Maps;
 import com.google.gson.Gson;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.codec.binary.Hex;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.junit.Test;
 import util.PrintUtils;
 
 import java.util.Base64;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 import java.util.regex.Pattern;
 
 /**
@@ -17,6 +20,58 @@ import java.util.regex.Pattern;
  */
 @Slf4j
 public class StringTest {
+
+    /**
+     * 分隔符
+     */
+    public static final String DELIMITER = ";";
+
+    /**
+     * KV分隔符
+     */
+    public static final String KV_DELIMITER = "=";
+
+    /**
+     * 通过feature字符串构建featureMap
+     *
+     * @param features features字符串
+     * @return featureMap
+     */
+    public static Map<String, String> buildFeatureMap(String features) {
+        if (StringUtils.isBlank(features)) {
+            return Maps.newHashMap();
+        }
+        Map<String, String> featureMap = Maps.newHashMap();
+        String[] featureArray = features.split(DELIMITER);
+        if (featureArray.length > 0) {
+            for (String feature : featureArray) {
+                String[] featureArr = feature.split(KV_DELIMITER);
+                if (featureArr.length > 1) {
+                    featureMap.put(featureArr[0], featureArr[1]);
+                }
+            }
+        }
+        return featureMap;
+    }
+
+    /**
+     * 测试差异
+     */
+    @Test
+    public void testDiff() {
+        String old =     "whcGreyFlag=111;industryServiceId=5000000000059;cjOutboundFlag=Y;dn=null;sAreaName=增城区;receiverNick=xyz天使与恶魔;noMultiWave=true;tmsServiceCode=DISTRIBUTOR_525912;rCountryName=CN;unionDelivery=2021/03/07;whSinkStat=-1;supportJPKX=1;afOrderPrice=null;priorityConsign=false;sName=梁淑华;sTownName=新塘镇;sProvinceName=广东省;sMobile=18825192492;tmsServiceName=芝麻开门;isStrongMode=true;sPhone=18825192492;sCityName=广州市;sZipCode=511340;firstRdcType=DISTRIBUTION_DIRECTION;sAddress=永宁街沙宁路创业大道161号菜鸟网络（6号库1楼02号门）;orderFlag=34;orderPayTime=2021-03-05 13:51:15;first_rdc_name=N02;deliveryServiceType=std;sCountryName=CN;weight=9000;senderDivisionId=440183101;buyerDivisionId=441901006;";
+        String newStr =  "whcGreyFlag=111;buyerDivisionId=445121;cjOutboundFlag=Y;sAreaName=清城区;receiverNick=null;noMultiWave=true;rCountryName=CN;afOrderPrice=null;priorityConsign=false;weight=187;isStrongMode=false;sZipCode=510000;senderDivisionId=441802103;industryServiceId=5000000000013;tmsServiceCode=DISTRIBUTOR_11903420;unionDelivery=2021/02/23;whSinkStat=-1;sName=杨曼华;sTownName=源潭镇;postFee=0;sProvinceName=广东省;sMobile=13822077825;tmsServiceName=广东EMS-省内;sCityName=清远市;sAddress=广东省清远市清城区G0423(乐广高速)中国南部物流枢纽园区3号库;CODamount=0;orderFlag=34;tn=null;orderPayTime=2021-02-19 17:21:37;deliveryServiceType=std;sCountryName=CN";
+        Map<String, String> oldMap = buildFeatureMap(old);
+        Map<String, String> newStrMap = buildFeatureMap(newStr);
+
+        Set<String> newLess = new HashSet<>();
+        oldMap.entrySet().stream().forEach(entry -> {
+            if(!newStrMap.containsKey(entry.getKey())){
+                newLess.add(entry.getKey());
+            }
+        });
+        System.out.println(newLess);
+    }
 
     @Test
     public void testStringBuffer() {

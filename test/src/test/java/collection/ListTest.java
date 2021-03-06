@@ -16,6 +16,7 @@ public class ListTest {
 
     @Test
     public void testLamda() {
+        System.out.println(Boolean.TRUE.equals("true"));
         List<String> list = new ArrayList<>();
         list.add("1");
         list.add("2");
