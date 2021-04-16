@@ -1,7 +1,14 @@
 package collection;
 
+import json.User;
+import org.apache.activemq.kaha.impl.data.Item;
+import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.collections4.functors.DefaultEquator;
 import org.jasypt.contrib.org.apache.commons.codec_1_3.binary.Base64;
 import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ArrayTest {
     public static void main(String[] args) {
@@ -24,6 +31,28 @@ public class ArrayTest {
         System.out.println("第1个数组的长度：" + books.length);
         System.out.println("第2个数组的长度：" + names.length);
         System.out.println("第3个数组的长度：" + strArr.length);
+    }
+
+    @Test
+    public void testListEquals() {
+        List<User> list1 = new ArrayList<>();
+        list1.add(new User("11", 11, "11"));
+        list1.add(new User("22", 22, "22"));
+
+        List<User> list2 = new ArrayList<>();
+        list2.add(new User("22", 22, "22"));
+        list2.add(new User("11", 11, "11"));
+
+        List<User> list3 = new ArrayList<>();
+        list3.add(new User("11", 11, "11"));
+        list3.add(new User("22", 22, "22"));
+
+        System.out.println(CollectionUtils.isEqualCollection(list1, list2));
+        System.out.println(CollectionUtils.isEqualCollection(list1, list3));
+
+        System.out.println(CollectionUtils.isEqualCollection(list1, list2, DefaultEquator.INSTANCE));
+        System.out.println(CollectionUtils.isEqualCollection(list1, list3, DefaultEquator.INSTANCE));
+
     }
 
     @Test
