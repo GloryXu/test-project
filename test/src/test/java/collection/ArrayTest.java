@@ -1,5 +1,6 @@
 package collection;
 
+import com.alibaba.fastjson.JSON;
 import json.User;
 import org.apache.activemq.kaha.impl.data.Item;
 import org.apache.commons.collections4.CollectionUtils;
@@ -31,6 +32,13 @@ public class ArrayTest {
         System.out.println("第1个数组的长度：" + books.length);
         System.out.println("第2个数组的长度：" + names.length);
         System.out.println("第3个数组的长度：" + strArr.length);
+    }
+
+    @Test
+    public void testListEquals11() {
+        boolean[] haveUsedPackage = new boolean[10];
+
+        System.out.println(JSON.toJSONString(haveUsedPackage));
     }
 
     @Test

@@ -2,7 +2,9 @@ package util;
 
 import javax.sql.DataSource;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -11,6 +13,7 @@ import java.util.Set;
  * @date Created at 18:35 2019/5/6
  */
 public class DBUtils {
+
     /**
      * 执行mysql sql
      * @param url
