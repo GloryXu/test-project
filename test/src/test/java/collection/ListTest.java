@@ -28,6 +28,11 @@ public class ListTest {
     }
 
     @Test
+    public void testStramSum() {
+        List<Integer> list = new ArrayList<Integer>();
+    }
+
+    @Test
     public void testSubList() {
         List<String> list = new ArrayList<>();
         list.add("xugr1");

@@ -19,6 +19,14 @@ public class IntegerTest {
     }
 
     @Test
+    public void testAAA () {
+        int a = 10;
+        int b = 4;
+        System.out.println(Math.ceil(a/b));
+        System.out.println(Math.ceil(a/(double)b));
+    }
+
+    @Test
     public void testQZ() {
         Map<String, Object> map = new HashMap();
 
