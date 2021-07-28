@@ -1,5 +1,6 @@
 package string;
 
+import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.gson.Gson;
 import lombok.extern.slf4j.Slf4j;
@@ -9,10 +10,7 @@ import org.apache.commons.lang3.math.NumberUtils;
 import org.junit.Test;
 import util.PrintUtils;
 
-import java.util.Base64;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.regex.Pattern;
 
 /**
@@ -30,6 +28,13 @@ public class StringTest {
      * KV分隔符
      */
     public static final String KV_DELIMITER = "=";
+    
+    @Test
+    public void testStringJoin() {
+//        System.out.println(String.join(",", (List) null));
+        System.out.println(String.join(",", Lists.newArrayList()));
+        System.out.println(String.join(",", Lists.newArrayList("11", "22")));
+    }
 
     /**
      * 通过feature字符串构建featureMap
