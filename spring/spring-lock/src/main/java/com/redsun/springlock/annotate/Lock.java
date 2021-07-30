@@ -35,6 +35,6 @@ public @interface Lock {
      *
      * @return
      */
-    int lockExpire() default 0;
+    int lockExpire() default 10;
 
 }

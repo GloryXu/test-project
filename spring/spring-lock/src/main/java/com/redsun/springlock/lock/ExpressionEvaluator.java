@@ -8,6 +8,7 @@ import org.springframework.core.DefaultParameterNameDiscoverer;
 import org.springframework.core.ParameterNameDiscoverer;
 import org.springframework.expression.EvaluationContext;
 import org.springframework.expression.Expression;
+import org.springframework.stereotype.Service;
 
 import java.lang.reflect.Method;
 import java.util.Map;
@@ -17,6 +18,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * @author qiquan
  * @date 2021/07/24 19:03
  */
+@Service
 public class ExpressionEvaluator<T> extends CachedExpressionEvaluator {
     private final ParameterNameDiscoverer paramNameDiscoverer = new DefaultParameterNameDiscoverer();
 
@@ -28,9 +30,7 @@ public class ExpressionEvaluator<T> extends CachedExpressionEvaluator {
      * Create the suitable {@link EvaluationContext} for the specified event handling on the
      * specified method.
      */
-    public EvaluationContext createEvaluationContext(Object object, Class<?> targetClass,
-                                                     Method method, Object[] args) {
-        Method targetMethod = getTargetMethod(targetClass, method);
+    public EvaluationContext createEvaluationContext(Object object, Method targetMethod, Object[] args) {
         ExpressionRootObject root = new ExpressionRootObject(object, args);
         return new MethodBasedEvaluationContext(root, targetMethod, args, this.paramNameDiscoverer);
     }
@@ -38,13 +38,18 @@ public class ExpressionEvaluator<T> extends CachedExpressionEvaluator {
     /**
      * Specify if the condition defined by the specified expression matches.
      */
-    public T condition(String conditionExpression, AnnotatedElementKey elementKey,
-                       EvaluationContext evalContext, Class<T> clazz) {
-        return getExpression(this.conditionCache, elementKey, conditionExpression)
-                .getValue(evalContext, clazz);
+    public T condition(String conditionExpression, AnnotatedElementKey elementKey
+            , EvaluationContext evalContext, Class<T> clazz) {
+        return getExpression(this.conditionCache, elementKey, conditionExpression).getValue(evalContext, clazz);
     }
 
-    private Method getTargetMethod(Class<?> targetClass, Method method) {
+    /**
+     *
+     * @param targetClass
+     * @param method
+     * @return
+     */
+    public Method getTargetMethod(Class<?> targetClass, Method method) {
         AnnotatedElementKey methodKey = new AnnotatedElementKey(method, targetClass);
         Method targetMethod = this.targetMethodCache.get(methodKey);
         if (targetMethod == null) {
