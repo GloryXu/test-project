@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class TestControllerImpl implements TestController {
 
     @Override
-    @Lock(lockBean = "lockBean", lockExpire = 10, lockKey = "#user.name")
+    @Lock(lockBean = "lockBean", lockExpire = 10, lockKeys = {"#user.name", "#user.age"})
     public String printInfo(User user) {
         String info = "hahha";
         System.out.println(info);

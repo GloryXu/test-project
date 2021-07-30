@@ -29,6 +29,11 @@ public class LockInterceptor {
     @Autowired
     private ExpressionEvaluator<String> evaluator;
 
+    /**
+     * 前缀
+     */
+    public static final String LOCK_PREFIX = "AUTO_LOCK_PREFIX";
+
 
     @Around("@within(com.redsun.springlock.annotate.RedsunService)")
     public Object doAround(ProceedingJoinPoint joinPoint) throws Throwable {
@@ -40,17 +45,20 @@ public class LockInterceptor {
             if (lock == null) {
                 return joinPoint.proceed();
             }
-            String lockBean = lock.lockBean();
-            String lockKey = lock.lockKey();
-            if (!StringUtils.hasLength(lockBean) || !StringUtils.hasLength(lockKey)) {
+
+            if (!isValide(lock)) {
+                // log
                 return joinPoint.proceed();
             }
+
+            String lockBean = lock.lockBean();
+            String[] lockKeys = lock.lockKeys();
 
             boolean lockResult = false;
             String lockKeyValue = null;
             LockI lockI = null;
             try {
-                lockKeyValue = getValue(joinPoint, lock.lockKey(), targetMethod);
+                lockKeyValue = getValue(joinPoint, lockKeys, targetMethod);
                 lockI = SpringUtils.getBean(lockBean, LockI.class);
                 lockResult = lockI.lock(lockKeyValue);
             } catch (Exception e) {
@@ -66,12 +74,41 @@ public class LockInterceptor {
     }
 
     /**
+     * 是否合理
      *
-     * @param joinPoint
-     * @param condition
+     * @param lock
      * @return
      */
-    private String getValue(ProceedingJoinPoint joinPoint, String condition, Method targetMethod) {
+    private boolean isValide(Lock lock) {
+        String lockBean = lock.lockBean();
+        String[] lockKeys = lock.lockKeys();
+
+        if (!StringUtils.hasLength(lockBean) || Objects.isNull(lockKeys) || lockKeys.length == 0) {
+            return false;
+        }
+
+        // 任意lockKey不合法，则均不合法
+        for (String lockKey : lockKeys) {
+            if (!StringUtils.hasLength(lockKey)) {
+                return false;
+            }
+        }
+
+        int lockExpire = lock.lockExpire();
+        if (lockExpire <= 0) {
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     *
+     * @param joinPoint
+     * @param conditions
+     * @return
+     */
+    private String getValue(ProceedingJoinPoint joinPoint, String[] conditions, Method targetMethod) {
         Object[] args = joinPoint.getArgs();
         if (Objects.isNull(args)) {
             return null;
@@ -80,6 +117,12 @@ public class LockInterceptor {
         EvaluationContext evaluationContext = evaluator.createEvaluationContext(joinPoint.getTarget()
                 , targetMethod, args);
         AnnotatedElementKey methodKey = new AnnotatedElementKey(targetMethod, joinPoint.getTarget().getClass());
-        return evaluator.condition(condition, methodKey, evaluationContext, String.class);
+
+        StringBuilder finalValue = new StringBuilder(LOCK_PREFIX);
+        for (String condition : conditions) {
+            finalValue.append(evaluator.condition(condition, methodKey, evaluationContext, String.class));
+        }
+
+        return finalValue.toString();
     }
 }

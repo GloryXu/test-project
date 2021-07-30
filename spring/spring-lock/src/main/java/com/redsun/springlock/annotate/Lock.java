@@ -28,7 +28,7 @@ public @interface Lock {
      *
      * @return
      */
-    String lockKey();
+    String[] lockKeys();
 
     /**
      * lock expire time
