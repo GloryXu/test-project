@@ -32,7 +32,7 @@ public class LockInterceptor {
     /**
      * 前缀
      */
-    public static final String LOCK_PREFIX = "AUTO_LOCK_PREFIX";
+    public static final String LOCK_PREFIX = "AUTO_LOCK_PREFIX_";
 
 
     @Around("@within(com.redsun.springlock.annotate.RedsunService)")
@@ -59,6 +59,7 @@ public class LockInterceptor {
             LockI lockI = null;
             try {
                 lockKeyValue = getValue(joinPoint, lockKeys, targetMethod);
+                System.out.println(targetMethod.getName() + " key = " + lockKeyValue);
                 lockI = SpringUtils.getBean(lockBean, LockI.class);
                 lockResult = lockI.lock(lockKeyValue);
             } catch (Exception e) {
@@ -120,7 +121,7 @@ public class LockInterceptor {
 
         StringBuilder finalValue = new StringBuilder(LOCK_PREFIX);
         for (String condition : conditions) {
-            finalValue.append(evaluator.condition(condition, methodKey, evaluationContext, String.class));
+            finalValue.append(evaluator.condition(condition, methodKey, evaluationContext, String.class)).append("_");
         }
 
         return finalValue.toString();

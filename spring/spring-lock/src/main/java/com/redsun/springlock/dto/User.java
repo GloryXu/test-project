@@ -6,10 +6,20 @@ package com.redsun.springlock.dto;
  * @author qiquan
  * @date 2021/07/24 17:57
  */
-public class User implements LockKey {
+public class User extends BasePeople implements LockKey {
     private String name;
 
     private Integer age;
+
+    private Teacher teacher;
+
+    public Teacher getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
+    }
 
     public String getName() {
         return name;
