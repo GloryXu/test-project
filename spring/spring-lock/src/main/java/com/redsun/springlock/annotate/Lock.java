@@ -24,6 +24,12 @@ public @interface Lock {
     String lockBean();
 
     /**
+     * lock type
+     *
+     * @return
+     */
+    String lockType() default "";
+    /**
      * key
      *
      * @return

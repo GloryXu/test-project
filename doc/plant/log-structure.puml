@@ -1,0 +1,16 @@
+@startuml
+'日志结构化'
+
+object 作业流程
+object 日志模版
+object 日志
+
+
+
+map 单据 {
+    LU
+    订单
+}
+
+
+@enduml

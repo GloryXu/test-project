@@ -1,0 +1,14 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+Alice -> Bob: 查询请求
+activate Alice
+activate Bob
+Bob --> Alice: 结果返回
+deactivate Bob
+deactivate Alice
+
+@enduml
+
