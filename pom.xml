@@ -48,7 +48,7 @@
         <sofa.version>5.5.0</sofa.version>
         <logback.version>1.2.3</logback.version>
         <redisson.version>3.10.4</redisson.version>
-        <poi.version>3.17</poi.version>
+        <poi.version>4.1.1</poi.version>
         <fastjson.version>1.2.58</fastjson.version>
         <zookeeper.version>[3.4.14,)</zookeeper.version>
         <curator.version>4.0.1</curator.version>
