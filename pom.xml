@@ -15,7 +15,7 @@
         <project.jdk.version>1.8</project.jdk.version>
         <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
         <maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
-        <spring.version>5.3.9</spring.version>
+        <spring.version>5.3.16</spring.version>
         <dubbo.version>2.7.2</dubbo.version>
         <javassist.version>3.21.0-GA</javassist.version>
         <zkclient.version>0.1</zkclient.version>
